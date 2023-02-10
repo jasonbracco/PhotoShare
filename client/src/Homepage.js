@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import LoginPage from "./LoginPage"
-import SignupPage from "./SignupPage"
+import LoginPage from "./Pages/LoginPage"
+import SignupPage from "./Pages/SignupPage"
 
 
 function Homepage(){
