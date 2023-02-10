@@ -7,7 +7,6 @@ function Homepage(){
 
     const [loggingIn, setLoggingIn] = useState(false)
     const [signingUp, setSigningUp] = useState(false)
-    const [undo, setUndo] = useState(false)
 
     function loginClick(){
         setLoggingIn(true)
