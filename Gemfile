@@ -24,11 +24,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-gem "Aws-sdk-s3", "~>1.119"
-gem "dotenv-rails", "~>2.8"
-gem "image_processing", ">=1.2"
-gem "jsonapi-serializer", "~>2.2"
-gem 'figaro'
+gem "aws-sdk-s3", "~>1.119" #adds necessary dependencies for S3 to run
+gem "dotenv-rails", "~>2.8" #loads environment variables from .env into ENV in development
+gem "image_processing", ">=1.2" #(optional) for if you are using additional gems, such as ImageMagick, to process images differently than uploaded (such as resizing)
+gem "jsonapi-serializer", "~>2.2" #allows for processing of images as JSON data
+gem 'figaro' #allows for edition of of environment-specific values to the config file
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
