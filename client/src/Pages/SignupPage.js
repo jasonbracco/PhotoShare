@@ -1,4 +1,5 @@
 import React from "react"
+import MaskedInput from 'react-text-mask'
 
 function SignupPage(){
 
@@ -58,6 +59,7 @@ function SignupPage(){
                         <p>Password</p>
                         <input 
                             name="password" 
+                            type="password"                            
                             autoComplete="off"
                         />
                     </label>
@@ -65,6 +67,7 @@ function SignupPage(){
                         <p>Password Confirmation</p>
                         <input 
                             name="password-confirmation" 
+                            type="password"                            
                             autoComplete="off"
                         />
                     </label>
