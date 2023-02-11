@@ -12,12 +12,14 @@ function SignupPage(){
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
+    function handleSignupSubmit(e){
+        e.preventDefault()
+    }
+
     return (
-
-
         <div>
             Signup Here!
-            <form>
+            <form onSubmit={handleSignupSubmit}>
                 <fieldset>
                     <label>
                         <p>First Name</p>
@@ -96,6 +98,9 @@ function SignupPage(){
                         />
                     </label>
                 </fieldset>
+                <button type="submit">
+                    Sign Up!
+                </button>
             </form>
         </div>
 
