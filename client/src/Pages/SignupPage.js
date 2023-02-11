@@ -16,7 +16,6 @@ function SignupPage(){
 
     function handleSignupSubmit(e){
         e.preventDefault()
-        console.log("submitted!")
         fetch("/signup", {
             method: "POST",
             body: JSON.stringify({
@@ -29,14 +28,14 @@ function SignupPage(){
                 username,
                 password,
                 password_confirmation: passwordConfirmation,
-            })
+            }),
         })
         .then((response) => {
             if (response.ok){
                 response.json().then((user) => console.log(user))
             }
             else{
-                response.json().then((error) => setErrors(error.errors))
+                response.json().then((error) => console.log(error))
             }
         })
     }
