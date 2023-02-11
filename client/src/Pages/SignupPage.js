@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Error from "../Error"
 
 function SignupPage(){
 
@@ -11,11 +12,33 @@ function SignupPage(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
+    const [errors, setErrors] = useState([])
 
     function handleSignupSubmit(e){
         e.preventDefault()
         console.log("submitted!")
-        console.log(firstName)
+        fetch("/signup", {
+            method: "POST",
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                city,
+                state_province: stateProvince,
+                country,
+                bio,
+                username,
+                password,
+                password_confirmation: passwordConfirmation,
+            })
+        })
+        .then((response) => {
+            if (response.ok){
+                response.json().then((user) => console.log(user))
+            }
+            else{
+                response.json().then((error) => setErrors(error.errors))
+            }
+        })
     }
 
     return (
@@ -118,6 +141,11 @@ function SignupPage(){
                 <button type="submit">
                     Sign Up!
                 </button>
+                <div>
+                    {errors.map((error) => (
+                        <Error key={error} error={error} />
+                    ))}
+                </div>
             </form>
         </div>
 
