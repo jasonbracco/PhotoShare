@@ -25,16 +25,23 @@ function SignupPage(){
                         />
                     </label>
                     <label>
-                        <p>Hometown</p>
+                        <p>City</p>
                         <input 
-                            name="hometown" 
+                            name="city" 
                             autoComplete="off"
                         />
                     </label>
                     <label>
-                        <p>State</p>
+                        <p>State/Province</p>
                         <input 
-                            name="state" 
+                            name="state-province" 
+                            autoComplete="off"
+                        />
+                    </label>
+                    <label>
+                        <p>Country</p>
+                        <input 
+                            name="country" 
                             autoComplete="off"
                         />
                     </label>
