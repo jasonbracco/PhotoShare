@@ -14,6 +14,8 @@ function SignupPage(){
 
     function handleSignupSubmit(e){
         e.preventDefault()
+        console.log("submitted!")
+        console.log(firstName)
     }
 
     return (
@@ -24,9 +26,10 @@ function SignupPage(){
                     <label>
                         <p>First Name</p>
                         <input 
-                            name="firstname" 
+                            name="firstname"
                             autoComplete="off"
                             value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
                     </label>
                     <label>
@@ -35,6 +38,7 @@ function SignupPage(){
                             name="lastname" 
                             autoComplete="off"
                             value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
                         />
                     </label>
                     <label>
@@ -43,6 +47,7 @@ function SignupPage(){
                             name="city" 
                             autoComplete="off"
                             value={city}
+                            onChange={(e) => setCity(e.target.value)}
                         />
                     </label>
                     <label>
@@ -51,6 +56,7 @@ function SignupPage(){
                             name="state-province" 
                             autoComplete="off"
                             value={stateProvince}
+                            onChange={(e) => setStateProvince(e.target.value)}
                         />
                     </label>
                     <label>
@@ -59,6 +65,7 @@ function SignupPage(){
                             name="country" 
                             autoComplete="off"
                             value={country}
+                            onChange={(e) => setCountry(e.target.value)}
                         />
                     </label>
                     <label>
@@ -67,6 +74,13 @@ function SignupPage(){
                             name="bio"
                             autoComplete="off"
                             value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <p>Profile Picture</p>
+                        <input
+                            type="file"
                         />
                     </label>
                 </fieldset>
@@ -77,6 +91,7 @@ function SignupPage(){
                             name="username" 
                             autoComplete="off"
                             value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </label>
                     <label>
@@ -86,6 +101,7 @@ function SignupPage(){
                             type="password"                            
                             autoComplete="off"
                             value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
                     <label>
@@ -95,6 +111,7 @@ function SignupPage(){
                             type="password"                            
                             autoComplete="off"
                             value={passwordConfirmation}
+                            onChange={(e) => setPasswordConfirmation(e.target.value)}
                         />
                     </label>
                 </fieldset>
