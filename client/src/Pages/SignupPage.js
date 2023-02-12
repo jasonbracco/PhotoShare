@@ -99,12 +99,6 @@ function SignupPage(){
                             onChange={(e) => setBio(e.target.value)}
                         />
                     </label>
-                    <label>
-                        <p>Profile Picture</p>
-                        <input
-                            type="file"
-                        />
-                    </label>
                 </fieldset>
                 <fieldset>
                     <label>
