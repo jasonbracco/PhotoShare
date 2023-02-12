@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import LoginPage from "./Pages/LoginPage"
-import SignupPage from "./Pages/SignupPage"
+import SignupPage from "./SignupPage"
 
 
 function Homepage({user, setUser}){
@@ -9,8 +9,18 @@ function Homepage({user, setUser}){
 
     useEffect(() => {
         if (user) setLoggedIn(false)
-        console.log(user)
-    })
+    }, [user])
+
+    function handleLogout(){
+        fetch("/logout", {
+            method: "DELETE"})
+        .then((response) => {
+            if (response.ok){
+                setUser(null)
+                setLoggedIn(true)
+            }
+        })
+    }
 
     const [loggingIn, setLoggingIn] = useState(false)
     const [signingUp, setSigningUp] = useState(false)
@@ -54,8 +64,8 @@ function Homepage({user, setUser}){
             }
             {signingUp ? 
                 <div>
-                    <SignupPage />
-                    <button onClick={undoClick} setUser={setUser}>Undo</button>
+                    <SignupPage setUser={setUser}/>
+                    <button onClick={undoClick} >Undo</button>
                 </div>
             :
             null
@@ -63,12 +73,11 @@ function Homepage({user, setUser}){
         </div>
         :
         <div>
-            
             <p>Welcome to PhotoShare</p>
             <p>Discover New Artists</p>
             <p>List Your Work</p>
             <p>Build Your Collection</p>  
-            <button>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
         </div>
 
         }
