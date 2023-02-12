@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import LoginPage from "./Pages/LoginPage"
+import LoginPage from "./LoginPage"
 import SignupPage from "./SignupPage"
 
 
@@ -56,7 +56,7 @@ function Homepage({user, setUser}){
             </div>
             {loggingIn ?
                 <div>
-                    <LoginPage />
+                    <LoginPage setUser={setUser}/>
                     <button onClick={undoClick}>Undo</button>
                 </div>
             :
