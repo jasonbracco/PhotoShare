@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Error from "../Error"
 
-function SignupPage(){
+function SignupPage(setUser){
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -18,6 +18,9 @@ function SignupPage(){
         e.preventDefault()
         fetch("/signup", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 first_name: firstName,
                 last_name: lastName,
@@ -32,10 +35,13 @@ function SignupPage(){
         })
         .then((response) => {
             if (response.ok){
-                response.json().then((user) => console.log(user))
+                response.json().then((user) => setUser(user))
             }
             else{
-                response.json().then((error) => console.log(error))
+                response.json().then((error) => {
+                    console.log(error)
+                    setErrors(error.errors)
+                })
             }
         })
     }
