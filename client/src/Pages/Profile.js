@@ -5,7 +5,7 @@ function Profile(){
 
     return (
         <div>
-            This is your profile
+            Profile
         </div>
     )
 }
