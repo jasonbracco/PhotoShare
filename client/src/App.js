@@ -17,9 +17,11 @@ function App() {
         response.json().then((user) => {
           setUser(user);
         })
-        }
+      }
     })
   }, [])
+
+  console.log(user)
 
   return (
     <div>

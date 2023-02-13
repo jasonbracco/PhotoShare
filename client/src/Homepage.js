@@ -6,6 +6,7 @@ import SignupPage from "./SignupPage"
 function Homepage({user, setUser}){
 
     const [loggedIn, setLoggedIn] = useState(true)
+    
 
     useEffect(() => {
         if (user) setLoggedIn(false)

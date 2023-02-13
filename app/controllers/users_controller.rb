@@ -13,8 +13,6 @@ class UsersController < ApplicationController
         render json: @current_user, methods: [:unique]
     end
 
-
-
     private
 
     def user_params
