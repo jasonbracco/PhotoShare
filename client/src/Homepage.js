@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useContext} from "react"
 import LoginPage from "./LoginPage"
 import SignupPage from "./SignupPage"
+import {UserContext} from "./UserContext"
 
 
-function Homepage({user, setUser}){
 
+function Homepage(){
+
+    const { user, setUser } = useContext(UserContext)
     const [loggedIn, setLoggedIn] = useState(true)
     
 

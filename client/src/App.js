@@ -30,15 +30,15 @@ function App() {
       <div className="header">Header</div>
       <div>Cart</div>
       <div className="side-navbar">
-        <UserContext.Provider value={{user, setUser}} />
+        <UserContext.Provider value={{user, setUser}}>
         <NavBar/>
         <Routes>
-          <Route path="/" element={<Homepage user={user} setUser={setUser} />}/>
+          <Route path="/" element={<Homepage />}/>
           <Route path="/profile" element={<Profile />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/orders" element={<Orders />} />
         </Routes>
-        <UserContext.Provider />
+        </UserContext.Provider >
       </div>
     </div>
   );
