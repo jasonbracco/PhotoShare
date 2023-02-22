@@ -105,6 +105,7 @@ function SignupPage({setUser}){
                         <input
                             name="profile-pic"
                             type="file"
+                            accept= ".jpg, .jpeg, .png"
                         />
                     </label>
                 </fieldset>
