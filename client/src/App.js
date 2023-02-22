@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import {Route, Routes} from "react-router-dom"
+import {UserContext} from "./UserContext"
 import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Pages/Profile"
@@ -8,8 +9,6 @@ import Orders from "./Pages/Orders"
 
 
 function App() {
-
-
 
   const [user, setUser] = useState(null)
   console.log(user)
@@ -31,6 +30,7 @@ function App() {
       <div className="header">Header</div>
       <div>Cart</div>
       <div className="side-navbar">
+        <UserContext.Provider value={{user, setUser}} />
         <NavBar/>
         <Routes>
           <Route path="/" element={<Homepage user={user} setUser={setUser} />}/>
@@ -38,6 +38,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/orders" element={<Orders />} />
         </Routes>
+        <UserContext.Provider />
       </div>
     </div>
   );
