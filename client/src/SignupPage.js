@@ -17,22 +17,19 @@ function SignupPage({setUser}){
 
     function handleSignupSubmit(e){
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
+        formData.append('city', city)
+        formData.append('state_province', stateProvince)
+        formData.append('country', country)
+        formData.append('bio', bio)
+        formData.append('username', username)
+        formData.append('password', password)
+        formData.append('password_confirmation', passwordConfirmation)
         fetch("/signup", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName,
-                city,
-                state_province: stateProvince,
-                country,
-                bio,
-                username,
-                password,
-                password_confirmation: passwordConfirmation,
-            }),
+            body: formData
         })
         .then((response) => {
             if (response.ok){
