@@ -10,7 +10,7 @@ function Profile(){
 
     return (
         <div>
-            {user.id}
+            Image: 
         </div>
     )
 }
