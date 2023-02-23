@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         render json: @current_user, methods: [:unique]
     end
 
-    def index
+    def usertest
         users=User.all.with_attached_image
         render json: users
     end

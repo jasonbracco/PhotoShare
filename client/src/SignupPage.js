@@ -13,11 +13,14 @@ function SignupPage({setUser}){
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
+    const [image, setImage] = useState(null)
+    console.log(image)
 
 
     function handleSignupSubmit(e){
         e.preventDefault()
         const formData = new FormData()
+        formData.append('image', image)
         formData.append('first_name', firstName);
         formData.append('last_name', lastName);
         formData.append('city', city)
@@ -104,6 +107,7 @@ function SignupPage({setUser}){
                         <p>Upload Profile Picture</p>
                         <input
                             name="profile-pic"
+                            onChange={(e) => setImage(e.target.files[0])}
                             type="file"
                             accept= ".jpg, .jpeg, .png"
                         />

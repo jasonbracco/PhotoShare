@@ -22,10 +22,7 @@ function Profile(){
 
     return (
         <div>
-            <img key={user.id} src={user.image} />
-            {/* {testUser.map((user) =>
-                <img key={user.id} src={user.image} />
-            )} */}
+            <img src={user.image} />
         </div>
     )
 }
