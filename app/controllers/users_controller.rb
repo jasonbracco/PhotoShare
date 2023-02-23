@@ -13,6 +13,11 @@ class UsersController < ApplicationController
         render json: @current_user, methods: [:unique]
     end
 
+    def index
+        user=User.find_by(id: params[:user_id]).with_attached_image
+        render json: user
+    end
+
     private
 
     def user_params
