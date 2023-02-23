@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     end
 
     def index
-        user=User.find_by(id: params[:user_id]).with_attached_image
-        render json: user
+        users=User.all.with_attached_image
+        render json: users
     end
 
     private
