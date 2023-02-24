@@ -12,6 +12,7 @@ function Profile(){
     const [image, setImage] = useState(null)
     const [errors, setErrors] = useState([])
 
+
     function handleListPhoto(e){
         e.preventDefault()
         const formData = new FormData()
@@ -51,6 +52,7 @@ function Profile(){
                         All of the works that I am selling will go here
                     </div>
                 </div>
+
             ) : (
                 <div>
                     <form onSubmit={handleListPhoto}>
@@ -101,7 +103,6 @@ function Profile(){
                             Sell My Photo!
                         </button> 
                     </form>
-               
                 </div>
             )}
         </div>
