@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
+import UserPhotoCard from "./UserPhotoCard"
 
 function Profile({userPhotos, onAddUserPhoto}){
 
@@ -37,9 +38,7 @@ function Profile({userPhotos, onAddUserPhoto}){
                 response.json().then((error) => setErrors(error.errors))
             }
         })
-    }
-    console.log(userPhotos)
-    
+    }    
 
     return (
         <div>
@@ -51,7 +50,9 @@ function Profile({userPhotos, onAddUserPhoto}){
                         {user.bio}
                     </div>
                     <div className="peronal-listed-items">
-                        All of the works that I am selling will go here
+                        {userPhotos.map((photograph) => {
+                            return <UserPhotoCard key={photograph.id} photograph={photograph} />
+                        })}
                     </div>
                 </div>
 
