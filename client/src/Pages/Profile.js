@@ -22,7 +22,7 @@ function Profile(){
 
     return (
         <div>
-            <img src={user.image} />
+            <img className="profile-pic" src={user.image} />
         </div>
     )
 }

@@ -9,5 +9,6 @@ class User < ApplicationRecord
     validates :country, presence: true
     validates :bio, presence: true
     validates :username, presence: true, uniqueness: true
+    validates :image, presence: true
 
 end
