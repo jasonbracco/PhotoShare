@@ -14,8 +14,6 @@ function SignupPage({setUser}){
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
     const [image, setImage] = useState(null)
-    console.log(image)
-
 
     function handleSignupSubmit(e){
         e.preventDefault()

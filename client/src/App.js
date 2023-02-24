@@ -6,7 +6,6 @@ import Homepage from "./Homepage"
 import Profile from "./Profile"
 import Shop from "./Pages/Shop"
 import Orders from "./Pages/Orders"
-import PhotoUpload from "./PhotoUpload"
 
 
 
