@@ -3,9 +3,11 @@ import {Route, Routes} from "react-router-dom"
 import {UserContext} from "./UserContext"
 import NavBar from "./NavBar"
 import Homepage from "./Homepage"
-import Profile from "./Pages/Profile"
+import Profile from "./Profile"
 import Shop from "./Pages/Shop"
 import Orders from "./Pages/Orders"
+import PhotoUpload from "./PhotoUpload"
+
 
 
 function App() {
@@ -30,13 +32,13 @@ function App() {
       <div>Cart</div>
       <div className="side-navbar">
         <UserContext.Provider value={{user, setUser}}>
-        <NavBar/>
-        <Routes>
-          <Route path="/" element={<Homepage />}/>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/orders" element={<Orders />} />
-        </Routes>
+          <NavBar/>
+          <Routes>
+            <Route path="/" element={<Homepage />}/>
+            <Route exact path="/profile" element={<Profile />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
         </UserContext.Provider >
       </div>
     </div>
