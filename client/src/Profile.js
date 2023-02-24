@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 
-function Profile(){
+function Profile({userPhotos, onAddUserPhoto}){
 
     const {user, setUser} = useContext(UserContext)
     const [listWork, setListWork] = useState(true)
@@ -29,6 +29,7 @@ function Profile(){
             if (response.ok){
                 response.json().then((photograph) => {
                     console.log(photograph)
+                    onAddUserPhoto(photograph)
                     setListWork(true)
                 })
             }
@@ -37,6 +38,7 @@ function Profile(){
             }
         })
     }
+    console.log(userPhotos)
     
 
     return (
