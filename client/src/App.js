@@ -25,9 +25,6 @@ function App() {
     })
   }, [])
 
-  console.log(photosUserIsSelling)
-  console.log(user)
-
   function handleAddUserPhoto(newPhoto){
     setPhotosUserIsSelling([...photosUserIsSelling, newPhoto])
   }
