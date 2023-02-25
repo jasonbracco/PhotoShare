@@ -2,17 +2,15 @@ import React from "react"
 
 function UserPhotoCard({photograph}){
 
-    console.log(photograph)
-
     return(
         <div>
             <img className="selling-pic" src={photograph.image} />
             <br></br>
-            {photograph.name}
+            Name: {photograph.name}
             <br></br>
-            {photograph.description}
+            Description: {photograph.description}
             <br></br>
-            {photograph.price}
+            Price: ${photograph.price}
             <br></br>
             <br></br>
         </div>

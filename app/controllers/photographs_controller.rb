@@ -5,6 +5,12 @@ class PhotographsController < ApplicationController
         render json: photograph
     end
 
+    def index
+        photographs=Photograph.all.with_attached_image
+        render json: photographs
+    end
+
+
     private
 
     def photograph_params

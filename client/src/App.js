@@ -4,7 +4,7 @@ import {UserContext} from "./UserContext"
 import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
-import Shop from "./Pages/Shop"
+import Shop from "./Shop"
 import Orders from "./Pages/Orders"
 
 
