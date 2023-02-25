@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-function UserPhotoCard({photograph}){
+function UserPhotoCard({photograph, deleteUserPhoto}){
 
     const [isEditing, setIsEditing] = useState(true)
 
@@ -8,6 +8,7 @@ function UserPhotoCard({photograph}){
         fetch(`/photographs/${photograph.id}`, {
             method: "DELETE",
         });
+        deleteUserPhoto(photograph.id)
     }
 
     return(

@@ -13,22 +13,16 @@ import Cart from "./Cart"
 function App() {
 
   const [user, setUser] = useState(null)
-  const [photosUserIsSelling, setPhotosUserIsSelling] = useState([])
 
   useEffect(() => {
     fetch ("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
           setUser(user);
-          setPhotosUserIsSelling(user.photographs)
         })
       }
     })
   }, [])
-
-  function handleAddUserPhoto(newPhoto){
-    setPhotosUserIsSelling([...photosUserIsSelling, newPhoto])
-  }
 
   return (
     <div>
@@ -39,7 +33,7 @@ function App() {
           <NavBar/>
           <Routes>
             <Route path="/" element={<Homepage />}/>
-            <Route exact path="/profile" element={<Profile userPhotos={photosUserIsSelling} onAddUserPhoto={handleAddUserPhoto}/>} />
+            <Route exact path="/profile" element={<Profile />}/>
             <Route path="/shop" element={<Shop />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/cart" element={<Cart />} />
