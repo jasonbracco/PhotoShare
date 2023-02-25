@@ -10,6 +10,12 @@ class PhotographsController < ApplicationController
         render json: photographs
     end
 
+    def destroy
+        photograph=Photograph.find_by(id: params[:id])
+        photograph.destroy
+        head :no_content
+    end
+
 
     private
 
