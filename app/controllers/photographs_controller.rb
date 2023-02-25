@@ -16,6 +16,11 @@ class PhotographsController < ApplicationController
         head :no_content
     end
 
+    def update
+        photograph=Photograph.find_by(id: params[:id])
+        photograph.update!(photograph_params)
+        render json: photograph
+    end
 
     private
 

@@ -6,6 +6,7 @@ import UserPhotoCard from "./UserPhotoCard"
 function Profile(){
 
     const {user, setUser} = useContext(UserContext)
+
     const [listWork, setListWork] = useState(true)
     const [name, setName] =useState("")
     const [description, setDescription] = useState("")
@@ -13,7 +14,6 @@ function Profile(){
     const [image, setImage] = useState(null)
     const [errors, setErrors] = useState([])
     const [userPhotos, setUserPhotos] = useState(user.photographs)
-
 
     function handleListPhoto(e){
         e.preventDefault()
@@ -45,12 +45,25 @@ function Profile(){
 
     function handleAddUserPhoto(newPhoto){
         setUserPhotos([...userPhotos, newPhoto])
-      }
+    }
     
-      function handleDeleteUserPhoto(id){
+    function handleDeleteUserPhoto(id){
         const updatedUserPhotos = userPhotos.filter((photo) => photo.id !== id);
         setUserPhotos(updatedUserPhotos)
-      }
+    }
+
+    function handleEditUserPhoto(updatedUserPhoto){
+        const updatedUserPhotos = userPhotos.map((photograph) => {
+          if (photograph.id === updatedUserPhoto.id) {
+            return updatedUserPhoto;
+          } else {
+            return photograph;
+          } 
+        });
+        setUserPhotos(updatedUserPhotos)
+    }
+
+
 
     console.log(userPhotos)
 
@@ -65,11 +78,10 @@ function Profile(){
                     </div>
                     <div className="peronal-listed-items">
                         {userPhotos.map((photograph) => {
-                            return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto}/>
+                            return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
                         })}
                     </div>
                 </div>
-
             ) : (
                 <div>
                     <button onClick={() => setListWork(true)}>Go Back</button>

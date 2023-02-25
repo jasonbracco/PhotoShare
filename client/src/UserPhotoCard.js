@@ -1,6 +1,7 @@
 import React, {useState} from "react"
+import EditUserPhotoCard from "./EditUserPhotoCard"
 
-function UserPhotoCard({photograph, deleteUserPhoto}){
+function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
 
     const [isEditing, setIsEditing] = useState(true)
 
@@ -31,7 +32,7 @@ function UserPhotoCard({photograph, deleteUserPhoto}){
                 <div>
                     <img className="selling-pic" src={photograph.image} />
                     <br></br>
-                    Editing baby
+                    <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto}/>
                     <br></br>
                     <button onClick={() => setIsEditing(true)}> Done Editing</button>
                 </div>
