@@ -41,11 +41,11 @@ function Profile({userPhotos, onAddUserPhoto}){
     }    
 
     return (
-        <div>
+        <div> 
             {listWork ? (
                 <div>
-                    <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
                     <img className="profile-pic" src={user.image} />
+                    <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
                     <div classame="user-bio">
                         {user.bio}
                     </div>
@@ -58,6 +58,7 @@ function Profile({userPhotos, onAddUserPhoto}){
 
             ) : (
                 <div>
+                    <button onClick={() => setListWork(true)}>Go Back</button>
                     <form onSubmit={handleListPhoto}>
                         <fieldset>
                             <label>
@@ -104,7 +105,7 @@ function Profile({userPhotos, onAddUserPhoto}){
                         </div>
                         <button type="submit">
                             Sell My Photo!
-                        </button> 
+                        </button>
                     </form>
                 </div>
             )}

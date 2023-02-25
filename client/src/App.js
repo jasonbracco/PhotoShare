@@ -6,6 +6,7 @@ import Homepage from "./Homepage"
 import Profile from "./Profile"
 import Shop from "./Shop"
 import Orders from "./Pages/Orders"
+import Cart from "./Cart"
 
 
 
@@ -41,6 +42,7 @@ function App() {
             <Route exact path="/profile" element={<Profile userPhotos={photosUserIsSelling} onAddUserPhoto={handleAddUserPhoto}/>} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </UserContext.Provider >
       </div>
