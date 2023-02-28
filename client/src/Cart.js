@@ -17,6 +17,9 @@ function Cart(){
         return accumulator;
     }, []);
 
+    const cartPrice = cart.reduce((total, item) => parseFloat(total)+parseFloat(item.price), 0)
+    console.log(cartPrice)
+
     console.log(cart)
     console.log(uniqueItems)
 
@@ -27,7 +30,11 @@ function Cart(){
             {uniqueItems.map((item) => {
                return <CartCard key={item.id} item={item} />
             })}
+            <div>
+                Total Price: ${cartPrice}
+            </div>
         </div>
+
     )
 }
 
