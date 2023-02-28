@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {Route, Routes} from "react-router-dom"
 import {UserContext} from "./UserContext"
+import {CartContext} from "./CartContext"
 import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
@@ -13,6 +14,12 @@ import Cart from "./Cart"
 function App() {
 
   const [user, setUser] = useState(null)
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+
+  function updateCart(updatedCart){
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  }
 
   useEffect(() => {
     fetch ("/me").then((response) => {
@@ -30,14 +37,16 @@ function App() {
       <div>Cart</div>
       <div className="side-navbar">
         <UserContext.Provider value={{user, setUser}}>
-          <NavBar/>
-          <Routes>
-            <Route path="/" element={<Homepage />}/>
-            <Route exact path="/profile" element={<Profile />}/>
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
+          <CartContext.Provider value={{cart, updateCart}}>
+            <NavBar/>
+            <Routes>
+              <Route path="/" element={<Homepage />}/>
+              <Route exact path="/profile" element={<Profile />}/>
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </CartContext.Provider>
         </UserContext.Provider >
       </div>
     </div>

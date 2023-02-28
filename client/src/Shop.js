@@ -15,9 +15,6 @@ function Shop(){
         })
     }, [])
 
-    console.log(allPhotos)
-
-
     return (
         <div>
             {allPhotos.map((photograph) => {
