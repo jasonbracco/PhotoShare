@@ -2,12 +2,15 @@ import React, {useEffect, useState, useContext} from "react"
 import LoginPage from "./LoginPage"
 import SignupPage from "./SignupPage"
 import {UserContext} from "./UserContext"
+import {CartContext} from "./CartContext"
 
 
 
 function Homepage(){
 
     const { user, setUser } = useContext(UserContext)
+    const {cart, updateCart} = useContext(CartContext)
+
     const [loggedIn, setLoggedIn] = useState(true)
     
 
@@ -20,6 +23,7 @@ function Homepage(){
             method: "DELETE"})
         .then((response) => {
             if (response.ok){
+                updateCart([])
                 setUser(null)
                 setLoggedIn(true)
             }

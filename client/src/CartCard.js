@@ -3,14 +3,14 @@ import {CartContext} from "./CartContext"
 
 function CartCard({item}){
 
-    const {cart, setCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext)
 
 
     return(
         <div>
             <img className= "selling-pic" src={item.image} />
             <br></br>
-            Number: {item.count}
+            <button>Minus</button>{item.count}<button>Plus</button>
             <br></br>
             Name: {item.name}
             <br></br>
