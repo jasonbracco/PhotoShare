@@ -7,16 +7,20 @@ function CartCard({item}){
 
     function handleRemoveAllFromCart(){
         console.log("Removed!")
-        console.log(item)
         const newCart = cart.filter((cartItem) => cartItem.id !== item.id)
         updateCart(newCart)
+    }
+
+    function addOneToCart(e){
+        e.preventDefault()
+        updateCart([...cart, item])
     }
 
     return(
         <div>
             <img className= "selling-pic" src={item.image} />
             <br></br>
-            <button>Minus</button>{item.count}<button>Plus</button>
+            <button>Minus</button>{item.count}<button onClick={addOneToCart}>Plus</button>
             <br></br>
             Name: {item.name}
             <br></br>
