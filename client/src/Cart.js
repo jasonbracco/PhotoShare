@@ -17,6 +17,7 @@ function Cart(){
         return accumulator;
     }, []);
 
+    console.log(cart)
     console.log(uniqueItems)
 
     return (

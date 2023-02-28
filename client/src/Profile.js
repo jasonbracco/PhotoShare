@@ -6,6 +6,7 @@ import UserPhotoCard from "./UserPhotoCard"
 function Profile(){
 
     const {user, setUser} = useContext(UserContext)
+    console.log(user)
 
     const [listWork, setListWork] = useState(true)
     const [name, setName] =useState("")

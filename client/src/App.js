@@ -9,8 +9,6 @@ import Shop from "./Shop"
 import Orders from "./Pages/Orders"
 import Cart from "./Cart"
 
-
-
 function App() {
 
   const [user, setUser] = useState(null)
@@ -22,6 +20,16 @@ function App() {
   }
 
   useEffect(() => {
+    fetch ("/users").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          console.log(user)
+        })
+      }
+    })
+  })
+
+  useEffect(() => {
     fetch ("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
@@ -30,6 +38,8 @@ function App() {
       }
     })
   }, [])
+
+
 
   return (
     <div>
