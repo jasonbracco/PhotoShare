@@ -30,7 +30,6 @@ function Profile(){
         .then((response) => {
             if (response.ok){
                 response.json().then((photograph) => {
-                    console.log(photograph)
                     handleAddUserPhoto(photograph)
                     setListWork(true)
                 })
@@ -40,8 +39,6 @@ function Profile(){
             }
         })
     }    
-
-    console.log(user.photographs)
 
     function handleAddUserPhoto(newPhoto){
         setUserPhotos([...userPhotos, newPhoto])
@@ -62,10 +59,6 @@ function Profile(){
         });
         setUserPhotos(updatedUserPhotos)
     }
-
-
-
-    console.log(userPhotos)
 
     return (
         <div> 

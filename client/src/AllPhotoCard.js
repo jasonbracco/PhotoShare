@@ -10,9 +10,6 @@ function AllPhotoCard({photograph}){
         e.preventDefault()
         updateCart([...cart, photograph])    
     }
-
-    console.log(cart)
-
  
     return(
         <div>
