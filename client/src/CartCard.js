@@ -5,6 +5,12 @@ function CartCard({item}){
 
     const {cart, updateCart} = useContext(CartContext)
 
+    function handleRemoveAllFromCart(){
+        console.log("Removed!")
+        console.log(item)
+        const newCart = cart.filter((cartItem) => cartItem.id !== item.id)
+        updateCart(newCart)
+    }
 
     return(
         <div>
@@ -17,6 +23,8 @@ function CartCard({item}){
             Description: {item.description}
             <br></br>
             Price: ${item.price}
+            <br></br>
+            <button onClick={handleRemoveAllFromCart}>Remove All From Cart</button>
             <br></br>
             <br></br>
         </div>
