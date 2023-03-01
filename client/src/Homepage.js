@@ -23,9 +23,9 @@ function Homepage(){
             method: "DELETE"})
         .then((response) => {
             if (response.ok){
-                updateCart([])
-                setUser(null)
-                setLoggedIn(true)
+                updateCart([]);
+                setUser(null);
+                setLoggedIn(true);
             }
         })
     }
@@ -34,18 +34,18 @@ function Homepage(){
     const [signingUp, setSigningUp] = useState(false)
 
     function loginClick(){
-        setLoggingIn(true)
-        setSigningUp(false)
+        setLoggingIn(true);
+        setSigningUp(false);
     }
 
     function signupClick(){
-        setSigningUp(true)
-        setLoggingIn(false)
+        setSigningUp(true);
+        setLoggingIn(false);
     }
 
     function undoClick(){
-        setLoggingIn(false)
-        setSigningUp(false)
+        setLoggingIn(false);
+        setSigningUp(false);
     }
 
     return(

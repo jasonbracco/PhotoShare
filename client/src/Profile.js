@@ -6,7 +6,6 @@ import UserPhotoCard from "./UserPhotoCard"
 function Profile(){
 
     const {user, setUser} = useContext(UserContext)
-    console.log(user)
 
     const [listWork, setListWork] = useState(true)
     const [name, setName] =useState("")
@@ -19,11 +18,11 @@ function Profile(){
     function handleListPhoto(e){
         e.preventDefault()
         const formData = new FormData()
-        formData.append('image', image)
+        formData.append('image', image);
         formData.append('name', name);
         formData.append('description', description);
-        formData.append('price', price)
-        formData.append('user_id', user.id)
+        formData.append('price', price);
+        formData.append('user_id', user.id);
         fetch("/photographs", {
             method: "POST",
             body: formData
@@ -31,23 +30,23 @@ function Profile(){
         .then((response) => {
             if (response.ok){
                 response.json().then((photograph) => {
-                    handleAddUserPhoto(photograph)
-                    setListWork(true)
+                    handleAddUserPhoto(photograph);
+                    setListWork(true);
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.errors))
+                response.json().then((error) => setErrors(error.errors));
             }
         })
     }    
 
     function handleAddUserPhoto(newPhoto){
-        setUserPhotos([...userPhotos, newPhoto])
+        setUserPhotos([...userPhotos, newPhoto]);
     }
     
     function handleDeleteUserPhoto(id){
         const updatedUserPhotos = userPhotos.filter((photo) => photo.id !== id);
-        setUserPhotos(updatedUserPhotos)
+        setUserPhotos(updatedUserPhotos);
     }
 
     function handleEditUserPhoto(updatedUserPhoto){

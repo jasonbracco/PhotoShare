@@ -4,7 +4,7 @@ import CartCard from "./CartCard"
 
 function Cart(){
 
-    const {cart, setCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext)
 
     const uniqueItems = cart.reduce((accumulator, currentValue) => {
         const find = accumulator.find(item => item.id === currentValue.id);
@@ -17,18 +17,15 @@ function Cart(){
         return accumulator;
     }, []);
 
-    const cartPrice = cart.reduce((total, item) => parseFloat(total)+parseFloat(item.price), 0)
-    console.log(cartPrice)
-
-    console.log(cart)
-    console.log(uniqueItems)
+    const cartPrice = cart.reduce((total, item) => parseFloat(total)+parseFloat(item.price), 0);
+    const sortedItems = uniqueItems.sort((itemA, itemB) => itemA.id - itemB.id)
 
     return (
         <div>
             Items in your cart:
             <br></br>
-            {uniqueItems.map((item) => {
-               return <CartCard key={item.id} item={item} />
+            {sortedItems.map((item) => {
+               return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
             })}
             <div>
                 Total Price: ${cartPrice}

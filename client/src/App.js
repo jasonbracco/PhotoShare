@@ -19,15 +19,15 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
-  useEffect(() => {
-    fetch ("/users").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => {
-          console.log(user)
-        })
-      }
-    })
-  })
+  // useEffect(() => {
+  //   fetch ("/users").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => {
+  //         console.log(user)
+  //       })
+  //     }
+  //   })
+  // })
 
   useEffect(() => {
     fetch ("/me").then((response) => {
