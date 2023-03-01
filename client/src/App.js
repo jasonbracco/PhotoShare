@@ -39,8 +39,6 @@ function App() {
     })
   }, [])
 
-
-
   return (
     <div>
       <div className="header">Header</div>

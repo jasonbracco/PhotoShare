@@ -4,11 +4,8 @@ import {CartContext} from "./CartContext"
 function CartCard({item, uniqueItems}){
 
     const {cart, updateCart} = useContext(CartContext)
-    console.log(cart)
-
 
     function handleRemoveAllFromCart(){
-        console.log("Removed!");
         const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
         updateCart(newCart);
     }
@@ -18,17 +15,16 @@ function CartCard({item, uniqueItems}){
         updateCart([...cart, item]);
     }
 
-
     function removeOneFromCart(e){
         e.preventDefault();
         uniqueItems.filter((uniqueItem) => {
             if (uniqueItem.id == item.id && uniqueItem.count > 1){
                 const itemToDelete = cart.find(item => uniqueItem.id === item.id);
                 const indexToRemove = cart.indexOf(itemToDelete);
-                if (indexToRemove !== -1) {
+                if (indexToRemove >= 0) {
                     const newCart = [...cart];
                     newCart.splice(indexToRemove, 1);
-                    updateCart(newCart)
+                    updateCart(newCart);
                 }
             }
             else if (uniqueItem.id == item.id){

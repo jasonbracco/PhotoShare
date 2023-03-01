@@ -13,7 +13,6 @@ function Homepage(){
 
     const [loggedIn, setLoggedIn] = useState(true)
     
-
     useEffect(() => {
         if (user) setLoggedIn(false)
     }, [user])
