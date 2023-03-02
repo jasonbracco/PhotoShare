@@ -12,5 +12,6 @@ class User < ApplicationRecord
     validates :image, presence: true
 
     has_many :photographs
+    has_many :orders
 
 end

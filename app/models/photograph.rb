@@ -7,5 +7,6 @@ class Photograph < ApplicationRecord
     validates :image, presence: true
 
     belongs_to :user
+    has_many :orders
 
 end

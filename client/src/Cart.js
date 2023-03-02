@@ -30,6 +30,7 @@ function Cart(){
             <div>
                 Total Price: ${cartPrice}
             </div>
+            <button>Place Order Now</button>
         </div>
 
     )

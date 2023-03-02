@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :orders
   resources :photographs, only: [:create, :index, :destroy, :update]
   resources :users, only: [:index]
   
