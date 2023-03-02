@@ -2,9 +2,10 @@ class PhotographSerializer < ActiveModel::Serializer
 
   include Rails.application.routes.url_helpers #helper to generate url 
 
-  attributes :id, :name, :description, :price, :user_id, :image, :user
+  attributes :id, :name, :description, :price, :user_id, :image, :user, :orders
 
   belongs_to :user
+  has_many :orders
 
   def image
     rails_blob_path(object.image, only_path: true) if object.image.attached?

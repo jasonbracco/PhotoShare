@@ -13,5 +13,6 @@ class User < ApplicationRecord
 
     has_many :photographs
     has_many :orders
+    has_many :photographs, through: :orders
 
 end
