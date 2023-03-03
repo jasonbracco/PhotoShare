@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
 import Shop from "./Shop"
-import Orders from "./Pages/Orders"
+import Orders from "./Orders"
 import Cart from "./Cart"
 
 function App() {
