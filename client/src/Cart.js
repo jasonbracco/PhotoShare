@@ -27,6 +27,9 @@ function Cart(){
         cart.forEach((item) => {
             fetch("/orders", {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
                 body: JSON.stringify({
                     user_id: user.id,
                     photograph_id: item.id
