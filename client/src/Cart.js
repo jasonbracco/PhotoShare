@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useState} from "react"
 import {CartContext} from "./CartContext"
 import {UserContext} from "./UserContext"
 import CartCard from "./CartCard"
@@ -7,6 +7,8 @@ function Cart(){
 
     const {cart, updateCart} = useContext(CartContext)
     const {user, setUser} = useContext(UserContext)
+
+    const [ordering, setOrdering] = useState(true)
 
     const uniqueItems = cart.reduce((accumulator, currentValue) => {
         const find = accumulator.find(item => item.id === currentValue.id);
@@ -39,23 +41,36 @@ function Cart(){
                 if (response.ok){
                     response.json().then((order) => {
                         console.log(order)
+                        setOrdering(false)
+                        updateCart([])
                     })
                 }
             })
         })
+        
     }
 
     return (
         <div>
-            Items in your cart:
-            <br></br>
-            {sortedItems.map((item) => {
-               return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
-            })}
+        {ordering ? (
             <div>
-                Total Price: ${cartPrice}
-            </div>
-            <button onClick={handlePlaceOrder}>Place Order Now</button>
+                Items in your cart:
+                <br></br>
+                {sortedItems.map((item) => {
+                    return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
+                })}
+                <div>
+                    Total Price: ${cartPrice}
+                </div>
+                <button onClick={handlePlaceOrder}>Place Order Now</button>
+            </div>  
+        ) : (
+            <div>
+                Thanks for your order!
+                <br></br>
+                <button onClick={() => setOrdering(true)}>Back to your cart</button>
+            </div>  
+        )}        
         </div>
 
     )
