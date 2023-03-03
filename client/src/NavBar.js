@@ -22,7 +22,7 @@ function NavBar(){
                     <Link to="/shop" className="nav-link">Shop</Link>
                     <br></br>
                     <br></br>
-                    <Link to="/sellers" className="nav-link">Sellers</Link>
+                    <Link to="/sellers" className="nav-link">Photographers</Link>
                     <br></br>
                     <br></br>
                     <Link to="/orders" className="nav-link">Orders</Link>

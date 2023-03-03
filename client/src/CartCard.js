@@ -38,7 +38,7 @@ function CartCard({item, uniqueItems}){
         <div>
             <img className= "selling-pic" src={item.image} />
             <br></br>
-            <button onClick={removeOneFromCart}>Minus</button>{item.count}<button onClick={addOneToCart}>Plus</button>
+            <button onClick={removeOneFromCart}>-</button>{item.count}<button onClick={addOneToCart}>+</button>
             <br></br>
             Name: {item.name}
             <br></br>

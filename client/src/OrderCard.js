@@ -8,9 +8,9 @@ function OrderCard({order}){
         <div>
             Order {order.id}
             <br></br>
-            {order.photograph.price}
-            <br></br>
             <img className="selling-pic" src={order.photograph.image} />
+            <br></br>
+            <button>Leave a Review</button>
             <br></br>
             <br></br>
         </div>
