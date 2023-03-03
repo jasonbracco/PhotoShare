@@ -26,27 +26,33 @@ function Cart(){
 
     function handlePlaceOrder(e){
         e.preventDefault()
-        cart.forEach((item) => {
-            fetch("/orders", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                  },
-                body: JSON.stringify({
-                    user_id: user.id,
-                    photograph_id: item.id
+        if (cart.length > 0){
+            cart.forEach((item) => {
+                fetch("/orders", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user_id: user.id,
+                        photograph_id: item.id
+                    })
+                })
+                .then((response) => {
+                    if (response.ok){
+                        response.json().then((order) => {
+                            console.log(order)
+                            setOrdering(false)
+                            updateCart([])
+                            
+                        })
+                    }
                 })
             })
-            .then((response) => {
-                if (response.ok){
-                    response.json().then((order) => {
-                        console.log(order)
-                        setOrdering(false)
-                        updateCart([])
-                    })
-                }
-            })
-        })
+        }  
+        else{
+            console.log("add Something to your cart bro")
+        } 
         
     }
 
