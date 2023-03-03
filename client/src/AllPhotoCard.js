@@ -23,7 +23,6 @@ function AllPhotoCard({photograph}){
             <br></br>
             Price: ${photograph.price}
             <br></br>
-            <button>More Info</button>
             <button onClick={handleAddToCart}>Add To Cart</button>
             <br></br>
             <br></br>

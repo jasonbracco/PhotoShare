@@ -18,7 +18,7 @@ function Shop(){
     return (
         <div>
             {allPhotos.map((photograph) => {
-                return <AllPhotoCard key={photograph.id} photograph={photograph} />
+                return <AllPhotoCard key={photograph.id} photograph={photograph} /> 
             })}
         </div>
     )

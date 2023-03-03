@@ -22,10 +22,15 @@ function NavBar(){
                     <Link to="/shop" className="nav-link">Shop</Link>
                     <br></br>
                     <br></br>
+                    <Link to="/sellers" className="nav-link">Sellers</Link>
+                    <br></br>
+                    <br></br>
                     <Link to="/orders" className="nav-link">Orders</Link>
                     <br></br>
                     <br></br>
                     <Link to="/cart" className="nav-link">Cart ({cartCount})</Link>
+                    <br></br>
+                    <br></br>
                 </div>
             </div>
         </div>

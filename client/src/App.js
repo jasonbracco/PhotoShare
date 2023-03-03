@@ -8,6 +8,7 @@ import Profile from "./Profile"
 import Shop from "./Shop"
 import Orders from "./Orders"
 import Cart from "./Cart"
+import Sellers from "./Sellers"
 
 function App() {
 
@@ -18,16 +19,6 @@ function App() {
     setCart(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
-
-  // useEffect(() => {
-  //   fetch ("/users").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => {
-  //         console.log(user)
-  //       })
-  //     }
-  //   })
-  // })
 
   useEffect(() => {
     fetch ("/me").then((response) => {
@@ -50,9 +41,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Homepage />}/>
               <Route exact path="/profile" element={<Profile />}/>
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/cart" element={<Cart />} />
+              <Route path="/shop" element={<Shop />}/>
+              <Route path="/orders" element={<Orders />}/>
+              <Route path="/cart" element={<Cart />}/>
+              <Route path="/sellers" element={<Sellers />}/>
             </Routes>
           </CartContext.Provider>
         </UserContext.Provider >
