@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :reviews, only: [:create, :show, :destroy]
   resources :orders, only: [:create, :index]
-  resources :photographs, only: [:create, :index, :destroy, :update]
+  resources :photographs
   resources :users, only: [:index]
   
   post "/signup", to: "users#create"

@@ -9,6 +9,7 @@ import Shop from "./Shop"
 import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
+import PhotoPage from "./PhotoPage"
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
       }
     })
   }, [])
-
+ 
   return (
     <div>
       <div className="header">Header</div>
@@ -40,8 +41,10 @@ function App() {
             <NavBar/>
             <Routes>
               <Route path="/" element={<Homepage />}/>
-              <Route exact path="/profile" element={<Profile />}/>
-              <Route path="/shop" element={<Shop />}/>
+              <Route path="/profile" element={<Profile />}/>
+              <Route exact path="/shop" element={<Shop />}>
+                <Route path=":id" element={<PhotoPage />}/>
+              </Route>
               <Route path="/orders" element={<Orders />}/>
               <Route path="/cart" element={<Cart />}/>
               <Route path="/sellers" element={<Sellers />}/>

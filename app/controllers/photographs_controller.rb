@@ -22,6 +22,11 @@ class PhotographsController < ApplicationController
         render json: photograph
     end
 
+    def show
+        photograph=Photograph.find(params[:id])
+        render json: photograph
+    end
+
     private
 
     def photograph_params
