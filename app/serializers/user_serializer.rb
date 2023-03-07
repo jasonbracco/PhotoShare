@@ -2,9 +2,9 @@ class UserSerializer < ActiveModel::Serializer
 
   include Rails.application.routes.url_helpers #helper to generate url 
 
-  attributes :id, :first_name, :last_name, :city, :state_province, :country, :bio, :username, :password, :password_confirmation, :image, :photographs, :orders
+  attributes :id, :first_name, :last_name, :city, :state_province, :country, :bio, :username, :password, :password_confirmation, :image
 
-  has_many :photographs
+  has_many :selling, key: :selling
   has_many :orders
 
   def image

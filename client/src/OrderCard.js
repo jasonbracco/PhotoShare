@@ -6,6 +6,7 @@ import Error from "./Error"
 function OrderCard({order}){
 
     const {user, setUser} = useContext(UserContext)
+    console.log(order)
 
     const [reviewing, setReviewing] = useState(true)
     const [content, setContent] = useState("")
