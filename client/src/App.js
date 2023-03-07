@@ -6,10 +6,10 @@ import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
 import Shop from "./Shop"
+import PhotoPage from "./PhotoPage"
 import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
-import PhotoPage from "./PhotoPage"
 
 function App() {
 
