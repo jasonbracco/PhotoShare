@@ -32,9 +32,9 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                 <div>
                     <img className="selling-pic" src={photograph.image} />
                     <br></br>
-                    <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto}/>
+                    <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto} setIsEditing={setIsEditing}/>
                     <br></br>
-                    <button onClick={() => setIsEditing(true)}> Done Editing</button>
+                    {/* <button onClick={() => setIsEditing(true)}>Done Editing</button> */}
                 </div>
             )}
 

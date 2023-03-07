@@ -9,7 +9,6 @@ function PhotoPage(){
     const [photograph, setPhotograph] = useState(null)
     const [photoFetched, setPhotoFetched] = useState(false)
     const [reviews, setReviews] = useState([])
-    console.log(reviews)
 
     useEffect(() => {
         fetch (`/photographs/${id}`).then((response) => {
@@ -28,9 +27,12 @@ function PhotoPage(){
             {photoFetched ? (
                 <div>
                     <img className="selling-pic" src={photograph.image} />
-                    <p>{photograph.description}</p>
+                    <p>Title: {photograph.name}</p>
+                    <p>Description: {photograph.description}</p>
                     <div>
                         Reviews: 
+                        <br></br>
+                        <br></br>
                         {reviews.map((review) => {
                             return <SingleReview key ={review.id} review={review} />
                         })}

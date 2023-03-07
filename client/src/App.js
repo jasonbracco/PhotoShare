@@ -34,7 +34,6 @@ function App() {
   return (
     <div>
       <div className="header">Header</div>
-      <div>Cart</div>
       <div className="side-navbar">
         <UserContext.Provider value={{user, setUser}}>
           <CartContext.Provider value={{cart, updateCart}}>

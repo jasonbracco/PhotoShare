@@ -1,17 +1,16 @@
 import React, {useState, useContext} from "react"
-import {UserContext} from "./UserContext"
+// import {UserContext} from "./UserContext"
 import Error from "./Error"
 
 
-function EditUserPhotoCard({photograph, updateUserPhoto}){
+function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
 
-    const {user, setUser} = useContext(UserContext)
+    // const {user, setUser} = useContext(UserContext)
 
     const [newName, setNewName] = useState(photograph.name)
     const [newDescription, setNewDescription] = useState(photograph.description)
     const [newPrice, setNewPrice] = useState(photograph.price)
     const [errors, setErrors] = useState([])
-    console.log(errors)
 
     function handleEditUserPhoto(e) {
         e.preventDefault(); 
@@ -30,6 +29,8 @@ function EditUserPhotoCard({photograph, updateUserPhoto}){
             if (response.ok){
                 response.json().then((photograph) => {
                     updateUserPhoto(photograph)
+                    setIsEditing(true)
+                    console.log(photograph)
                 })
             }
             else{

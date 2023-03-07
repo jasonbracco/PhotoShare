@@ -6,7 +6,7 @@ import CartCard from "./CartCard"
 function Cart(){
 
     const {cart, updateCart} = useContext(CartContext)
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     const [ordering, setOrdering] = useState(true)
 
