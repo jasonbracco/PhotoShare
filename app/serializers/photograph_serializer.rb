@@ -6,6 +6,7 @@ class PhotographSerializer < ActiveModel::Serializer
 
   belongs_to :user
   has_many :orders
+  has_many :reviews
 
   def image
     rails_blob_path(object.image, only_path: true) if object.image.attached?

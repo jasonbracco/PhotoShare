@@ -16,8 +16,6 @@ function App() {
   const [user, setUser] = useState(null)
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
-  console.log(user)
-
   function updateCart(updatedCart){
     setCart(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart));

@@ -14,7 +14,6 @@ function Profile(){
     const [image, setImage] = useState(null)
     const [errors, setErrors] = useState([])
     const [userPhotos, setUserPhotos] = useState(user.selling)
-    console.log(user)
 
     function handleListPhoto(e){
         e.preventDefault()
