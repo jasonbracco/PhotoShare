@@ -2,11 +2,9 @@ import React, {useState, useContext} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 
-
 function OrderCard({order}){
 
-    const {user, setUser} = useContext(UserContext)
-    console.log(order)
+    const {user} = useContext(UserContext)
 
     const [reviewing, setReviewing] = useState(true)
     const [content, setContent] = useState("")
@@ -43,7 +41,7 @@ function OrderCard({order}){
         <div>
             Order {order.id}
             <br></br>
-            <img className="selling-pic" src={order.photograph.image} />
+            <img className="selling-pic" alt="Ordered Item" src={order.photograph.image} />
             <br></br>
             {reviewing ? (
             <div>

@@ -10,7 +10,7 @@ import PhotoPage from "./PhotoPage"
 import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
-
+ 
 function App() {
 
   const [user, setUser] = useState(null)
@@ -41,8 +41,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Homepage />}/>
               <Route path="/profile" element={<Profile />}/>
-              <Route exact path="/shop" element={<Shop />}>
-                <Route path=":id" element={<PhotoPage />}/>
+              <Route path="/shop" element={<Shop />}>
+                  <Route path=":id" element={<PhotoPage />}/>
               </Route>
               <Route path="/orders" element={<Orders />}/>
               <Route path="/cart" element={<Cart />}/>

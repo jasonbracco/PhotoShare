@@ -16,7 +16,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
         <div>
             {isEditing ? (
                 <div>
-                    <img className="selling-pic" src={photograph.image} />
+                    <img className="selling-pic" alt="item" src={photograph.image} />
                     <br></br>
                     Name: {photograph.name}
                     <br></br>
@@ -30,7 +30,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                 </div>
             ) : (
                 <div>
-                    <img className="selling-pic" src={photograph.image} />
+                    <img className="selling-pic" alt="item" src={photograph.image} />
                     <br></br>
                     <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto} setIsEditing={setIsEditing}/>
                     <br></br>

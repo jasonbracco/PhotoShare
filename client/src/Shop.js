@@ -1,11 +1,15 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useContext} from "react"
 import { Link, Outlet} from "react-router-dom"; 
+import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
  
 function Shop(){
 
+    const {cart, updateCart} = useContext(CartContext)
+
     const [allPhotos, setAllPhotos] = useState([])
     const [singlePhoto, setSinglePhoto] = useState(true)
+
 
     useEffect(() => {
         fetch ("/photographs").then((response) => {
@@ -16,26 +20,26 @@ function Shop(){
             }
         })
     }, [])
-
+  
     return (
         <div>
         {singlePhoto ? (
         <div>
             {allPhotos.map((photograph) => {
-                return <Link 
-                    key={photograph.id} 
-                    to={`${photograph.id}`} 
-                    onClick={(() => setSinglePhoto(false))}>
-                    <AllPhotoCard key={photograph.id} photograph={photograph} />
-                </Link>
+                return <div>
+                <Link key={photograph.id} to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard key={photograph.id} photograph={photograph} /> </Link>
+                <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
+                <br></br>
+                <br></br>
+                </div>
             })}
         </div>
         ) : (
         <div>
-            <Outlet />
             <button onClick={(() => setSinglePhoto(true))}>
-                <Link to="/shop">Back</Link>
+                <Link to="/shop">Back To Shop</Link>
             </button>
+            <Outlet />
         </div>
         )}
         </div>

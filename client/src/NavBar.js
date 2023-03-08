@@ -4,7 +4,7 @@ import {CartContext} from "./CartContext"
 
 function NavBar(){
 
-    const {cart, updateCart} = useContext(CartContext)
+    const {cart} = useContext(CartContext)
 
     const cartCount = cart.length
 

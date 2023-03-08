@@ -7,7 +7,7 @@ function SellerCard({user}){
             <div>
                 Photographer {user.id}
                 <br></br>
-                <img className="profile-pic" src={user.image} />
+                <img className="profile-pic" alt="seller" src={user.image} />
                 <div classame="user-bio">
                     {user.bio}
                 </div>

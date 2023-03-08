@@ -1,10 +1,8 @@
-import React, {useState, useEffect, useContext} from "react"
-import {UserContext} from "./UserContext"
+import React, {useState, useEffect} from "react"
 import SellerCard from "./SellerCard"
 
 function Sellers(){
 
-    const {user, setUser} = useContext(UserContext)
     const [sellers, setSellers] = useState([])
 
 

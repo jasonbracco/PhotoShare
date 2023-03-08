@@ -1,11 +1,8 @@
-import React, {useState, useContext} from "react"
-// import {UserContext} from "./UserContext"
+import React, {useState} from "react"
 import Error from "./Error"
 
 
 function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
-
-    // const {user, setUser} = useContext(UserContext)
 
     const [newName, setNewName] = useState(photograph.name)
     const [newDescription, setNewDescription] = useState(photograph.description)

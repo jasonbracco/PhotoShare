@@ -1,16 +1,7 @@
-import React, {useContext} from "react"
-import {CartContext} from "./CartContext"
-
+import React from "react"
  
 function AllPhotoCard({photograph}){
 
-    const {cart, updateCart} = useContext(CartContext)
-
-    function handleAddToCart(e){
-        e.preventDefault()
-        updateCart([...cart, photograph])    
-    }
- 
     return(
         <div>
             <div>
@@ -21,9 +12,6 @@ function AllPhotoCard({photograph}){
                 Price: ${photograph.price}
                 <br></br>
             </div>
-            <button onClick={handleAddToCart}>Add To Cart</button>
-            <br></br>
-            <br></br>
         </div>
     )
 }

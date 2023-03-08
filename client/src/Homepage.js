@@ -8,8 +8,8 @@ import {CartContext} from "./CartContext"
 
 function Homepage(){
 
-    const { user, setUser } = useContext(UserContext)
-    const {cart, updateCart} = useContext(CartContext)
+    const {user, setUser} = useContext(UserContext)
+    const {updateCart} = useContext(CartContext)
 
     const [loggedIn, setLoggedIn] = useState(true)
     

@@ -17,16 +17,17 @@ function PhotoPage(){
               setPhotograph(photograph)
               setPhotoFetched(true)
               setReviews(photograph.reviews)
+              console.log(photograph)
             })
             }
         });
-      }, []);
+      }, [id]);
 
     return(
         <div>
             {photoFetched ? (
                 <div>
-                    <img className="selling-pic" src={photograph.image} />
+                    <img className="selling-pic" alt="item" src={photograph.image} />
                     <p>Title: {photograph.name}</p>
                     <p>Description: {photograph.description}</p>
                     <div>

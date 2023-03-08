@@ -1,11 +1,11 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext, useState} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 import UserPhotoCard from "./UserPhotoCard"
 
 function Profile(){
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     const [listWork, setListWork] = useState(true)
     const [name, setName] =useState("")
@@ -64,11 +64,20 @@ function Profile(){
         <div> 
             {listWork ? (
                 <div>
-                    <img className="profile-pic" src={user.image} />
+                    <img className="profile-pic" alt="profile-pic" src={user.image} />
+                    <br></br>
+                    <br></br>
                     <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
+                    <br></br>
+                    <br></br>
                     <div classame="user-bio">
                         {user.bio}
                     </div>
+                    <br></br>
+                    <br></br>
+                    Photos I Am Selling:
+                    <br></br>
+                    <br></br>
                     <div className="peronal-listed-items">
                         {userPhotos.map((photograph) => {
                             return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
