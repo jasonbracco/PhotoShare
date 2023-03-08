@@ -8,8 +8,8 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    #show: me
-    def show
+    #me
+    def me
         render json: @current_user, methods: [:unique]
     end
 
@@ -18,6 +18,11 @@ class UsersController < ApplicationController
         render json: users
     end 
 
+    def show
+        user=User.find(params[:id])
+        render json: user
+    end
+ 
     private
 
     def user_params

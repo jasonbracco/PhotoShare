@@ -10,6 +10,7 @@ import PhotoPage from "./PhotoPage"
 import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
+import SellerPage from "./SellerPage"
  
 function App() {
 
@@ -42,11 +43,13 @@ function App() {
               <Route path="/" element={<Homepage />}/>
               <Route path="/profile" element={<Profile />}/>
               <Route path="/shop" element={<Shop />}>
-                  <Route path=":id" element={<PhotoPage />}/>
+                <Route path=":id" element={<PhotoPage />}/>
               </Route>
               <Route path="/orders" element={<Orders />}/>
               <Route path="/cart" element={<Cart />}/>
-              <Route path="/sellers" element={<Sellers />}/>
+              <Route path="/sellers" element={<Sellers />}>
+                <Route path=":id" element={<SellerPage />}/>
+              </Route>
             </Routes>
           </CartContext.Provider>
         </UserContext.Provider >

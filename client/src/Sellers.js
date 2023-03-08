@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react"
+import { Link, Outlet} from "react-router-dom"; 
 import SellerCard from "./SellerCard"
 
 function Sellers(){
 
     const [sellers, setSellers] = useState([])
+    const [singlePhotographer, setSinglePhotographer] = useState(true)
 
 
      useEffect(() => {
@@ -20,11 +22,26 @@ function Sellers(){
   return( 
 
     <div>
-        Meet The Photographers:
-        <br></br>
-        {sellers.map((user) => {
-            return <SellerCard user={user}/>
-        })}
+      {singlePhotographer ? (
+      <div>
+          Meet The Photographers:
+          <br></br>
+          {sellers.map((user) => {
+              return <div>
+                <Link key={user.id} to={`${user.id}`} onClick={(() => setSinglePhotographer(false))}><SellerCard key={user.id} user={user}/></Link>
+                <br></br>
+                <br></br>
+                </div>
+          })}
+      </div>
+      ) : (
+      <div>
+          <button onClick={(() => setSinglePhotographer(true))}>
+            <Link to="/sellers">Back To Photographs</Link>
+          </button>
+          <Outlet />
+      </div>
+      )}
     </div>
 
     )

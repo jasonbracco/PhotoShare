@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :show, :index, :destroy]
   resources :orders, only: [:create, :index]
   resources :photographs
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   
   post "/signup", to: "users#create"
-  get "/me", to: "users#show"
+  get "/me", to: "users#me"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   
