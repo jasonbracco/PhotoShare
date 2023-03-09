@@ -1,12 +1,26 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom"
+import {UserContext} from "./UserContext"
 import {CartContext} from "./CartContext"
 
 function NavBar(){
 
-    const {cart} = useContext(CartContext)
+    const {user, setUser} = useContext(UserContext)
+    const {cart, updateCart} = useContext(CartContext)
+
 
     const cartCount = cart.length
+
+    function handleLogout(){
+        fetch("/logout", {
+            method: "DELETE"})
+        .then((response) => {
+            if (response.ok){
+                updateCart([]);
+                setUser(null);
+            }
+        })
+    }
 
     return(
         <div>
@@ -31,6 +45,7 @@ function NavBar(){
                     <Link to="/cart" className="nav-link">Cart ({cartCount})</Link>
                     <br></br>
                     <br></br>
+                    <Link to="/" onClick={handleLogout} className="nav-link">Logout</Link>
                 </div>
             </div>
         </div>

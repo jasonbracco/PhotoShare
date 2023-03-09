@@ -27,7 +27,7 @@ function Shop(){
         <div>
             {allPhotos.map((photograph) => {
                 return <div>
-                <Link key={photograph.id} to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard key={photograph.id} photograph={photograph} /> </Link>
+                <Link to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard key={photograph.id} photograph={photograph} /> </Link>
                 <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
                 <br></br>
                 <br></br>

@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import Error from "./Error"
-
+ 
 function SignupPage({setUser}){
 
     const [firstName, setFirstName] = useState("")

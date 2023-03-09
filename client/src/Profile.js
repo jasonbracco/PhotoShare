@@ -60,6 +60,7 @@ function Profile(){
         setUserPhotos(updatedUserPhotos)
     }
 
+
     return (
         <div> 
             {listWork ? (
@@ -83,6 +84,8 @@ function Profile(){
                             return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
                         })}
                     </div>
+                    <br></br>
+                    <br></br>
                 </div>
             ) : (
                 <div>

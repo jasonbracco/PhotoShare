@@ -24,9 +24,10 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                     <br></br>
                     Price: ${photograph.price}
                     <br></br>
-                    <br></br>
                     <button onClick={() => setIsEditing(false)}>Edit</button>
                     <button onClick={handleDeleteUserPhoto}>Delete</button>
+                    <br></br>
+                    <br></br>
                 </div>
             ) : (
                 <div>
@@ -34,7 +35,6 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                     <br></br>
                     <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto} setIsEditing={setIsEditing}/>
                     <br></br>
-                    {/* <button onClick={() => setIsEditing(true)}>Done Editing</button> */}
                 </div>
             )}
 

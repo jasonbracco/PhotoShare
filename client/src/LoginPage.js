@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import Error from "./Error"
-
+ 
 function LoginPage({setUser}){
 
     const [username, setUsername] = useState("")
@@ -22,7 +22,9 @@ function LoginPage({setUser}){
         })
         .then((response) => {
             if (response.ok){
-                response.json().then((user) => setUser(user))
+                response.json().then((user) => {
+                    setUser(user)
+                })
             }
             else{
                 response.json().then((error) => setErrors(error.errors))

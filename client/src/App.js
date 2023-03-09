@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import {Route, Routes} from "react-router-dom"
 import {UserContext} from "./UserContext"
 import {CartContext} from "./CartContext"
+import SignInSignUp from "./SignInSignUp"
 import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
@@ -14,7 +15,7 @@ import SellerPage from "./SellerPage"
  
 function App() {
 
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
   function updateCart(updatedCart){
@@ -31,30 +32,33 @@ function App() {
       }
     })
   }, [])
- 
+
+  if(!user) return <SignInSignUp setUser={setUser} />
+
+
   return (
-    <div>
-      <div className="header">Header</div>
-      <div className="side-navbar">
-        <UserContext.Provider value={{user, setUser}}>
-          <CartContext.Provider value={{cart, updateCart}}>
-            <NavBar/>
-            <Routes>
-              <Route path="/" element={<Homepage />}/>
-              <Route path="/profile" element={<Profile />}/>
-              <Route path="/shop" element={<Shop />}>
-                <Route path=":id" element={<PhotoPage />}/>
-              </Route>
-              <Route path="/orders" element={<Orders />}/>
-              <Route path="/cart" element={<Cart />}/>
-              <Route path="/sellers" element={<Sellers />}>
-                <Route path=":id" element={<SellerPage />}/>
-              </Route>
-            </Routes>
-          </CartContext.Provider>
-        </UserContext.Provider >
+      <div>
+        <div className="header">Header</div>
+        <div className="side-navbar">
+          <UserContext.Provider value={{user, setUser}}>
+            <CartContext.Provider value={{cart, updateCart}}>
+              <NavBar/>
+              <Routes>
+                <Route path="/" element={<Homepage />}/>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/shop" element={<Shop />}>
+                  <Route path=":id" element={<PhotoPage />}/>
+                </Route>
+                <Route path="/orders" element={<Orders />}/>
+                <Route path="/cart" element={<Cart />}/>
+                <Route path="/sellers" element={<Sellers />}>
+                  <Route path=":id" element={<SellerPage />}/>
+                </Route>
+              </Routes>
+            </CartContext.Provider>
+          </UserContext.Provider >
+        </div>
       </div>
-    </div>
   );
 }
 

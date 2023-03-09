@@ -44,14 +44,13 @@ function Cart(){
                             console.log(order)
                             setOrdering(false)
                             updateCart([])
-                            
                         })
                     }
                 })
             })
         }  
         else{
-            console.log("add Something to your cart bro")
+            alert("Your cart is empty!  Head over to the Shop to buy some photos.")
         } 
         
     }
