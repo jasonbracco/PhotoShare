@@ -26,15 +26,15 @@ function Shop(){
         {singlePhoto ? (
         <div>
             {allPhotos.map((photograph) => {
-                return <div>
-                <Link to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard key={photograph.id} photograph={photograph} /> </Link>
+                return <div key={photograph.id}>
+                <Link to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard photograph={photograph} /> </Link>
                 <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
                 <br></br>
                 <br></br>
                 </div>
             })}
         </div>
-        ) : (
+        ) : ( 
         <div>
             <button onClick={(() => setSinglePhoto(true))}>
                 <Link to="/shop">Back To Shop</Link>

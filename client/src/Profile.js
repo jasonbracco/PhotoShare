@@ -32,13 +32,28 @@ function Profile(){
                 response.json().then((photograph) => {
                     handleAddUserPhoto(photograph);
                     setListWork(true);
+                    setName("")
+                    setDescription("")
+                    setPrice("")
+                    setImage(null)
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.errors));
+                response.json().then((error) => {
+                    console.log(error)
+                    setErrors(error.error)
+                });
             }
         })
     }    
+
+    function clearInputs(){
+        setName("")
+        setDescription("")
+        setPrice("")
+        setImage(null)
+        setListWork(true)
+    }
 
     function handleAddUserPhoto(newPhoto){
         setUserPhotos([...userPhotos, newPhoto]);
@@ -89,7 +104,7 @@ function Profile(){
                 </div>
             ) : (
                 <div>
-                    <button onClick={() => setListWork(true)}>Go Back</button>
+                    <button onClick={(() => clearInputs())}>Go Back</button>
                     <form onSubmit={handleListPhoto}>
                         <fieldset>
                             <label>
@@ -130,9 +145,10 @@ function Profile(){
                             </label>
                         </fieldset>
                         <div>
-                            {errors.map((error) => (
+                            {errors}
+                            {/* {errors.map((error) => (
                                 <Error key={error} error={error} />
-                            ))}
+                            ))} */}
                         </div>
                         <button type="submit">
                             Sell My Photo!

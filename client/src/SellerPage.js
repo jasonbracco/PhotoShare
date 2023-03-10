@@ -12,7 +12,6 @@ function SellerPage(){
         fetch (`/users/${id}`).then((response) => {
           if (response.ok) {
            response.json().then((user) => {
-            console.log(user)
              setSingleUser(user)
              setUserFetched(true)
            })

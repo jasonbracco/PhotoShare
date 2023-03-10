@@ -27,8 +27,8 @@ function Sellers(){
           Meet The Photographers:
           <br></br>
           {sellers.map((user) => {
-              return <div>
-                <Link to={`${user.id}`} onClick={(() => setSinglePhotographer(false))}><SellerCard key={user.id} user={user}/></Link>
+              return <div key={user.id}>
+                <Link to={`${user.id}`} onClick={(() => setSinglePhotographer(false))}><SellerCard user={user}/></Link>
                 <br></br>
                 <br></br>
                 </div>
