@@ -78,6 +78,7 @@ function Profile(){
                 response.json().then((user) => {
                     setEditingUser(true)
                     console.log(user)
+                    setUser(user)
                 })
             }
             else{
@@ -113,7 +114,6 @@ function Profile(){
         });
         setUserPhotos(updatedUserPhotos)
     }
-
 
     return (
         <div> 
