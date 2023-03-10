@@ -56,7 +56,7 @@ function LoginPage({setUser}){
                     </label>
                 </fieldset>
                 <button type="submit">
-                    Log In
+                    Enter Photo Share!
                 </button>
             </form>
             <div>

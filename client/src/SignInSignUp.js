@@ -38,7 +38,7 @@ function SignInSignUp({setUser}){
                 {loggingIn ?
                     <div>
                         <LoginPage setUser={setUser}/>
-                        <button onClick={undoClick}>Undo</button>
+                        <button onClick={undoClick}>Back</button>
                     </div>
                 :
                 null
@@ -46,7 +46,7 @@ function SignInSignUp({setUser}){
                 {signingUp ? 
                     <div>
                         <SignupPage setUser={setUser}/>
-                        <button onClick={undoClick} >Undo</button>
+                        <button onClick={undoClick} >Back</button>
                     </div>
                 :
                 null

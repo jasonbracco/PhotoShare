@@ -37,7 +37,7 @@ function Sellers(){
       ) : (
       <div>
           <button onClick={(() => setSinglePhotographer(true))}>
-            <Link to="/sellers">Back To Photographs</Link>
+            <Link to="/sellers">Back To Photographers</Link>
           </button>
           <Outlet />
       </div>

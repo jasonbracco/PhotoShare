@@ -11,7 +11,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
         });
         deleteUserPhoto(photograph.id)
     }
-
+    
     return(
         <div>
             {isEditing ? (

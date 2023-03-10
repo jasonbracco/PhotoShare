@@ -5,15 +5,25 @@ import UserPhotoCard from "./UserPhotoCard"
 
 function Profile(){
 
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
+    console.log(user)
 
     const [listWork, setListWork] = useState(true)
+    const [editingUser, setEditingUser] = useState(true)
     const [name, setName] =useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [image, setImage] = useState(null)
     const [errors, setErrors] = useState([])
     const [userPhotos, setUserPhotos] = useState(user.selling)
+    const [firstName, setFirstName] = useState(user.first_name)
+    const [lastName, setLastName] = useState(user.last_name)
+    const [bio, setBio] = useState(user.bio)
+    const [stateProvince, setStateProvince] = useState(user.state_province)
+    const [country, setCountry] = useState(user.country)
+    const [city, setCity] = useState(user.city)
+    // const [profilePic, setProfilePic] = useState(user.image)
+
 
     function handleListPhoto(e){
         e.preventDefault()
@@ -46,6 +56,36 @@ function Profile(){
             }
         })
     }    
+
+    // function updateUserInfo(){
+    //     e.preventDefault(); 
+    //     const formData = new FormData()
+    //     formData.append('first_name', firstName);
+    //     formData.append('last_name', lastName);
+    //     formData.append('city', city)
+    //     formData.append('state_province', stateProvince)
+    //     formData.append('country', country)
+    //     formData.append('bio', bio)
+    //     fetch(`/users/${user.id}`, {
+    //       method: "PATCH",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //         body: formData
+    //         })
+    
+    //     .then((response) => {
+    //         if (response.ok){
+    //             response.json().then((user) => {
+    //                 setEditingUser(true)
+    //                 console.log(user)
+    //             })
+    //         }
+    //         else{
+    //             response.json().then((error) => setErrors(error.error))
+    //         }
+    //     })
+    // }
 
     function clearInputs(){
         setName("")
@@ -82,18 +122,78 @@ function Profile(){
                 <div>
                     <img className="profile-pic" alt="profile-pic" src={user.image} />
                     <br></br>
-                    <br></br>
                     <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
                     <br></br>
-                    <br></br>
-                    <div classame="user-bio">
-                        {user.bio}
+                    {editingUser ? (
+                        <div>
+                            <p>Name: {user.first_name} {user.last_name}</p>
+                            <p>From: {user.city}, {user.state_province} - {user.country}</p>
+                            <p>{user.bio}</p>
+                        </div>
+                        ) : (
+                        <div>
+                        {/* <form onSubmit={updateUserInfo}>
+                        <p>First Name</p>
+                        <input 
+                            name="firstname"
+                            autoComplete="off"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                        <p>Last Name</p>
+                        <input 
+                            name="lastname" 
+                            autoComplete="off"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
+                        <p>City</p>
+                        <input 
+                            name="city" 
+                            autoComplete="off"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                        <p>State/Province</p>
+                        <input 
+                            name="state-province" 
+                            autoComplete="off"
+                            value={stateProvince}
+                            onChange={(e) => setStateProvince(e.target.value)}
+                        />
+                        <p>Country</p>
+                        <input 
+                            name="country" 
+                            autoComplete="off"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                        <p>Bio</p>
+                        <textarea
+                            name="bio"
+                            autoComplete="off"
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                        />
+                        <p>Upload Profile Picture</p>
+                        <input
+                            name="profile-pic"
+                            onChange={(e) => setProfilePic(e.target.files[0])}
+                            type="file"
+                            accept= ".jpg, .jpeg, .png"
+                        />
+                            <button type="submit">
+                                Update
+                            </button>
+                            <div>
+                                {errors.map((error) => (
+                                    <Error key={error} error={error} />
+                                ))}
+                            </div>
+                        </form> */}
                     </div>
-                    <br></br>
-                    <br></br>
-                    Photos I Am Selling:
-                    <br></br>
-                    <br></br>
+                    )}
+                    <p>My Listings:</p>
                     <div className="peronal-listed-items">
                         {userPhotos.map((photograph) => {
                             return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
@@ -126,7 +226,7 @@ function Profile(){
                                 />
                             </label>
                             <label>
-                                <p>Price</p>
+                                <p>Price ($x.xx)</p>
                                 <input
                                 name="price"
                                 autoComplete="off"
