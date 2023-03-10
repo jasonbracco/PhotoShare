@@ -41,7 +41,7 @@ function Profile(){
             else{
                 response.json().then((error) => {
                     console.log(error)
-                    setErrors(error.error)
+                    setErrors(error.errors)
                 });
             }
         })
@@ -145,10 +145,9 @@ function Profile(){
                             </label>
                         </fieldset>
                         <div>
-                            {errors}
-                            {/* {errors.map((error) => (
+                            {errors.map((error) => (
                                 <Error key={error} error={error} />
-                            ))} */}
+                            ))}
                         </div>
                         <button type="submit">
                             Sell My Photo!
