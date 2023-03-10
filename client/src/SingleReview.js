@@ -2,8 +2,6 @@ import React from "react"
 
 function SingleReview({review}){
 
-    console.log(review)
-
     return(
         <div>
             {review.user.first_name} Says:

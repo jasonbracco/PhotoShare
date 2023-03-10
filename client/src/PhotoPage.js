@@ -17,7 +17,6 @@ function PhotoPage(){
               setPhotograph(photograph)
               setPhotoFetched(true)
               setReviews(photograph.reviews)
-              console.log(photograph)
             })
             }
         });

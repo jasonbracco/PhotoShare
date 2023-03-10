@@ -17,9 +17,6 @@ function Orders(){
         })
     }, [])
 
-    console.log(orders)
-
-
     return (
         <div>
             {fetched ? (

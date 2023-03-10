@@ -25,7 +25,6 @@ function NavBar(){
     return(
         <div>
             <div className="Navbar">
-                <p className="NavBar-image">Image here</p>
                 <div className="NavBar-options">
                     <Link to="/" className="nav-link">Homepage</Link>
                     <br></br>

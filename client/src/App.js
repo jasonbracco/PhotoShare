@@ -29,7 +29,7 @@ function App() {
         response.json().then((user) => {
           setUser(user);
         })
-      }
+      } 
     })
   }, [])
 
@@ -38,7 +38,9 @@ function App() {
 
   return (
       <div>
-        <div className="header">Header</div>
+        <header className="header">PhotoShare Header</header>
+        <br></br>
+        <br></br>
         <div className="side-navbar">
           <UserContext.Provider value={{user, setUser}}>
             <CartContext.Provider value={{cart, updateCart}}>

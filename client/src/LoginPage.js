@@ -22,6 +22,7 @@ function LoginPage({setUser}){
         })
         .then((response) => {
             if (response.ok){
+                console.log(response)
                 response.json().then((user) => {
                     setUser(user)
                 })
@@ -32,7 +33,7 @@ function LoginPage({setUser}){
         })
     }
     return (
-        <div>
+        <div> 
             <form onSubmit={handleLogin}>
                 <fieldset>
                     <label>
