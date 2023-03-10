@@ -82,7 +82,7 @@ function Profile(){
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.error))
+                response.json().then((error) => setErrors(error.errors))
             }
         })
     }
