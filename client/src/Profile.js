@@ -6,7 +6,6 @@ import UserPhotoCard from "./UserPhotoCard"
 function Profile(){
 
     const {user, setUser} = useContext(UserContext)
-    console.log(user)
 
     const [listWork, setListWork] = useState(true)
     const [editingUser, setEditingUser] = useState(true)
@@ -22,6 +21,7 @@ function Profile(){
     const [stateProvince, setStateProvince] = useState(user.state_province)
     const [country, setCountry] = useState(user.country)
     const [city, setCity] = useState(user.city)
+    const [userID, setUserID] = useState(user.id)
     // const [profilePic, setProfilePic] = useState(user.image)
 
 
@@ -57,35 +57,34 @@ function Profile(){
         })
     }    
 
-    // function updateUserInfo(){
-    //     e.preventDefault(); 
-    //     const formData = new FormData()
-    //     formData.append('first_name', firstName);
-    //     formData.append('last_name', lastName);
-    //     formData.append('city', city)
-    //     formData.append('state_province', stateProvince)
-    //     formData.append('country', country)
-    //     formData.append('bio', bio)
-    //     fetch(`/users/${user.id}`, {
-    //       method: "PATCH",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //         body: formData
-    //         })
-    
-    //     .then((response) => {
-    //         if (response.ok){
-    //             response.json().then((user) => {
-    //                 setEditingUser(true)
-    //                 console.log(user)
-    //             })
-    //         }
-    //         else{
-    //             response.json().then((error) => setErrors(error.error))
-    //         }
-    //     })
-    // }
+    function updateUserInfo(e){
+        e.preventDefault(); 
+        fetch(`/users/${userID}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+            body: JSON.stringify({ 
+                first_name: firstName,
+                last_name: lastName,
+                city: city,
+                state_province: stateProvince,
+                country: country,
+                bio: bio,
+            })
+            })
+        .then((response) => {
+            if (response.ok){
+                response.json().then((user) => {
+                    setEditingUser(true)
+                    console.log(user)
+                })
+            }
+            else{
+                response.json().then((error) => setErrors(error.error))
+            }
+        })
+    }
 
     function clearInputs(){
         setName("")
@@ -124,6 +123,7 @@ function Profile(){
                     <br></br>
                     <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
                     <br></br>
+                    <button onClick={(() => setEditingUser(false))}>Edit User</button>
                     {editingUser ? (
                         <div>
                             <p>Name: {user.first_name} {user.last_name}</p>
@@ -132,7 +132,7 @@ function Profile(){
                         </div>
                         ) : (
                         <div>
-                        {/* <form onSubmit={updateUserInfo}>
+                        <form onSubmit={updateUserInfo}>
                         <p>First Name</p>
                         <input 
                             name="firstname"
@@ -175,22 +175,15 @@ function Profile(){
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                         />
-                        <p>Upload Profile Picture</p>
-                        <input
-                            name="profile-pic"
-                            onChange={(e) => setProfilePic(e.target.files[0])}
-                            type="file"
-                            accept= ".jpg, .jpeg, .png"
-                        />
-                            <button type="submit">
-                                Update
-                            </button>
-                            <div>
-                                {errors.map((error) => (
-                                    <Error key={error} error={error} />
-                                ))}
-                            </div>
-                        </form> */}
+                        <button type="submit">
+                            Update
+                        </button>
+                        <div>
+                            {errors.map((error) => (
+                                <Error key={error} error={error} />
+                            ))}
+                        </div>
+                        </form>
                     </div>
                     )}
                     <p>My Listings:</p>
