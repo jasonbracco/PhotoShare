@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from "react"
-import { Link, Outlet} from "react-router-dom"; 
+import { Link, Outlet, useNavigate} from "react-router-dom"; 
 import SellerCard from "./SellerCard"
 
 function Sellers(){
 
   const [sellers, setSellers] = useState([])
-  const [singlePhotographer, setSinglePhotographer] = useState(true)
   const [fetched, setFetched] = useState(false)
+
+  const navigate = useNavigate()
+
+  const navigateToSeller = (userID) => {
+    navigate(`/sellerprofile/${userID}`)
+}
 
   useEffect(() => {
     fetch ("/users").then((response) => {
@@ -18,32 +23,22 @@ function Sellers(){
         }
     })
   }, [])
-
+ 
   return( 
     <div>
       {fetched ? (
-        <div>
-          {singlePhotographer ? (
           <div>
               Meet The Photographers:
               <br></br>
               {sellers.map((user) => {
                   return <div key={user.id}>
-                    <Link to={`${user.id}`} onClick={(() => setSinglePhotographer(false))}><SellerCard user={user}/></Link>
+                    <SellerCard user={user}/>
+                    <button onClick={(() => navigateToSeller(user.id))}>More info</button>
                     <br></br>
                     <br></br>
                     </div>
               })}
           </div>
-          ) : (
-          <div>
-              <button onClick={(() => setSinglePhotographer(true))}>
-                <Link to="/sellers">Back To Photographers</Link>
-              </button>
-              <Outlet />
-          </div>
-          )}
-        </div>
       ) : (
         <div>
           Fetching...

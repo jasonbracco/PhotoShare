@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from "react"
-import { useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 function SellerPage(){
 
-    const {id}=useParams()
+    const {userID}=useParams()
     
     const [singleUser, setSingleUser] = useState(null)
     const [userFetched, setUserFetched] = useState(false)
 
+    const navigate = useNavigate()
+
+    const backToSellers = () => {
+        navigate('/sellers');
+      }
+ 
     useEffect(() => {
-        fetch (`/users/${id}`).then((response) => {
+        fetch (`/users/${userID}`).then((response) => {
           if (response.ok) {
            response.json().then((user) => {
              setSingleUser(user)
@@ -23,6 +29,7 @@ function SellerPage(){
         <div>
             {userFetched ? (
                 <div>
+                    <button onClick={backToSellers}>Back to Photographers</button>
                     <img className="selling-pic" alt="user" src={singleUser.image} />
                     <p>Bio: {singleUser.bio}</p>                    
                 </div>

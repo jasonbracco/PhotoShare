@@ -31,7 +31,7 @@ function App() {
         })
       } 
     })
-  }, []) 
+  }, [])  
 
   if(!user) return <SignInSignUp setUser={setUser} />
 
@@ -45,17 +45,16 @@ function App() {
             <CartContext.Provider value={{cart, updateCart}}>
               <NavBar/>
               <Routes>
-                <Route path="/" element={<Homepage />}/>
-                <Route path="/profile" element={<Profile />}/>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/photographs/:photoID" element={<PhotoPage />} />
-                  {/* <Route path=":id" element={<PhotoPage />}/>
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/sellers" element={<Sellers />} />
+                <Route path="/sellerprofile/:userID" element={<SellerPage />} />
+                  {/* <Route path=":id" element={<SellerPage />}/>
                 </Route> */}
-                <Route path="/orders" element={<Orders />}/>
-                <Route path="/cart" element={<Cart />}/>
-                <Route path="/sellers" element={<Sellers />}>
-                  <Route path=":id" element={<SellerPage />}/>
-                </Route>
               </Routes>
             </CartContext.Provider>
           </UserContext.Provider >

@@ -3,7 +3,7 @@ import {useParams, useNavigate} from "react-router-dom";
 import SingleReview from "./SingleReview"
 
 function PhotoPage(){
-
+ 
     const {photoID}=useParams()
 
     const [photograph, setPhotograph] = useState(null)
