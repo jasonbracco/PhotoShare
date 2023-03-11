@@ -1,17 +1,23 @@
 import React, {useEffect, useState} from "react"
-import { useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import SingleReview from "./SingleReview"
 
 function PhotoPage(){
 
-    const {id}=useParams()
+    const {photoID}=useParams()
 
     const [photograph, setPhotograph] = useState(null)
     const [photoFetched, setPhotoFetched] = useState(false)
     const [reviews, setReviews] = useState([])
 
+    const navigate = useNavigate()
+
+    const backToShop = () => {
+        navigate('/shop');
+      }
+
     useEffect(() => {
-        fetch (`/photographs/${id}`).then((response) => {
+        fetch (`/photographs/${photoID}`).then((response) => {
           if (response.ok) {
             response.json().then((photograph) => {
               setPhotograph(photograph)
@@ -20,12 +26,13 @@ function PhotoPage(){
             })
             }
         });
-      }, [id]);
+      }, [photoID]);
 
     return(
         <div>
             {photoFetched ? (
                 <div>
+                    <button onClick={backToShop}>Back to Shop</button>
                     <img className="selling-pic" alt="item" src={photograph.image} />
                     <p>Title: {photograph.name}</p>
                     <p>Description: {photograph.description}</p>

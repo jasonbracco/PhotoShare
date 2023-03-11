@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from "react"
-import { Link, Outlet} from "react-router-dom"; 
+import { Link, Outlet, useNavigate} from "react-router-dom"; 
 import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
  
@@ -8,9 +8,13 @@ function Shop(){
     const {cart, updateCart} = useContext(CartContext)
 
     const [allPhotos, setAllPhotos] = useState([])
-    const [singlePhoto, setSinglePhoto] = useState(true)
     const [fetched, setFetched] = useState(false)
 
+    const navigate = useNavigate()
+
+    const navigateToPhoto = (photoID) => {
+        navigate(`/photographs/${photoID}`)
+    }
 
     useEffect(() => {
         fetch ("/photographs").then((response) => {
@@ -22,30 +26,20 @@ function Shop(){
             }
         })
     }, [])
-  
+   
     return (
         <div>
             {fetched ? (
                 <div>
-                    {singlePhoto ? (
-                        <div>
-                            {allPhotos.map((photograph) => {
-                                return <div key={photograph.id}>
-                                <Link to={`${photograph.id}`} onClick={(() => setSinglePhoto(false))}> <AllPhotoCard photograph={photograph} /> </Link>
-                                <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
-                                <br></br>
-                                <br></br>
-                                </div>
-                            })}
+                    {allPhotos.map((photograph) => {
+                        return <div key={photograph.id}>
+                            <AllPhotoCard photograph={photograph}/>
+                            <button onClick={(() => navigateToPhoto(photograph.id))}>More Info</button>
+                            <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
+                            <br></br>
+                            <br></br>
                         </div>
-                        ) : ( 
-                        <div>
-                            <button onClick={(() => setSinglePhoto(true))}>
-                                <Link to="/shop">Back To Shop</Link>
-                            </button>
-                            <Outlet />
-                        </div>
-                        )}
+                    })}
                 </div>
             ) : (
                 <div>

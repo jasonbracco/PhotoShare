@@ -24,7 +24,6 @@ function Profile(){
     const [userID, setUserID] = useState(user.id)
     // const [profilePic, setProfilePic] = useState(user.image)
 
-
     function handleListPhoto(e){
         e.preventDefault()
         const formData = new FormData()
@@ -56,7 +55,7 @@ function Profile(){
             }
         })
     }    
-
+ 
     function updateUserInfo(e){
         e.preventDefault(); 
         fetch(`/users/${userID}`, {

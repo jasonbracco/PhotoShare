@@ -31,7 +31,7 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.error))
+                response.json().then((error) => setErrors(error.errors))
             }
         })
     }    
@@ -53,7 +53,7 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
                 />
-                <p>Price</p>
+                <p>Price ($x.xx)</p>
                 <input
                     name="price"
                     autoComplete="off"

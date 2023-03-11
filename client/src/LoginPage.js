@@ -22,7 +22,6 @@ function LoginPage({setUser}){
         })
         .then((response) => {
             if (response.ok){
-                console.log(response)
                 response.json().then((user) => {
                     setUser(user)
                 })

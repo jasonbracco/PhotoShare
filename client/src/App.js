@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {Route, Routes} from "react-router-dom"
+import {Route, Routes, Outlet} from "react-router-dom"
 import {UserContext} from "./UserContext"
 import {CartContext} from "./CartContext"
 import SignInSignUp from "./SignInSignUp"
@@ -22,7 +22,7 @@ function App() {
     setCart(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
-
+ 
   useEffect(() => {
     fetch ("/me").then((response) => {
       if (response.ok) {
@@ -31,10 +31,9 @@ function App() {
         })
       } 
     })
-  }, [])
+  }, []) 
 
   if(!user) return <SignInSignUp setUser={setUser} />
-
 
   return (
       <div>
@@ -48,9 +47,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Homepage />}/>
                 <Route path="/profile" element={<Profile />}/>
-                <Route path="/shop" element={<Shop />}>
-                  <Route path=":id" element={<PhotoPage />}/>
-                </Route>
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/photographs/:photoID" element={<PhotoPage />} />
+                  {/* <Route path=":id" element={<PhotoPage />}/>
+                </Route> */}
                 <Route path="/orders" element={<Orders />}/>
                 <Route path="/cart" element={<Cart />}/>
                 <Route path="/sellers" element={<Sellers />}>
