@@ -3,7 +3,7 @@ import {UserContext} from "./UserContext"
 import Error from "./Error"
 
 function OrderCard({order}){
-
+ 
     const {user} = useContext(UserContext)
 
     const [reviewing, setReviewing] = useState(true)
@@ -39,10 +39,9 @@ function OrderCard({order}){
 
     return(
         <div>
-            Order {order.id}
-            <br></br>
+            <div>Order ID: {order.id}</div>
             <img className="selling-pic" alt="Ordered Item" src={order.photograph.image} />
-            <br></br>
+            <div>{order.photograph.name}</div>
             {reviewing ? (
             <div>
                 <button onClick={(() => setReviewing(false))}>Leave a Review</button>

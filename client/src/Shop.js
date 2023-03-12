@@ -26,8 +26,8 @@ function Shop(){
             }
         })
     }, [])
-   
-    return (
+    
+    return ( 
         <div>
             {fetched ? (
                 <div>

@@ -14,5 +14,6 @@ class User < ApplicationRecord
     has_many :selling, class_name: "Photograph", foreign_key: "user_id" #this is an association to the photograph model, and are the photos this user is selling
     has_many :orders
     has_many :photographs, through: :orders #these photographs are the ones the user has bought
+    has_many :reviews
 
 end

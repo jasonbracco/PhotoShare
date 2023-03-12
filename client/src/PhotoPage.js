@@ -25,7 +25,7 @@ function PhotoPage(){
               setReviews(photograph.reviews)
             })
             }
-        });
+        }); 
       }, [photoID]);
 
     return(

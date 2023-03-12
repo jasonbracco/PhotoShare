@@ -32,7 +32,7 @@ function App() {
       } 
     })
   }, [])  
-
+ 
   if(!user) return <SignInSignUp setUser={setUser} />
 
   return (

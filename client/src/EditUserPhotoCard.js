@@ -47,7 +47,7 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
                     onChange={(e) => setNewName(e.target.value)}
                 />
                 <p>Description</p>
-                <textarea
+                <textarea 
                     name="description"
                     autoComplete="off"
                     value={newDescription}
