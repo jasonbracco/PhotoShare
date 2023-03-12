@@ -5,7 +5,7 @@ function SellerCard({user}){
     return(
         <div>
             <div>
-                Photographer {user.id}
+                {user.first_name}
                 <br></br>
                 <img className="profile-pic" alt="seller" src={user.image} />
                 </div>

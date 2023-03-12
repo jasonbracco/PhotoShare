@@ -8,6 +8,8 @@ function SellerPage(){
     const [singleUser, setSingleUser] = useState(null)
     const [userFetched, setUserFetched] = useState(false)
 
+    console.log(singleUser)
+
     const navigate = useNavigate()
 
     const backToSellers = () => {
@@ -22,7 +24,7 @@ function SellerPage(){
              setUserFetched(true)
            })
          }
-        })
+        }) 
      }, [userID])
 
     return(
@@ -30,7 +32,10 @@ function SellerPage(){
             {userFetched ? (
                 <div>
                     <button onClick={backToSellers}>Back to Photographers</button>
+                    <br></br>
                     <img className="selling-pic" alt="user" src={singleUser.image} />
+                    <p>Name: {singleUser.first_name} {singleUser.last_name}</p>
+                    <p>From: {singleUser.city}, {singleUser.state_province} - {singleUser.country}</p>
                     <p>Bio: {singleUser.bio}</p>                    
                 </div>
             ) : (
