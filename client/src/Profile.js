@@ -174,6 +174,7 @@ function Profile(){
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                         />
+                        <br></br>
                         <button type="submit">
                             Update
                         </button>

@@ -23,7 +23,14 @@ function Sellers(){
         }
     })
   }, [])
- 
+
+  const usersWithPhotos = sellers.filter((seller) => {
+    if (seller.selling.length > 0){
+      return seller
+    }
+  })
+
+console.log(usersWithPhotos) 
   return( 
     <div>
       {fetched ? (
@@ -31,7 +38,7 @@ function Sellers(){
             <br></br>
               <p>Meet The Photographers:</p>
               <br></br>
-              {sellers.map((user) => {
+              {usersWithPhotos.map((user) => {
                   return <div key={user.id}>
                     <SellerCard user={user}/>
                     <button onClick={(() => navigateToSeller(user.id))}>More info</button>
