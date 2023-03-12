@@ -28,6 +28,11 @@ function PhotoPage(){
         }); 
       }, [photoID]);
 
+    function handleDeleteReview(id){
+        const updatedReviews = reviews.filter((review) => review.id !== id);
+        setReviews(updatedReviews);
+    }
+
     return(
         <div>
             {photoFetched ? (
@@ -44,7 +49,7 @@ function PhotoPage(){
                         <br></br>
                         <br></br>
                         {reviews.map((review) => {
-                            return <SingleReview key ={review.id} review={review} />
+                            return <SingleReview key ={review.id} review={review} handleDeleteReview={handleDeleteReview}/>
                         })}
                     </div>
                 </div>

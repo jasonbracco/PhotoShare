@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 
-function SingleReview({review}){
+function SingleReview({review, handleDeleteReview}){
 
     const {user} = useContext(UserContext)
 
@@ -48,11 +48,14 @@ function SingleReview({review}){
                 response.json().then((error) => setErrors(error.errors))
             }
         })
-    }    
-
-
-
-     
+    }   
+    
+    function deleteReview(){
+        fetch(`/reviews/${review.id}`, {
+            method: "DELETE",
+        });
+        handleDeleteReview(review.id)
+    }
 
     return(
         <div>
@@ -84,6 +87,7 @@ function SingleReview({review}){
                         {content}
                         <br></br>
                         <button onClick={(() => setEditingReview(true))}>Edit Your Review</button>
+                        <button onClick={deleteReview}>Delete</button>
                     </div>
                     )}
                 </div>
