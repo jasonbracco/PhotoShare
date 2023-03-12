@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"; 
 import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
- 
+  
 function Shop(){
  
     const {cart, updateCart} = useContext(CartContext)

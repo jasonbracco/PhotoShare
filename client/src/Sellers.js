@@ -28,7 +28,8 @@ function Sellers(){
     <div>
       {fetched ? (
           <div>
-              Meet The Photographers:
+            <br></br>
+              <p>Meet The Photographers:</p>
               <br></br>
               {sellers.map((user) => {
                   return <div key={user.id}>

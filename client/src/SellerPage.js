@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import {useParams, useNavigate} from "react-router-dom";
+import OtherListedItems from "./OtherListedItems" 
 
 function SellerPage(){
 
@@ -31,6 +32,7 @@ function SellerPage(){
         <div>
             {userFetched ? (
                 <div>
+                <div>
                     <button onClick={backToSellers}>Back to Photographers</button>
                     <br></br>
                     <img className="selling-pic" alt="user" src={singleUser.image} />
@@ -38,6 +40,12 @@ function SellerPage(){
                     <p>From: {singleUser.city}, {singleUser.state_province} - {singleUser.country}</p>
                     <p>Bio: {singleUser.bio}</p>                    
                 </div>
+                    {singleUser.first_name}'s Other Listings:
+                    {singleUser.selling.map((otherItemSelling) => {
+                        return <OtherListedItems key={otherItemSelling.id} photograph={otherItemSelling} />
+                    })}     
+                </div>
+                    
             ) : (
                 <div>
                     Fetching...
