@@ -2,8 +2,8 @@ import React, {useContext, useState, useEffect} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 
-function SingleReview({review, handleDeleteReview}){
-
+function SingleReview({review, reviews, handleDeleteReview}){
+ 
     const {user} = useContext(UserContext)
 
     const [canEdit, setCanEdit] = useState(false)
@@ -11,19 +11,17 @@ function SingleReview({review, handleDeleteReview}){
     const [content, setContent] = useState(review.content)
     const [errors, setErrors] = useState([])
 
+    console.log(review)
+
     useEffect(() => {
-        const filteredReviews = user.reviews.filter((userReview) => {
-            if (review.id === userReview.id){
-                console.log("match!")
-                setCanEdit(true)
-                return userReview
-            }
-            else{
-                console.log("Not a Match")
-            }
-        })
-        console.log(filteredReviews)
-    })
+        if(review.user.id === user.id){
+            setCanEdit(true)
+            console.log(review)
+        }
+    }, [reviews])
+    
+
+
 
     function handleEditReview(e) {
         e.preventDefault(); 
@@ -39,7 +37,6 @@ function SingleReview({review, handleDeleteReview}){
           .then((response) => {
             if (response.ok){
                 response.json().then((review) => {
-                 console.log(review)
                  setEditingReview(false)
                  setContent(review.content)
                 })

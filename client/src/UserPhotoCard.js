@@ -6,7 +6,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
     const [isEditing, setIsEditing] = useState(true)
 
     function handleDeleteUserPhoto(){
-        fetch(`/photographs/${photograph.id}`, {
+        fetch(`/photographs/${photograph.id}`, { 
             method: "DELETE",
         });
         deleteUserPhoto(photograph.id)

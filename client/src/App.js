@@ -22,7 +22,7 @@ function App() {
     setCart(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
- 
+  
   useEffect(() => {
     fetch ("/me").then((response) => {
       if (response.ok) {

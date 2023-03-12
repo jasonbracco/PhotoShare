@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useContext} from "react"
 import {useParams, useNavigate} from "react-router-dom";
+import {UserContext} from "./UserContext"
 import SingleReview from "./SingleReview"
 
 function PhotoPage(){
  
-    const {photoID}=useParams()
+    const {photoID} = useParams()
+    const {user} = useContext(UserContext)
 
     const [photograph, setPhotograph] = useState(null)
     const [photoFetched, setPhotoFetched] = useState(false)
     const [reviews, setReviews] = useState([])
+    console.log(reviews)
 
     const navigate = useNavigate()
 
@@ -26,7 +29,7 @@ function PhotoPage(){
             })
             }
         }); 
-      }, [photoID]);
+      },[user.reviews]);
 
     function handleDeleteReview(id){
         const updatedReviews = reviews.filter((review) => review.id !== id);
@@ -49,7 +52,7 @@ function PhotoPage(){
                         <br></br>
                         <br></br>
                         {reviews.map((review) => {
-                            return <SingleReview key ={review.id} review={review} handleDeleteReview={handleDeleteReview}/>
+                            return <SingleReview key ={review.id} review={review} reviews={reviews} handleDeleteReview={handleDeleteReview}/>
                         })}
                     </div>
                 </div>

@@ -30,7 +30,6 @@ function Sellers(){
     }
   })
 
-console.log(usersWithPhotos) 
   return( 
     <div>
       {fetched ? (

@@ -14,7 +14,7 @@ function Shop(){
 
     const navigateToPhoto = (photoID) => {
         navigate(`/photographs/${photoID}`)
-    }
+    } 
 
     useEffect(() => {
         fetch ("/photographs").then((response) => {
