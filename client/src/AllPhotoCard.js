@@ -9,7 +9,7 @@ function AllPhotoCard({photograph}){
                 <br></br>
                 Name: {photograph.name}
                 <br></br>
-                Price: ${photograph.price}
+                Price: ${photograph.formatted_price}
                 <br></br>
             </div>
         </div>

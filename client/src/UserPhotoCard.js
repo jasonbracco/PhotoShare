@@ -22,7 +22,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                     <br></br>
                     Description: {photograph.description}
                     <br></br>
-                    Price: ${photograph.price}
+                    Price: ${photograph.formatted_price}
                     <br></br>
                     <button onClick={() => setIsEditing(false)}>Edit</button>
                     <button onClick={handleDeleteUserPhoto}>Delete</button>

@@ -21,7 +21,9 @@ function Cart(){
         return accumulator;
     }, []);
 
-    const cartPrice = cart.reduce((total, item) => parseFloat(total)+parseFloat(item.price), 0);
+    const cartPrice = cart.reduce((total, item) => parseFloat(total)+parseFloat(item.formatted_price), 0);
+    const formattedCartPrice = cartPrice.toFixed(2)
+
     const sortedItems = uniqueItems.sort((itemA, itemB) => itemA.id - itemB.id)
 
     function handlePlaceOrder(e){
@@ -65,7 +67,7 @@ function Cart(){
                     return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
                 })}
                 <div>
-                    Total Price: ${cartPrice}
+                    Total Price: ${formattedCartPrice}
                 </div>
                 <button onClick={handlePlaceOrder}>Place Order Now</button>
             </div>  

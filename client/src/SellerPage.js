@@ -23,7 +23,7 @@ function SellerPage(){
            })
          }
         })
-     }, [])
+     }, [userID])
 
     return(
         <div>

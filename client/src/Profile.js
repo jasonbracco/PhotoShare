@@ -7,6 +7,7 @@ function Profile(){
 
     const {user, setUser} = useContext(UserContext)
 
+
     const [listWork, setListWork] = useState(true)
     const [editingUser, setEditingUser] = useState(true)
     const [name, setName] =useState("")
@@ -22,7 +23,6 @@ function Profile(){
     const [country, setCountry] = useState(user.country)
     const [city, setCity] = useState(user.city)
     const [userID, setUserID] = useState(user.id)
-    // const [profilePic, setProfilePic] = useState(user.image)
 
     function handleListPhoto(e){
         e.preventDefault()
@@ -122,7 +122,7 @@ function Profile(){
                     <br></br>
                     <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
                     <br></br>
-                    <button onClick={(() => setEditingUser(false))}>Edit User</button>
+                    <button onClick={(() => setEditingUser(false))}>Edit My Information</button>
                     {editingUser ? (
                         <div>
                             <p>Name: {user.first_name} {user.last_name}</p>
@@ -198,44 +198,42 @@ function Profile(){
                 <div>
                     <button onClick={(() => clearInputs())}>Go Back</button>
                     <form onSubmit={handleListPhoto}>
-                        <fieldset>
-                            <label>
-                                <p>Name</p>
-                                <input 
+                        <label>
+                            <p>Name</p>
+                            <input 
                                 name="name"
                                 autoComplete="off"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                />
-                            </label>
-                            <label>
-                                <p>Description</p>
-                                <textarea
+                            />
+                        </label>
+                        <label>
+                            <p>Description</p>
+                            <textarea
                                 name="description"
                                 autoComplete="off"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 />
-                            </label>
-                            <label>
-                                <p>Price ($x.xx)</p>
-                                <input
+                        </label>
+                        <label>
+                            <p>Price ($x.xx)</p>
+                            <input
                                 name="price"
                                 autoComplete="off"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 />
-                            </label>
-                            <label>
-                                <p>Upload Photograph</p>
-                                <input
-                                    name="photoraph"
-                                    onChange={(e) => setImage(e.target.files[0])}
-                                    type="file"
-                                    accept=".jpg, .jpeg, .png"
-                                />
-                            </label>
-                        </fieldset>
+                        </label>
+                        <label>
+                            <p>Upload Photograph</p>
+                            <input
+                                name="photoraph"
+                                onChange={(e) => setImage(e.target.files[0])}
+                                type="file"
+                                accept=".jpg, .jpeg, .png"
+                            />                            
+                        </label>
                         <div>
                             {errors.map((error) => (
                                 <Error key={error} error={error} />

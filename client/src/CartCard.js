@@ -44,7 +44,7 @@ function CartCard({item, uniqueItems}){
             <br></br>
             Description: {item.description}
             <br></br>
-            Price: ${item.price}
+            Price: ${item.formatted_price}
             <br></br>
             <button onClick={handleRemoveAllFromCart}>Remove All From Cart</button>
             <br></br>

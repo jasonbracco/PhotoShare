@@ -1,10 +1,13 @@
-import React from "react"
+import React, {useContext} from "react"
+import {UserContext} from "./UserContext"
 
 function Homepage(){
 
+    const {user} = useContext(UserContext)
+
     return(
         <div>
-            <p>Welcome to PhotoShare</p>
+            <p>Welcome to PhotoShare, {user.first_name}!</p>
             <p>Where Photographers Come to Find Their Next Favorite Photographer</p>
             <p></p>
             <p>Discover New Artists</p>

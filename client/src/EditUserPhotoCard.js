@@ -6,7 +6,7 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
 
     const [newName, setNewName] = useState(photograph.name)
     const [newDescription, setNewDescription] = useState(photograph.description)
-    const [newPrice, setNewPrice] = useState(photograph.price)
+    const [newPrice, setNewPrice] = useState(photograph.formatted_price)
     const [errors, setErrors] = useState([])
 
     function handleEditUserPhoto(e) {

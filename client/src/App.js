@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {Route, Routes, Outlet} from "react-router-dom"
+import {Route, Routes} from "react-router-dom"
 import {UserContext} from "./UserContext"
 import {CartContext} from "./CartContext"
 import SignInSignUp from "./SignInSignUp"

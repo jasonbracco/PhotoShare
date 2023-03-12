@@ -32,7 +32,10 @@ function PhotoPage(){
         <div>
             {photoFetched ? (
                 <div>
+                    <br></br>
+                    <br></br>
                     <button onClick={backToShop}>Back to Shop</button>
+                    <br></br>
                     <img className="selling-pic" alt="item" src={photograph.image} />
                     <p>Title: {photograph.name}</p>
                     <p>Description: {photograph.description}</p>

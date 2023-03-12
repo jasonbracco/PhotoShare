@@ -5,7 +5,7 @@ import {CartContext} from "./CartContext"
 
 function NavBar(){
 
-    const {user, setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
     const {cart, updateCart} = useContext(CartContext)
     
     const[loggedOut, setLoggedOut] = useState(true)
