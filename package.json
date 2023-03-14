@@ -11,6 +11,8 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.0.0",
+    "@stripe/stripe-js": "^1.49.0",
     "react-icons": "^4.7.1",
     "react-text-mask": "^5.5.0"
   }
