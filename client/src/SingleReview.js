@@ -11,17 +11,11 @@ function SingleReview({review, reviews, handleDeleteReview}){
     const [content, setContent] = useState(review.content)
     const [errors, setErrors] = useState([])
 
-    console.log(review)
-
     useEffect(() => {
         if(review.user.id === user.id){
             setCanEdit(true)
-            console.log(review)
         }
-    }, [reviews])
-    
-
-
+    }, [review, user.id])
 
     function handleEditReview(e) {
         e.preventDefault(); 

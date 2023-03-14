@@ -10,6 +10,11 @@ class OrdersController < ApplicationController
         render json: orders 
     end
 
+    def show
+        order=Order.where(user_id: params[:user_id]).all
+        render json: order
+    end        
+
     private
 
     def order_params

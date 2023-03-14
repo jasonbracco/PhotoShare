@@ -1,17 +1,25 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
+import {UserContext} from "./UserContext"
 import OrderCard from "./OrderCard"
 
-function Orders(){
+function Orders(){ 
+
+    const {user} = useContext(UserContext)
+    console.log(user)
 
     const [orders, setOrders] = useState([])
     const [fetched, setFetched] = useState(false)
 
+    console.log(orders)
+
+
     useEffect(() => {
-        fetch ("/orders").then((response) => {
+        fetch (`/orders/${user.id}`).then((response) => {
             if (response.ok){
                 response.json().then((order) => {
-                    setOrders(order)
-                    setFetched(true)
+                        console.log(order)
+                        setOrders(order)
+                        setFetched(true)
                 })
             }
         })
@@ -21,12 +29,14 @@ function Orders(){
         <div>
             {fetched ? (
                 <div>
-                    Your Orders:
-                    <br></br>
-                    <br></br>
-                    {orders.map((order) => {
-                        return <OrderCard key={order.id} order={order} /> 
-                    })}
+                    <div>
+                        Your Orders:
+                        <br></br>
+                        <br></br>
+                        {orders.map((order) => {
+                            return <OrderCard key={order.id} order={order} /> 
+                        })}
+                    </div>
                 </div>
             ) : (
                 <div>
