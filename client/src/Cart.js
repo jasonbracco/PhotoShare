@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react"
 import {CartContext} from "./CartContext"
 import {UserContext} from "./UserContext"
 import CartCard from "./CartCard"
+import UserCheckoutStripe from "./UserCheckoutStripe"
 
 function Cart(){
 
@@ -59,6 +60,7 @@ function Cart(){
 
     return (
         <div>
+        <div>
         {ordering ? (
             <div>
                 Items in your cart:
@@ -78,6 +80,8 @@ function Cart(){
                 <button onClick={() => setOrdering(true)}>Back to your cart</button>
             </div>  
         )}        
+        </div>
+        <UserCheckoutStripe />
         </div>
 
     )

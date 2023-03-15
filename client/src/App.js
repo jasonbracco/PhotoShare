@@ -53,8 +53,6 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/sellers" element={<Sellers />} />
                 <Route path="/sellerprofile/:userID" element={<SellerPage />} />
-                  {/* <Route path=":id" element={<SellerPage />}/>
-                </Route> */}
               </Routes>
             </CartContext.Provider>
           </UserContext.Provider >
