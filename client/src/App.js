@@ -12,6 +12,7 @@ import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
 import SellerPage from "./SellerPage"
+
  
 function App() {
 
@@ -43,17 +44,17 @@ function App() {
         <div className="side-navbar">
           <UserContext.Provider value={{user, setUser}}>
             <CartContext.Provider value={{cart, updateCart}}>
-              <NavBar/>
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/photographs/:photoID" element={<PhotoPage />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/sellers" element={<Sellers />} />
-                <Route path="/sellerprofile/:userID" element={<SellerPage />} />
-              </Routes>
+                <NavBar/>
+                <Routes>
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/shop" element={<Shop />} />
+                  <Route path="/photographs/:photoID" element={<PhotoPage />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/sellers" element={<Sellers />} />
+                  <Route path="/sellerprofile/:userID" element={<SellerPage />} />
+                </Routes>
             </CartContext.Provider>
           </UserContext.Provider >
         </div>

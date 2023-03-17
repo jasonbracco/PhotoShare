@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react"
 import {CartContext} from "./CartContext"
-import {UserContext} from "./UserContext"
+import {UserContext} from "./UserContext" 
 import CartCard from "./CartCard"
-import UserCheckoutStripe from "./UserCheckoutStripe"
+import CheckoutForm from "./CheckoutForm"
 
 function Cart(){
 
@@ -27,31 +27,29 @@ function Cart(){
 
     const sortedItems = uniqueItems.sort((itemA, itemB) => itemA.id - itemB.id)
 
-    function handlePlaceOrder(e){
+    function handleGoToCheckout(e){
         e.preventDefault()
         if (cart.length > 0){
-            cart.forEach((item) => {
-                fetch("/orders", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        user_id: user.id,
-                        photograph_id: item.id
-                    })
-                })
-                .then((response) => {
-                    if (response.ok){
-                        response.json().then((order) => {
-                            console.log(order)
+            // cart.forEach((item) => {
+            //     fetch("/orders", {
+            //         method: "POST",
+            //         headers: {
+            //             "Content-Type": "application/json",
+            //         },
+            //         body: JSON.stringify({
+            //             user_id: user.id,
+            //             photograph_id: item.id
+            //         })
+            //     })
+                // .then((response) => {
+                //     if (response.ok){
+                        // response.json().then((order) => {
                             setOrdering(false)
-                            updateCart([])
-                        })
-                    }
-                })
-            })
-        }  
+                        // })
+        }
+        //         })
+        //     })
+        // }  
         else{
             alert("Your cart is empty!  Head over to the Shop to buy some photos.")
         } 
@@ -60,31 +58,34 @@ function Cart(){
 
     return (
         <div>
-        <div>
-        {ordering ? (
-            <div>
-                Items in your cart:
-                <br></br>
-                {sortedItems.map((item) => {
-                    return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
-                })}
+            {ordering ? (
                 <div>
-                    Total Price: ${formattedCartPrice}
+                    Items in your cart:
+                    <br></br>
+                    {sortedItems.map((item) => {
+                        return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
+                    })}
+                    <div>
+                        Total Price: ${formattedCartPrice}
+                    </div>
+                    <button onClick={handleGoToCheckout}>Place Order Now</button>
+                </div>  
+
+            ) : (
+                <div>
+                    Items in your cart:
+                    <br></br>
+                    {sortedItems.map((item) => {
+                        return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
+                    })}
+                    <p>Total Price: ${formattedCartPrice}</p>
+                    <CheckoutForm cartPrice={cartPrice}/> 
+                    <button onClick= {(() => setOrdering(true))}>Cancel</button>
                 </div>
-                <button onClick={handlePlaceOrder}>Place Order Now</button>
-            </div>  
-        ) : (
-            <div>
-                Thanks for your order!
-                <br></br>
-                <button onClick={() => setOrdering(true)}>Back to your cart</button>
-            </div>  
-        )}        
-        </div>
-        <UserCheckoutStripe />
+            )}        
         </div>
 
-    )
+    ) 
 }
 
 export default Cart
