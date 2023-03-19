@@ -20,8 +20,8 @@ function CheckoutForm({cartPrice}){
 
     function submitCheckout(e){
         e.preventDefault()
-        if(address.length == 0 || stateProvince.length == 0 || country.length == 0 || zip.length == 0 || cardName.length == 0){
-            alert("Invalid Entry - Please Check Your Address for Blanks")
+        if(address.length === 0 || stateProvince.length === 0 || country.length === 0 || zip.length === 0 || cardName.length === 0){
+            alert("Invalid Entry - Please Check Your Address")
         }
         else{
             console.log("success!!")
