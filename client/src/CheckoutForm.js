@@ -23,19 +23,22 @@ function CheckoutForm({cartPrice}){
         if(address.length === 0 || stateProvince.length === 0 || country.length === 0 || zip.length === 0 || cardName.length === 0){
             alert("Invalid Entry - Please Check Your Address")
         }
+        else if(cvv.length != 3 || expiration.length != 5){
+            alert("Invalid Credit Card Information")
+        }
         else{
             console.log("success!!")
         }
     }
 
-    function handleInvalid(event) {
-        event.preventDefault();
-        const input = event.target;
-        if (input.validity.tooShort) {
-          input.setCustomValidity(`Invalid number of characters for ${event.target.name}`);
-        }
-        alert(input.validationMessage)
-    }
+    // function handleInvalid(event) {
+    //     event.preventDefault();
+    //     const input = event.target;
+    //     if (input.validity.tooShort) {
+    //       input.setCustomValidity(`Invalid number of characters for ${event.target.name}`);
+    //     }
+    //     alert(input.validationMessage)
+    // }
 
     return(
         <div>
@@ -87,29 +90,29 @@ function CheckoutForm({cartPrice}){
                     <input 
                         name="Card" 
                         autoComplete="off"
-                        maxLength={16}
-                        minLength={16}
+                        // maxLength={16}
+                        // minLength={16}
                         value={cardNumber}
-                        onInvalid={handleInvalid}
+                        // onInvalid={handleInvalid}
                         onChange={((e) => setCardNumber(e.target.value))}
                     /> 
                     <div>CVV</div>
                     <input 
                         name="CVV" 
                         autoComplete="off"
-                        maxLength={3}
-                        minLength={3}
-                        onInvalid={handleInvalid}
+                        // maxLength={3}
+                        // minLength={3}
+                        // onInvalid={handleInvalid}
                         value={cvv}
                         onChange={((e) => setCvv(e.target.value))}
                     />
-                    <div>Expiration</div>
+                    <div>Expiration (MM/YY)</div>
                     <input 
                         name="Expiration Date" 
                         autoComplete="off"
-                        maxLength={5}
-                        minLength={5}
-                        onInvalid={handleInvalid}
+                        // maxLength={5}
+                        // minLength={5}
+                        // onInvalid={handleInvalid}
                         value={expiration}
                         onChange={((e) => setExpiration(e.target.value))}
                     /> 
