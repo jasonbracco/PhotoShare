@@ -14,7 +14,7 @@ function PhotoPage(){
 
     const backToShop = () => {
         navigate('/shop');
-      }
+    }
 
     useEffect(() => {
         fetch (`/photographs/${photoID}`).then((response) => {

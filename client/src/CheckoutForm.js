@@ -1,133 +1,173 @@
 import React, {useContext, useState} from "react"
+import {useNavigate} from "react-router-dom";
+import usStates from "us-states"
 import {CartContext} from "./CartContext"
-import {UserContext} from "./UserContext"
-// import Error from "./Error"
 
-function CheckoutForm({cartPrice}){
+ 
+function CheckoutForm(){
 
-    const {cart} = useContext(CartContext)
-    const {user} = useContext(UserContext)
+    const {updateCart} = useContext(CartContext)
 
     const [address, setAddress] = useState("")
-    const [stateProvince, setStateProvince] = useState("")
+    const [state, setState] = useState("")
     const [country, setCountry] = useState("")
     const [zip, setZip] = useState("")
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
     const [cvv, setCvv] = useState("")
-    const [expiration, setExpiration] = useState("")
-    // const [errors, setErrors] = useState([])
+    const [month, setMonth] = useState("Select Month")
+    const [year, setYear] = useState("Select Year")
+
+    const states = Object.keys(usStates)
+
+    const navigate = useNavigate()
+
+    const backToShop = () => {
+        navigate('/shop');
+    }
 
     function submitCheckout(e){
         e.preventDefault()
-        if(address.length === 0 || stateProvince.length === 0 || country.length === 0 || zip.length === 0 || cardName.length === 0){
-            alert("Invalid Entry - Please Check Your Address")
+        if(address.length === 0 || state == "Select a state"  || country.length === 0 || zip.length != 5){
+            alert("Invalid Entry - Please Check Your Address");
         }
-        else if(cvv.length != 3 || expiration.length != 5){
-            alert("Invalid Credit Card Information")
+        else if(cardName.length === 0){
+            alert("Invalid Entry - Please Check The Name On Your Card");
+        }
+        else if(cvv.length != 3 || cardNumber.length < 13 || month == "Select Month" || year == "Select Year"){
+            alert("Invalid Credit Card Information");
         }
         else{
-            console.log("success!!")
+            alert("Thanks For Your Order!");
+            updateCart([]);
+            backToShop();
         }
     }
 
-    // function handleInvalid(event) {
-    //     event.preventDefault();
-    //     const input = event.target;
-    //     if (input.validity.tooShort) {
-    //       input.setCustomValidity(`Invalid number of characters for ${event.target.name}`);
-    //     }
-    //     alert(input.validationMessage)
-    // }
+    const handleZipChange = (e) => {
+        const {value} = e.target;
+        const zip = value.replace(/[^0-9]/g, "");
+        setZip(zip);
+    }
+
+    const handleCardNumberChange = (e) => {
+        const {value} = e.target;
+        const cardNumber = value.replace(/[^0-9]/g, "");
+        setCardNumber(cardNumber);
+    }
+
+    const handleCvvChange = (e) => {
+        const {value} = e.target;
+        const cvv = value.replace(/[^0-9]/g, "");
+        setCvv(cvv);
+    }
+
+    const handleMonthChange = (e) => {
+        setMonth(e.target.value);
+      };
+    
+      const handleYearChange = (e) => {
+        setYear(e.target.value);
+      };
 
     return(
-        <div>
-            <form onSubmit={submitCheckout} >
-                <div>
-                    <div>Address:</div>
-                    <input 
-                        name="address"
-                        autoComplete="off"
-                        value={address}
-                        onChange={((e) => setAddress(e.target.value))}
-                    />
-                    <div>Address Line 2:</div>
-                    <input 
-                        name="address-2" 
-                        autoComplete="off"
-                    />
-                    <div>State/Province</div>
-                    <input 
-                        name="state-province" 
-                        autoComplete="off"
-                        value={stateProvince}
-                        onChange={((e) => setStateProvince(e.target.value))}
-                    />
-                    <div>Country</div>
-                    <input 
-                        name="country" 
-                        autoComplete="off"
-                        value={country}
-                        onChange={((e) => setCountry(e.target.value))}
-                    />
-                    <div>Zip Code</div>
-                    <input 
-                        name="zip" 
-                        autoComplete="off"
-                        value={zip}
-                        onChange={((e) => setZip(e.target.value))}
-                    /> 
-                </div>
-                <div>
-                    <div>Name On Card</div>
-                    <input 
-                        name="card-name" 
-                        autoComplete="off"
-                        value={cardName}
-                        onChange={((e) => setCardName(e.target.value))}
-                    />
-                    <div>Card Number</div>
-                    <input 
-                        name="Card" 
-                        autoComplete="off"
-                        // maxLength={16}
-                        // minLength={16}
-                        value={cardNumber}
-                        // onInvalid={handleInvalid}
-                        onChange={((e) => setCardNumber(e.target.value))}
-                    /> 
-                    <div>CVV</div>
-                    <input 
-                        name="CVV" 
-                        autoComplete="off"
-                        // maxLength={3}
-                        // minLength={3}
-                        // onInvalid={handleInvalid}
-                        value={cvv}
-                        onChange={((e) => setCvv(e.target.value))}
-                    />
-                    <div>Expiration (MM/YY)</div>
-                    <input 
-                        name="Expiration Date" 
-                        autoComplete="off"
-                        // maxLength={5}
-                        // minLength={5}
-                        // onInvalid={handleInvalid}
-                        value={expiration}
-                        onChange={((e) => setExpiration(e.target.value))}
-                    /> 
-                </div>
-                {/* <div>
-                    {errors.map((error) => (
-                        <Error key={error} error={error} />
-                    ))}
-                </div> */}
-                <br></br>
-                <button type="submit">
-                    Order!
-                </button>
-            </form>
-        </div>
+            <div>
+                <form onSubmit={submitCheckout} >
+                    <div>
+                        <div>Address:</div>
+                        <input 
+                            name="address"
+                            autoComplete="off"
+                            value={address}
+                            onChange={((e) => setAddress(e.target.value))}
+                        />
+                        <div>Address Line 2:</div>
+                        <input 
+                            name="address-2" 
+                            autoComplete="off"
+                        />
+                        <div>State</div>
+                        <select value={state} onChange={((e) => setState(e.target.value))}>
+                        <option>Select a state</option>
+                        {states.map((state) => (
+                            <option key={state} value={state.abbreviation}>
+                                {state}
+                            </option>
+                        ))}
+                        </select>
+                        <div>Country</div>
+                        <input 
+                            name="country" 
+                            autoComplete="off"
+                            value={country}
+                            onChange={((e) => setCountry(e.target.value))}
+                        />
+                        <div>Zip Code</div>
+                        <input 
+                            name="zip" 
+                            autoComplete="off"
+                            value={zip}
+                            onChange={handleZipChange}
+                        /> 
+                    </div>
+                    <div>
+                        <div>Name On Card</div>
+                        <input 
+                            name="card-name" 
+                            autoComplete="off"
+                            value={cardName}
+                            onChange={((e) => setCardName(e.target.value))}
+                        />
+                        <div>Card Number</div>
+                        <input 
+                            name="Card" 
+                            autoComplete="off"
+                            value={cardNumber}
+                            onChange={handleCardNumberChange}
+                        /> 
+                        <div>CVV</div>
+                        <input 
+                            name="CVV" 
+                            autoComplete="off"
+                            value={cvv}
+                            onChange={handleCvvChange}
+                        />
+                        <div>Expiration Month</div>
+                            <select value={month} onChange={handleMonthChange}>
+                                <option value="Select Month">Select Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        <div>Expiration Year</div>
+                            <select value={year} onChange={handleYearChange}>
+                                <option value="Select Year">Select Year</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                    </div>
+                    <br></br>
+                    <button type="submit">
+                        Order!
+                    </button>
+                </form>
+            </div>
         
     )
 }
