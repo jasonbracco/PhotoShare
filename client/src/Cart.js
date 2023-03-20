@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useEffect} from "react"
 import {CartContext} from "./CartContext"
 import {UserContext} from "./UserContext" 
 import CartCard from "./CartCard"
@@ -10,6 +10,7 @@ function Cart(){
     const {user} = useContext(UserContext)
 
     const [ordering, setOrdering] = useState(true)
+    const [nothingInCart, setNothingInCart] = useState(false)
 
     const uniqueItems = cart.reduce((accumulator, currentValue) => {
         const find = accumulator.find(item => item.id === currentValue.id);
@@ -26,6 +27,15 @@ function Cart(){
     const formattedCartPrice = cartPrice.toFixed(2)
 
     const sortedItems = uniqueItems.sort((itemA, itemB) => itemA.id - itemB.id)
+
+    useEffect(() => {
+        if(cartPrice > 0){
+            setNothingInCart(true)
+        }
+        else{
+            setNothingInCart(false)
+        }
+    }, [cartPrice])
 
     function handleGoToCheckout(e){
         e.preventDefault()
@@ -60,27 +70,41 @@ function Cart(){
         <div>
             {ordering ? (
                 <div>
-                    Items in your cart:
-                    <br></br>
-                    {sortedItems.map((item) => {
-                        return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
-                    })}
-                    <div>
-                        Total Price: ${formattedCartPrice}
-                    </div>
-                    <button onClick={handleGoToCheckout}>Place Order Now</button>
+                    {nothingInCart ? (
+                        <div>
+                            <p>Your Cart:</p>
+                            <br></br>
+                            {sortedItems.map((item) => {
+                                return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
+                            })}
+                            Total Price: ${formattedCartPrice}
+                            <br></br>
+                            <button onClick={handleGoToCheckout}>Place Order Now</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <br></br>
+                            <br></br>
+                            Nothing in Your Cart!  Head Over To The Shop to Browse Some Photographs!
+                        </div>
+                    )}
                 </div>  
-
             ) : (
                 <div>
-                    Items in your cart:
-                    <br></br>
-                    {sortedItems.map((item) => {
-                        return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
-                    })}
-                    <p>Total Price: ${formattedCartPrice}</p>
-                    <CheckoutForm cartPrice={cartPrice}/> 
-                    <button onClick= {(() => setOrdering(true))}>Cancel</button>
+                    {nothingInCart ? (
+                        <div>
+                            Your Items:
+                            <br></br>
+                            {sortedItems.map((item) => {
+                                return <CartCard key={item.id} item={item} uniqueItems={uniqueItems}/>
+                            })}
+                            <p>Total Price: ${formattedCartPrice}</p>
+                            <CheckoutForm cartPrice={cartPrice}/> 
+                            <button onClick= {(() => setOrdering(true))}>Cancel</button>
+                        </div>
+                    ) : (
+                        null
+                    )}
                 </div>
             )}        
         </div>

@@ -1,13 +1,14 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom";
 import usStates from "us-states"
 import {CartContext} from "./CartContext"
 
  
-function CheckoutForm(){
+function CheckoutForm({cartPrice}){
 
     const {updateCart} = useContext(CartContext)
 
+    const [nothingInCart, setNothingInCart] = useState(false)
     const [address, setAddress] = useState("")
     const [state, setState] = useState("")
     const [country, setCountry] = useState("")
@@ -25,6 +26,15 @@ function CheckoutForm(){
     const backToShop = () => {
         navigate('/shop');
     }
+
+    useEffect(() => {
+        if(cartPrice > 0){
+            setNothingInCart(false)
+        }
+        else{
+            setNothingInCart(true)
+        }
+    }, [cartPrice])
 
     function submitCheckout(e){
         e.preventDefault()
@@ -71,6 +81,13 @@ function CheckoutForm(){
       };
 
     return(
+        <div>
+            {nothingInCart ? (
+                <div>
+                    <p>Nothing in your Cart!</p>
+                    <p>Head Over to the Shop To Find Something New</p>
+                </div>
+            ) : (
             <div>
                 <form onSubmit={submitCheckout} >
                     <div>
@@ -168,6 +185,8 @@ function CheckoutForm(){
                     </button>
                 </form>
             </div>
+            )}
+        </div>
         
     )
 }
