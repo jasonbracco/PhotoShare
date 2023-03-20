@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {useParams, useNavigate} from "react-router-dom";
 import SingleReview from "./SingleReview"
-
+ 
 function PhotoPage(){
  
     const {photoID} = useParams()

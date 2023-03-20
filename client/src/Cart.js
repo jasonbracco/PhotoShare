@@ -37,35 +37,6 @@ function Cart(){
         }
     }, [cartPrice])
 
-    function handleGoToCheckout(e){
-        e.preventDefault()
-        if (cart.length > 0){
-            // cart.forEach((item) => {
-            //     fetch("/orders", {
-            //         method: "POST",
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //         },
-            //         body: JSON.stringify({
-            //             user_id: user.id,
-            //             photograph_id: item.id
-            //         })
-            //     })
-                // .then((response) => {
-                //     if (response.ok){
-                        // response.json().then((order) => {
-                            setOrdering(false)
-                        // })
-        }
-        //         })
-        //     })
-        // }  
-        else{
-            alert("Your cart is empty!  Head over to the Shop to buy some photos.")
-        } 
-        
-    }
-
     return (
         <div>
             {ordering ? (
@@ -79,7 +50,7 @@ function Cart(){
                             })}
                             Total Price: ${formattedCartPrice}
                             <br></br>
-                            <button onClick={handleGoToCheckout}>Place Order Now</button>
+                            <button onClick={(() => setOrdering(false))}>Place Order Now</button>
                         </div>
                     ) : (
                         <div>
@@ -103,7 +74,11 @@ function Cart(){
                             <button onClick= {(() => setOrdering(true))}>Cancel</button>
                         </div>
                     ) : (
-                        null
+                        <div>
+                            <br></br>
+                            <br></br>
+                            Nothing in Your Cart!  Head Over To The Shop to Browse Some Photographs!
+                        </div>
                     )}
                 </div>
             )}        

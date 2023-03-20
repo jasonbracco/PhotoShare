@@ -2,11 +2,12 @@ import React, {useContext, useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom";
 import usStates from "us-states"
 import {CartContext} from "./CartContext"
-
+import {UserContext} from "./UserContext"
  
 function CheckoutForm({cartPrice}){
 
-    const {updateCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext)
+    const {user} = useContext(UserContext)
 
     const [nothingInCart, setNothingInCart] = useState(false)
     const [address, setAddress] = useState("")
@@ -48,9 +49,27 @@ function CheckoutForm({cartPrice}){
             alert("Invalid Credit Card Information");
         }
         else{
-            alert("Thanks For Your Order!");
-            updateCart([]);
-            backToShop();
+            cart.forEach((item) => {
+                fetch("/orders", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user_id: user.id,
+                        photograph_id: item.id
+                    })
+                })
+                .then((response) => {
+                    if (response.ok){
+                        response.json().then((order) => {
+                            alert("Thanks For Your Order!");
+                            updateCart([]);
+                            backToShop();
+                        })
+                    }
+                })
+            })
         }
     }
 
@@ -168,7 +187,6 @@ function CheckoutForm({cartPrice}){
                         <div>Expiration Year</div>
                             <select value={year} onChange={handleYearChange}>
                                 <option value="Select Year">Select Year</option>
-                                <option value="2022">2022</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
@@ -177,6 +195,7 @@ function CheckoutForm({cartPrice}){
                                 <option value="2028">2028</option>
                                 <option value="2029">2029</option>
                                 <option value="2030">2030</option>
+                                <option value="2031">2030</option>
                             </select>
                     </div>
                     <br></br>
