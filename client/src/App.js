@@ -22,7 +22,7 @@ function App() {
   function updateCart(updatedCart){
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-  }
+  } 
   
   useEffect(() => {
     fetch ("/me").then((response) => {
@@ -37,14 +37,14 @@ function App() {
   if(!user) return <SignInSignUp setUser={setUser} />
 
   return (
-      <div>
+      <div className="whole-page">
         <header className="header">PhotoShare Header</header>
         <br></br>
         <br></br>
-        <div className="whole-page">
+        <div>
           <UserContext.Provider value={{user, setUser}}>
             <CartContext.Provider value={{cart, updateCart}}>
-                <NavBar className="nav-bar"/>
+                <NavBar/>
                 <Routes>
                   <Route path="/" element={<Homepage />} />
                   <Route path="/profile" element={<Profile />} />

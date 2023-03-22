@@ -36,7 +36,7 @@ function Cart(){
     }, [cartPrice])
 
     return (
-        <div>
+        <div className="cart">
             {ordering ? (
                 <div>
                     {nothingInCart ? (

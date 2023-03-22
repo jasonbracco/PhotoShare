@@ -114,7 +114,7 @@ function Profile(){
     }
 
     return (
-        <div> 
+        <div className="profile"> 
             {listWork ? (
                 <div>
                     <img className="profile-pic" alt="profile-pic" src={user.image} />

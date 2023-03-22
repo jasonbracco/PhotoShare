@@ -21,7 +21,7 @@ function Orders(){
     }, [])
 
     return (
-        <div>
+        <div className="orders">
             {fetched ? (
                 <div>
                     <div>

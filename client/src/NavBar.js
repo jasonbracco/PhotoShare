@@ -28,7 +28,7 @@ function NavBar(){
     }
 
     return(
-            <div className="Navbar">
+            <div className="nav-bar">
                 {loggedOut ? (
                     <Menu vertical>
                         <Menu.Item>

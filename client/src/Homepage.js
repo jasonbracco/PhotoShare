@@ -6,7 +6,7 @@ function Homepage(){
     const {user} = useContext(UserContext)
 
     return(
-        <div>
+        <div className="homepage">
             <p>Welcome to PhotoShare, {user.first_name}!</p>
             <p>Where Photographers Come to Find Their Next Favorite Photographer</p>
             <p></p>

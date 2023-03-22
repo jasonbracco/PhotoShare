@@ -31,7 +31,7 @@ function Sellers(){
   })
 
   return( 
-    <div>
+    <div className="photographers">
       {fetched ? (
           <div>
             <br></br>
