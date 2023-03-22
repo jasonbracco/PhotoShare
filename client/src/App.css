@@ -1,5 +1,5 @@
 .welcome-page {
-    text-align:center;
+    text-align: center;
     padding: 80px
 }
 
@@ -26,6 +26,17 @@
     margin-right: 650px
 }
 
+.profile-pic {
+    height: 200px;
+    width: 200px;
+}
+  
+.selling-pic {
+    height: 200px;
+    width: 200px;
+}
+  
+
 .nav-bar{
     float: left;
     width: 20%;
@@ -36,6 +47,8 @@
     float: right;
     width: 80%;
     margin-top: 100px;
+    text-align: center;
+
 }
 
 .shop{
@@ -67,4 +80,5 @@
     width: 80%;
     margin-top: 100px;
 }
+
 

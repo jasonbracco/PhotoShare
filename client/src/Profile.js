@@ -2,6 +2,8 @@ import React, {useContext, useState} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 import UserPhotoCard from "./UserPhotoCard"
+import { Grid } from 'semantic-ui-react'
+
 
 function Profile(){
 
@@ -186,13 +188,15 @@ function Profile(){
                     </div>
                     )}
                     <p>My Listings:</p>
-                    <div className="peronal-listed-items">
+                    <Grid container columns={3}>
                         {userPhotos.map((photograph) => {
-                            return <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
+                            return <Grid.Column>
+                                <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
+                            </Grid.Column>
                         })}
-                    </div>
-                    <br></br>
-                    <br></br>
+                        <br></br> 
+                        <br></br>
+                    </Grid>
                 </div>
             ) : (
                 <div>

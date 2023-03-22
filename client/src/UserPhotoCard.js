@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 import EditUserPhotoCard from "./EditUserPhotoCard"
+import {Item} from 'semantic-ui-react'
+
 
 function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
 
@@ -15,12 +17,12 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
     return(
         <div>
             {isEditing ? (
-                <div>
+                <Item>
                     <img className="selling-pic" alt="item" src={photograph.image} />
                     <br></br>
-                    Name: {photograph.name}
+                    <Item.Header>Name: {photograph.name}</Item.Header>
                     <br></br>
-                    Description: {photograph.description}
+                    <Item.Description>Description: {photograph.description}</Item.Description>
                     <br></br>
                     Price: ${photograph.formatted_price}
                     <br></br>
@@ -28,7 +30,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                     <button onClick={handleDeleteUserPhoto}>Delete</button>
                     <br></br>
                     <br></br>
-                </div>
+                </Item>
             ) : (
                 <div>
                     <img className="selling-pic" alt="item" src={photograph.image} />
