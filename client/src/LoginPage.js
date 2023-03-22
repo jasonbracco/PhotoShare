@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import { Button } from 'semantic-ui-react'
+import { Button, Icon, Form } from 'semantic-ui-react'
 import Error from "./Error"
 
  
@@ -35,24 +35,31 @@ function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.errors))
+                response.json().then((error) => {
+                    console.log(error)
+                    setErrors(error.errors)
+                })
             }
         })
     }
     return (
         <div>
-            <form onSubmit={handleLogin}>
+            <Form onSubmit={handleLogin}>
                 <fieldset>
-                    <label>
+                    <Form.Field>
                         <p>Username</p>
                         <input 
                             name="username" 
                             autoComplete="off"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            error={{
+                                content: 'Please enter a valid email address',
+                                pointing: 'below',
+                              }}
                         />
-                    </label>
-                    <label>
+                    </Form.Field>
+                    <Form.Field>
                         <p>Password</p>
                         <input 
                             name="password" 
@@ -61,11 +68,21 @@ function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                    </label>
+                    </Form.Field>
                 </fieldset>
-                <Button primary type="submit">Enter Photo Share!</Button>
-                <Button primary onClick={undoClick}>Back</Button>
-            </form>
+                <Button  animated primary type="submit">
+                    <Button.Content visible>Enter Photo Share!</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow right' />
+                    </Button.Content>
+                </Button>
+                <Button animated primary onClick={undoClick}>
+                    <Button.Content visible>Back</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow left' />
+                    </Button.Content>
+                </Button>
+            </Form>
             <div>
                 {errors.map((error) => (
                     <Error key={error} error={error} />

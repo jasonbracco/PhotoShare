@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import { Button } from 'semantic-ui-react'
+import { Button, Icon, Form } from 'semantic-ui-react'
 import Error from "./Error"
  
 function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
@@ -44,14 +44,17 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                 response.json().then((user) => setUser(user))
             }
             else{
-                response.json().then((error) => setErrors(error.errors))
+                response.json().then((error) => {
+                    console.log(error)
+                    setErrors(error.errors)
+                })
             }
         })
     }
 
     return (
         <div>
-            <form onSubmit={handleSignupSubmit}>
+            <Form onSubmit={handleSignupSubmit}>
                 <fieldset>
                     <label>
                         <p>First Name</p>
@@ -148,14 +151,24 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         />
                     </label>
                 </fieldset>
-                <Button primary type="submit">Sign Up!</Button>
-                <Button primary onClick={undoClick}>Back</Button>
+                <Button  animated primary type="submit">
+                    <Button.Content visible>SignUp!</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow right' />
+                    </Button.Content>
+                </Button>
+                <Button animated primary onClick={undoClick}>
+                    <Button.Content visible>Back</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow left' />
+                    </Button.Content>
+                </Button>
                 <div>
                     {errors.map((error) => (
                         <Error key={error} error={error} />
                     ))}
                 </div>
-            </form>
+            </Form>
         </div>
 
     )
