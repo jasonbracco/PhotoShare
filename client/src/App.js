@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from "react"
-import {Route, Routes} from "react-router-dom"
-import {UserContext} from "./UserContext"
-import {CartContext} from "./CartContext"
-import SignInSignUp from "./SignInSignUp"
-import NavBar from "./NavBar"
-import Homepage from "./Homepage"
-import Profile from "./Profile"
-import Shop from "./Shop"
-import PhotoPage from "./PhotoPage"
-import Orders from "./Orders"
-import Cart from "./Cart"
-import Sellers from "./Sellers"
-import SellerPage from "./SellerPage"
+import './App.css';
+import React, {useEffect, useState} from "react";
+import {Route, Routes} from "react-router-dom";
+import {UserContext} from "./UserContext";
+import {CartContext} from "./CartContext";
+import SignInSignUp from "./SignInSignUp";
+import NavBar from "./NavBar";
+import Homepage from "./Homepage";
+import Profile from "./Profile";
+import Shop from "./Shop";
+import PhotoPage from "./PhotoPage";
+import Orders from "./Orders";
+import Cart from "./Cart";
+import Sellers from "./Sellers";
+import SellerPage from "./SellerPage";
  
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
   function updateCart(updatedCart){
-    setCart(updatedCart)
+    setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
   

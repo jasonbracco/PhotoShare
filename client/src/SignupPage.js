@@ -1,25 +1,25 @@
-import React, {useState} from "react"
-import { Button, Icon, Form } from 'semantic-ui-react'
-import Error from "./Error"
+import React, {useState} from "react";
+import { Button, Icon, Form } from 'semantic-ui-react';
+import Error from "./Error";
  
 function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [city, setCity] = useState("")
-    const [stateProvince, setStateProvince] = useState("")
-    const [country, setCountry] = useState("")
-    const [bio, setBio] = useState("")
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordConfirmation, setPasswordConfirmation] = useState("")
-    const [errors, setErrors] = useState([])
-    const [image, setImage] = useState(null)
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [city, setCity] = useState("");
+    const [stateProvince, setStateProvince] = useState("");
+    const [country, setCountry] = useState("");
+    const [bio, setBio] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [image, setImage] = useState(null);
 
     function undoClick(){
         setLoggingIn(false);
         setSigningUp(false);
-        setShowButtons(true)
+        setShowButtons(true);
     }
 
     function handleSignupSubmit(e){
@@ -45,8 +45,8 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
             }
             else{
                 response.json().then((error) => {
-                    console.log(error)
-                    setErrors(error.errors)
+                    console.log(error);
+                    setErrors(error.errors);
                 })
             }
         })
@@ -54,7 +54,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
 
     return (
         <div>
-            <Form onSubmit={handleSignupSubmit}>
+            <Form onSubmit={handleSignupSubmit} className="signup-form">
                 <fieldset>
                     <label>
                         <p>First Name</p>

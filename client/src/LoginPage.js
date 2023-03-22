@@ -1,6 +1,6 @@
-import React, {useState} from "react"
-import { Button, Icon, Form } from 'semantic-ui-react'
-import Error from "./Error"
+import React, {useState} from "react";
+import { Button, Icon, Form } from 'semantic-ui-react';
+import Error from "./Error";
 
  
 function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
@@ -12,7 +12,7 @@ function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
     function undoClick(){
         setLoggingIn(false);
         setSigningUp(false);
-        setShowButtons(true)
+        setShowButtons(true);
     }
 
     function handleLogin(e){
@@ -27,24 +27,24 @@ function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                     username,
                     password
                 }),
-        })
+        }) 
         .then((response) => {
             if (response.ok){
                 response.json().then((user) => {
-                    setUser(user)
+                    setUser(user);
                 })
             }
             else{
                 response.json().then((error) => {
-                    console.log(error)
-                    setErrors(error.errors)
+                    console.log(error);
+                    setErrors(error.errors);
                 })
             }
-        })
+        }) 
     }
     return (
         <div>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={handleLogin} className="login-form">
                 <fieldset>
                     <Form.Field>
                         <p>Username</p>
