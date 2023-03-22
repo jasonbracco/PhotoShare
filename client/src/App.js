@@ -12,7 +12,6 @@ import Orders from "./Orders"
 import Cart from "./Cart"
 import Sellers from "./Sellers"
 import SellerPage from "./SellerPage"
-
  
 function App() {
 

@@ -1,13 +1,11 @@
 import React, {useContext, useState, useEffect} from "react"
 import {CartContext} from "./CartContext"
-import {UserContext} from "./UserContext" 
 import CartCard from "./CartCard"
 import CheckoutForm from "./CheckoutForm"
 
 function Cart(){
 
-    const {cart, updateCart} = useContext(CartContext)
-    const {user} = useContext(UserContext)
+    const {cart} = useContext(CartContext)
 
     const [ordering, setOrdering] = useState(true)
     const [nothingInCart, setNothingInCart] = useState(false)

@@ -1,23 +1,24 @@
 {
-  "name": "phase-4-deploying-app-demo",
-  "description": "Build scripts for Heroku",
-  "engines": {
-    "node": "16.x"
-  },
-  "scripts": {
-    "build": "npm install --prefix client && npm run build --prefix client",
-    "clean": "rm -rf public",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
-  },
-  "dependencies": {
-    "@stripe/react-stripe-js": "^2.0.0",
-    "@stripe/stripe-js": "^1.49.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.7.1",
-    "react-router-dom": "^6.9.0",
-    "react-text-mask": "^5.5.0",
-    "use-states": "^0.0.3"
-  }
+    "name": "phase-4-deploying-app-demo",
+    "description": "Build scripts for Heroku",
+    "engines": {
+        "node": "16.x"
+    },
+    "scripts": {
+        "build": "npm install --prefix client && npm run build --prefix client",
+        "clean": "rm -rf public",
+        "deploy": "cp -a client/build/. public/",
+        "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/material": "^5.11.14",
+        "react-icons": "^4.7.1",
+        "react-router-dom": "^6.9.0",
+        "react-text-mask": "^5.5.0",
+        "semantic-ui-css": "^2.5.0",
+        "semantic-ui-react": "^2.1.4",
+        "use-states": "^0.0.3"
+    }
 }

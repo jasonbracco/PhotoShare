@@ -1,11 +1,19 @@
 import React, {useState} from "react"
+import { Button } from 'semantic-ui-react'
 import Error from "./Error"
+
  
-function LoginPage({setUser}){
+function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([]) 
+
+    function undoClick(){
+        setLoggingIn(false);
+        setSigningUp(false);
+        setShowButtons(true)
+    }
 
     function handleLogin(e){
         e.preventDefault()
@@ -32,7 +40,7 @@ function LoginPage({setUser}){
         })
     }
     return (
-        <div> 
+        <div>
             <form onSubmit={handleLogin}>
                 <fieldset>
                     <label>
@@ -55,9 +63,8 @@ function LoginPage({setUser}){
                         />
                     </label>
                 </fieldset>
-                <button type="submit">
-                    Enter Photo Share!
-                </button>
+                <Button primary type="submit">Enter Photo Share!</Button>
+                <Button primary onClick={undoClick}>Back</Button>
             </form>
             <div>
                 {errors.map((error) => (

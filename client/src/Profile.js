@@ -7,7 +7,6 @@ function Profile(){
 
     const {user, setUser} = useContext(UserContext)
 
-
     const [listWork, setListWork] = useState(true)
     const [editingUser, setEditingUser] = useState(true)
     const [name, setName] =useState("")
