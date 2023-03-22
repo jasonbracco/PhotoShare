@@ -1,0 +1,32 @@
+.welcome-page {
+    text-align:center;
+    padding: 80px
+}
+
+.login-page{
+    float: center;
+    width: 100%;
+
+}
+
+.signup-page{
+    float: center;
+    width: 100%
+}
+
+.signup-form{
+    float: center;
+    margin-left: 500px;
+    margin-right: 500px
+}
+
+.login-form{
+    float: center;
+    margin-left: 650px;
+    margin-right: 650px
+}
+
+.nav-bar{
+    width: 50%
+}
+

@@ -61,6 +61,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <input 
                             name="firstname"
                             autoComplete="off"
+                            placeholder="First Name"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                         />
@@ -69,6 +70,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <p>Last Name</p>
                         <input 
                             name="lastname" 
+                            placeholder="Last Name"
                             autoComplete="off"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
@@ -79,6 +81,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <input 
                             name="city" 
                             autoComplete="off"
+                            placeholder="City"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
@@ -88,6 +91,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <input 
                             name="state-province" 
                             autoComplete="off"
+                            placeholder="State/Province"
                             value={stateProvince}
                             onChange={(e) => setStateProvince(e.target.value)}
                         />
@@ -97,6 +101,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <input 
                             name="country" 
                             autoComplete="off"
+                            placeholder="Country"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
@@ -106,6 +111,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
                         <textarea
                             name="bio"
                             autoComplete="off"
+                            placeholder="As much or as little as you like"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                         />

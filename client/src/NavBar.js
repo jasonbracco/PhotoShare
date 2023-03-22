@@ -2,6 +2,8 @@ import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom"
 import {UserContext} from "./UserContext"
 import {CartContext} from "./CartContext"
+import { Menu } from 'semantic-ui-react';
+
 
 function NavBar(){
 
@@ -28,27 +30,29 @@ function NavBar(){
     return(
             <div className="Navbar">
                 {loggedOut ? (
-                    <div className="NavBar-options">
-                        <Link to="/" className="nav-link">Homepage</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/profile" className="nav-link">Profile</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/shop" className="nav-link">Shop</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/sellers" className="nav-link">Photographers</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/orders" className="nav-link">Orders</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/cart" className="nav-link">Cart ({cartCount})</Link>
-                        <br></br>
-                        <br></br>
-                        <Link to="/" onClick={handleLogout} className="nav-link">Logout</Link>
-                    </div>
+                    <Menu vertical>
+                        <Menu.Item>
+                            <Link to="/" className="nav-link">Homepage</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/profile" className="nav-link">Profile</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/shop" className="nav-link">Shop</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/sellers" className="nav-link">Photographers</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/orders" className="nav-link">Orders</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/cart" className="nav-link">Cart ({cartCount})</Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/" onClick={handleLogout} className="nav-link">Logout</Link>
+                        </Menu.Item>
+                    </Menu>
                 ) : ( 
                     <div>
                         Logging Out - Seeya!

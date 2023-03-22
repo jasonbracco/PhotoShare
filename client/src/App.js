@@ -41,10 +41,10 @@ function App() {
         <header className="header">PhotoShare Header</header>
         <br></br>
         <br></br>
-        <div className="side-navbar">
+        <div className="whole-page">
           <UserContext.Provider value={{user, setUser}}>
             <CartContext.Provider value={{cart, updateCart}}>
-                <NavBar/>
+                <NavBar className="nav-bar"/>
                 <Routes>
                   <Route path="/" element={<Homepage />} />
                   <Route path="/profile" element={<Profile />} />
