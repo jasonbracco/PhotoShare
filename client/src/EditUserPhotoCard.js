@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 import Error from "./Error"
+import {Form, Button} from 'semantic-ui-react'
+
 
 
 function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
@@ -27,7 +29,6 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
                 response.json().then((photograph) => {
                     updateUserPhoto(photograph)
                     setIsEditing(true)
-                    console.log(photograph)
                 })
             }
             else{
@@ -38,22 +39,22 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
 
     return(
         <div>
-            <form onSubmit={handleEditUserPhoto}>
-                <p>Name</p>
+            <Form size="mini" onSubmit={handleEditUserPhoto}>
+                <strong>Name</strong>
                 <input 
                     name="name"
                     autoComplete="off"
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                 />
-                <p>Description</p>
-                <textarea 
+                <strong>Description</strong>
+                <input
                     name="description"
                     autoComplete="off"
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
                 />
-                <p>Price ($x.xx)</p>
+                <strong>Price ($X.XX)</strong>
                 <input
                     name="price"
                     autoComplete="off"
@@ -65,10 +66,10 @@ function EditUserPhotoCard({photograph, updateUserPhoto, setIsEditing}){
                         <Error key={error} error={error} />
                     ))}
                 </div>
-                <button type="submit">
+                <Button size="mini" secondary type="submit">
                     Update Listing
-                </button>
-            </form>
+                </Button>
+            </Form>
     </div>
     )
 }

@@ -20,11 +20,9 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                 <Item>
                     <img className="selling-pic" alt="item" src={photograph.image} />
                     <br></br>
-                    <Item.Header>Name: {photograph.name}</Item.Header>
-                    <br></br>
-                    <Item.Description>Description: {photograph.description}</Item.Description>
-                    <br></br>
-                    Price: ${photograph.formatted_price}
+                    <Item.Header><strong>Name:</strong> {photograph.name}</Item.Header>
+                    <Item.Description className="item-description"><strong>Description:</strong> {photograph.description}</Item.Description>
+                    <strong>Price:</strong> ${photograph.formatted_price}
                     <br></br>
                     <button onClick={() => setIsEditing(false)}>Edit</button>
                     <button onClick={handleDeleteUserPhoto}>Delete</button>
@@ -34,7 +32,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
             ) : (
                 <div>
                     <img className="selling-pic" alt="item" src={photograph.image} />
-                    <br></br>
+                    <br></br> 
                     <EditUserPhotoCard photograph={photograph} updateUserPhoto={updateUserPhoto} setIsEditing={setIsEditing}/>
                     <br></br>
                 </div>

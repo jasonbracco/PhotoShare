@@ -131,7 +131,7 @@ function Profile(){
                             <p>From: {user.city}, {user.state_province} - {user.country}</p>
                             <p>{user.bio}</p>
                         </div>
-                        ) : (
+                        ) : ( 
                         <div>
                             <Form className="edit-user-info-form" onSubmit={updateUserInfo}>
                                 <Form.Group widths='equal'>
@@ -172,10 +172,11 @@ function Profile(){
                     </div>
                 </div>
             ) : (
-                <div>
-                    <button onClick={(() => clearInputs())}>Go Back</button>
-                    <form onSubmit={handleListPhoto}>
-                        <label>
+                <div className="list-work-form">
+                    <Button primary onClick={(() => clearInputs())}>Go Back</Button>
+                    <h2>Give us some details about your listing:</h2>
+                    <Form onSubmit={handleListPhoto}>
+                        <Form.Field>
                             <p>Name</p>
                             <input 
                                 name="name"
@@ -183,8 +184,8 @@ function Profile(){
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
-                        </label>
-                        <label>
+                        </Form.Field>
+                        <Form.Field>
                             <p>Description</p>
                             <textarea
                                 name="description"
@@ -192,17 +193,17 @@ function Profile(){
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 />
-                        </label>
-                        <label>
-                            <p>Price ($x.xx)</p>
+                        </Form.Field>
+                        <Form.Field>
+                            <p>Price ($X.XX)</p>
                             <input
                                 name="price"
                                 autoComplete="off"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 />
-                        </label>
-                        <label>
+                        </Form.Field>
+                        <Form.Field>
                             <p>Upload Photograph</p>
                             <input
                                 name="photoraph"
@@ -210,16 +211,17 @@ function Profile(){
                                 type="file"
                                 accept=".jpg, .jpeg, .png"
                             />                            
-                        </label>
+                        </Form.Field>
                         <div>
                             {errors.map((error) => (
                                 <Error key={error} error={error} />
                             ))}
                         </div>
-                        <button type="submit">
+                        <br></br>
+                        <Button secondary type="submit">
                             Sell My Photo!
-                        </button>
-                    </form>
+                        </Button>
+                    </Form>
                 </div>
             )}
         </div>

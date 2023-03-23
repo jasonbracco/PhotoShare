@@ -102,5 +102,13 @@
     float:left;
     width:60%;
     margin-left: 200px
+}
 
+.list-work-form{
+    float: center;
+    margin-right: 500px
+}
+ 
+.item-description{
+    margin-right: 70px
 }
