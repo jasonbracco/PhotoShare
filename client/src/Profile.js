@@ -2,8 +2,7 @@ import React, {useContext, useState} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 import UserPhotoCard from "./UserPhotoCard"
-import { Grid } from 'semantic-ui-react'
-
+import { Grid, Button, Form,  } from 'semantic-ui-react'
 
 function Profile(){
 
@@ -77,7 +76,6 @@ function Profile(){
             if (response.ok){
                 response.json().then((user) => {
                     setEditingUser(true)
-                    console.log(user)
                     setUser(user)
                 })
             }
@@ -111,7 +109,7 @@ function Profile(){
           } else {
             return photograph;
           } 
-        });
+        }); 
         setUserPhotos(updatedUserPhotos)
     }
 
@@ -119,84 +117,59 @@ function Profile(){
         <div className="profile"> 
             {listWork ? (
                 <div>
-                    <img className="profile-pic" alt="profile-pic" src={user.image} />
-                    <br></br>
-                    <button className="select-pic" onClick={() => setListWork(false)}>List Work</button>
-                    <br></br>
-                    <button onClick={(() => setEditingUser(false))}>Edit My Information</button>
+                    <div className="profile-pic-buttons">
+                        <img className="profile-pic" alt="profile-pic" src={user.image} />
+                        <br></br>
+                        <Button primary size="tiny" onClick={(() => setEditingUser(false))}>Edit My Information</Button>
+                        <br></br>
+                        <br></br>
+                        <Button primary size="tiny" onClick={() => setListWork(false)}>List Work</Button>
+                    </div>
                     {editingUser ? (
-                        <div>
+                        <div className="user-info">
                             <p>Name: {user.first_name} {user.last_name}</p>
                             <p>From: {user.city}, {user.state_province} - {user.country}</p>
                             <p>{user.bio}</p>
                         </div>
                         ) : (
                         <div>
-                        <form onSubmit={updateUserInfo}>
-                        <p>First Name</p>
-                        <input 
-                            name="firstname"
-                            autoComplete="off"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
-                        <p>Last Name</p>
-                        <input 
-                            name="lastname" 
-                            autoComplete="off"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
-                        <p>City</p>
-                        <input 
-                            name="city" 
-                            autoComplete="off"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                        <p>State/Province</p>
-                        <input 
-                            name="state-province" 
-                            autoComplete="off"
-                            value={stateProvince}
-                            onChange={(e) => setStateProvince(e.target.value)}
-                        />
-                        <p>Country</p>
-                        <input 
-                            name="country" 
-                            autoComplete="off"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                        />
-                        <p>Bio</p>
-                        <textarea
-                            name="bio"
-                            autoComplete="off"
-                            value={bio}
-                            onChange={(e) => setBio(e.target.value)}
-                        />
-                        <br></br>
-                        <button type="submit">
-                            Update
-                        </button>
-                        <div>
-                            {errors.map((error) => (
-                                <Error key={error} error={error} />
-                            ))}
+                            <Form className="edit-user-info-form" onSubmit={updateUserInfo}>
+                                <Form.Group widths='equal'>
+                                    <Form.Input label='First name' placeholder='First name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                                    <Form.Input label='Last name' placeholder='Last name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                                </Form.Group>
+                                <Form.Group widths="equal">
+                                    <Form.Input label='City' placeholder='City' value={city} onChange={(e) => setCity(e.target.value)} />
+                                    <Form.Input label='State/Province' placeholder='State/Province' value={stateProvince} onChange={(e) => setStateProvince(e.target.value)} />
+                                    <Form.Input label='Country' placeholder='Country' value={country} onChange={(e) => setCountry(e.target.value)} />
+                                </Form.Group>
+                                <Form.TextArea label='Bio' placeholder='Bio' value={bio} onChange={(e) => setBio(e.target.value)} autoComplete="off" />
+                                <br></br>
+                                <Button secondary type="submit">
+                                    Update
+                                </Button>
+                                <div>
+                                    {errors.map((error) => (
+                                        <Error key={error} error={error} />
+                                    ))}
+                                </div>
+                            </Form>
                         </div>
-                        </form>
-                    </div>
                     )}
-                    <p>My Listings:</p>
-                    <Grid container columns={3}>
-                        {userPhotos.map((photograph) => {
-                            return <Grid.Column>
-                                <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
-                            </Grid.Column>
-                        })}
-                        <br></br> 
-                        <br></br>
-                    </Grid>
+                    <br></br>
+                    <br></br>
+                    <div className="user-photos">
+                        <h2>My Listings:</h2>
+                        <Grid container columns={3}>
+                            {userPhotos.map((photograph) => {
+                                return <Grid.Column key={photograph.id}>
+                                    <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
+                                </Grid.Column>
+                            })} 
+                            <br></br> 
+                            <br></br>
+                        </Grid>
+                    </div>
                 </div>
             ) : (
                 <div>

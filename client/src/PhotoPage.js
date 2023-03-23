@@ -34,7 +34,7 @@ function PhotoPage(){
     }
 
     return(
-        <div>
+        <div className="shop">
             {photoFetched ? (
                 <div>
                     <br></br>

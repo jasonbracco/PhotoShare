@@ -29,7 +29,7 @@ function SellerPage(){
      }, [userID])
 
     return(
-        <div>
+        <div className="photographers">
             {userFetched ? (
                 <div>
                 <div>

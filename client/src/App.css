@@ -27,8 +27,9 @@
 }
 
 .profile-pic {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+    border-radius:25px
 }
   
 .selling-pic {
@@ -81,7 +82,25 @@
     margin-top: 100px;
 }
 
-.user-photo-grid{
-    width: 100%
+.user-photos{
+    float:left;
+    width: 100%;
+    padding: 40px
 }
 
+.profile-pic-buttons{
+    float: left;
+    width: 15%
+}
+
+.user-info{
+    margin-right: 100px;
+    margin-left: 350px
+}
+
+.edit-user-info-form{
+    float:left;
+    width:60%;
+    margin-left: 200px
+
+}
