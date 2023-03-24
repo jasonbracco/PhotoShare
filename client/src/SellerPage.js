@@ -43,7 +43,7 @@ function SellerPage(){
                         </div>
                         <div className="shop-photo-info">
                             <h4><i>Name:</i> {singleUser.first_name} {singleUser.last_name}</h4>
-                            <h4><i>From:</i>{singleUser.city}, {singleUser.state_province} - {singleUser.country}</h4>
+                            <h4><i>From:</i> {singleUser.city}, {singleUser.state_province} - {singleUser.country}</h4>
                             <h4><i>Bio:</i> {singleUser.bio}</h4>              
                         </div>      
                     </div>
