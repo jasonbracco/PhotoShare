@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
+import {Button, Form} from 'semantic-ui-react'
 
 function OrderCard({order}){
  
@@ -28,6 +29,7 @@ function OrderCard({order}){
             if(response.ok){
                 response.json().then((review) => {
                     setReviewing(true)
+                    setContent("")
                 })
             }
             else{
@@ -39,18 +41,19 @@ function OrderCard({order}){
 
     return(
         <div>
-            <div>Order ID: {order.id}</div>
+            <strong>Order ID: {order.id}</strong>
+            <br></br>
             <img className="selling-pic" alt="Ordered Item" src={order.photograph.image} />
-            <div>{order.photograph.name}</div>
+            <div><strong>Name:</strong> {order.photograph.name}</div>
             {reviewing ? (
             <div>
-                <button onClick={(() => setReviewing(false))}>Leave a Review</button>
+                <Button onClick={(() => setReviewing(false))}>Leave a Review</Button>
                 <br></br>
                 <br></br>
             </div>
             ) : (
                 <div>
-                    <form onSubmit={handleReviewSubmit}>
+                    <Form onSubmit={handleReviewSubmit}>
                         <label>
                             <p>Review:</p>
                             <textarea
@@ -61,9 +64,9 @@ function OrderCard({order}){
                                 />
                         </label>
                         <br></br>
-                        <button type="submit">Submit</button>
-                    </form>
-                    <button onClick={(() => setReviewing(true))}>Go Back</button>
+                        <Button size="mini" type="submit">Submit</Button>
+                        <Button size="mini" onClick={(() => setReviewing(true))}>Go Back</Button>
+                    </Form>
                     <div>
                         {errors.map((error) => (
                             <Error key={error.status} error={error} />

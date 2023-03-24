@@ -152,7 +152,7 @@ function Profile(){
                                     {errors.map((error) => (
                                         <Error key={error} error={error} />
                                     ))}
-                                </div>
+                                </div> 
                             </Form>
                         </div>
                     )}

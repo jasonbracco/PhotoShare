@@ -1,15 +1,17 @@
 import React, {useContext} from "react"
 import {CartContext} from "./CartContext"
+import {Item } from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 
 function CartCard({item, uniqueItems}){
 
-    const {cart, updateCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext);
 
     function handleRemoveAllFromCart(){
         const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
         updateCart(newCart);
-    }
-
+    } 
+ 
     function addOneToCart(e){
         e.preventDefault();
         updateCart([...cart, item]);
@@ -28,28 +30,25 @@ function CartCard({item, uniqueItems}){
                 }
             }
             else if (uniqueItem.id === item.id){
-                const newCart = (cart.filter((item) => item.id !== uniqueItem.id))
-                updateCart(newCart)
+                const newCart = (cart.filter((item) => item.id !== uniqueItem.id));
+                updateCart(newCart);
             }
         })
     }
 
     return(
-        <div>
+        <Item>
             <img className= "selling-pic" alt="Added To Cart" src={item.image} />
             <br></br>
-            <button onClick={removeOneFromCart}>-</button>{item.count}<button onClick={addOneToCart}>+</button>
-            <br></br>
-            Name: {item.name}
-            <br></br>
-            Description: {item.description}
-            <br></br>
-            Price: ${item.formatted_price}
-            <br></br>
-            <button onClick={handleRemoveAllFromCart}>Remove All From Cart</button>
+            <Button size="tiny" onClick={removeOneFromCart}>-</Button> {item.count} <Button size="tiny" onClick={addOneToCart}>+</Button>
+            <Button size="tiny" onClick={handleRemoveAllFromCart}>Remove All From Cart</Button>
+            <Item.Header><strong>Name:</strong> {item.name}</Item.Header>
+            <Item.Description className="item-description"><strong>Description:</strong> {item.description}</Item.Description>
+            <strong>Price:</strong> ${item.formatted_price}
             <br></br>
             <br></br>
-        </div>
+            <br></br>
+        </Item>
     )
 }
 

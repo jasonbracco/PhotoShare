@@ -127,7 +127,7 @@
 
 .shop-photo{
     float: left;
-    width: 15%
+    width: 15% 
 }
 
 .shop-photo-info{
@@ -149,8 +149,16 @@
 
 .photographer-card{
     margin-left: 80px;
-
 }
 
 
+.single-review{
+    padding: 15px
+}
+
+.checkout-form{
+    float: middle;
+    margin-left: 200px;
+    margin-right: 800px
+}
 

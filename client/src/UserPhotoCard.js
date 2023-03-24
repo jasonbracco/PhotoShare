@@ -10,7 +10,7 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
     function handleDeleteUserPhoto(){
         fetch(`/photographs/${photograph.id}`, { 
             method: "DELETE",
-        });
+        }); 
         deleteUserPhoto(photograph.id)
     }
     

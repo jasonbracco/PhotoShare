@@ -3,26 +3,29 @@ import {useNavigate} from "react-router-dom";
 import usStates from "us-states"
 import {CartContext} from "./CartContext"
 import {UserContext} from "./UserContext"
+import {Button, Form, Select} from 'semantic-ui-react'
  
 function CheckoutForm({cartPrice}){
 
-    const {cart, updateCart} = useContext(CartContext)
-    const {user} = useContext(UserContext)
+    const {cart, updateCart} = useContext(CartContext);
+    const {user} = useContext(UserContext);
 
-    const [nothingInCart, setNothingInCart] = useState(false)
-    const [address, setAddress] = useState("")
-    const [state, setState] = useState("")
-    const [country, setCountry] = useState("")
-    const [zip, setZip] = useState("")
-    const [cardName, setCardName] = useState("")
-    const [cardNumber, setCardNumber] = useState("")
-    const [cvv, setCvv] = useState("")
-    const [month, setMonth] = useState("Select Month")
-    const [year, setYear] = useState("Select Year")
+    const [nothingInCart, setNothingInCart] = useState(false);
+    const [address, setAddress] = useState("");
+    const [state, setState] = useState("");
+    const [country, setCountry] = useState("");
+    const [zip, setZip] = useState("");
+    const [cardName, setCardName] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
+    const [cvv, setCvv] = useState("");
+    const [month, setMonth] = useState("Select Month");
+    const [year, setYear] = useState("Select Year");
 
-    const states = Object.keys(usStates)
+    const states = Object.keys(usStates).map((state) => {
+        return {"text": state};
+    })
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const backToShop = () => {
         navigate('/shop');
@@ -30,10 +33,10 @@ function CheckoutForm({cartPrice}){
 
     useEffect(() => {
         if(cartPrice > 0){
-            setNothingInCart(false)
+            setNothingInCart(false);
         }
         else{
-            setNothingInCart(true)
+            setNothingInCart(true);
         }
     }, [cartPrice])
 
@@ -93,14 +96,43 @@ function CheckoutForm({cartPrice}){
 
     const handleMonthChange = (e) => {
         setMonth(e.target.value);
-      };
+    };
     
-      const handleYearChange = (e) => {
+    const handleYearChange = (e) => {
         setYear(e.target.value);
-      };
+    };
+
+    const months = [
+        {text: "January"},
+        {text: "February"},
+        {text: "March"},
+        {text: "April"},
+        {text: "May"},
+        {text: "June"},
+        {text: "July"},
+        {text: "August"},
+        {text: "September"},
+        {text: "October"},
+        {text: "November"},
+        {text: "December"},
+    ]
+
+    const years = [
+        {text: "2023"},
+        {text: "2024"},
+        {text: "2025"},
+        {text: "2026"},
+        {text: "2027"},
+        {text: "2028"},
+        {text: "2029"},
+        {text: "2030"},
+        {text: "2031"},
+        {text: "2032"},
+    ]
+
 
     return(
-        <div>
+        <div className="checkout-form">
             {nothingInCart ? (
                 <div>
                     <p>Nothing in your Cart!</p>
@@ -108,101 +140,26 @@ function CheckoutForm({cartPrice}){
                 </div>
             ) : (
             <div>
-                <form onSubmit={submitCheckout} >
+                <Form onSubmit={submitCheckout} >
                     <div>
-                        <div>Address:</div>
-                        <input 
-                            name="address"
-                            autoComplete="off"
-                            value={address}
-                            onChange={((e) => setAddress(e.target.value))}
-                        />
-                        <div>Address Line 2:</div>
-                        <input 
-                            name="address-2" 
-                            autoComplete="off"
-                        />
-                        <div>State</div>
-                        <select value={state} onChange={((e) => setState(e.target.value))}>
-                        <option>Select a state</option>
-                        {states.map((state) => (
-                            <option key={state} value={state.abbreviation}>
-                                {state}
-                            </option>
-                        ))}
-                        </select>
-                        <div>Country</div>
-                        <input 
-                            name="country" 
-                            autoComplete="off"
-                            value={country}
-                            onChange={((e) => setCountry(e.target.value))}
-                        />
-                        <div>Zip Code</div>
-                        <input 
-                            name="zip" 
-                            autoComplete="off"
-                            value={zip}
-                            onChange={handleZipChange}
-                        /> 
-                    </div>
-                    <div>
-                        <div>Name On Card</div>
-                        <input 
-                            name="card-name" 
-                            autoComplete="off"
-                            value={cardName}
-                            onChange={((e) => setCardName(e.target.value))}
-                        />
-                        <div>Card Number</div>
-                        <input 
-                            name="Card" 
-                            autoComplete="off"
-                            value={cardNumber}
-                            onChange={handleCardNumberChange}
-                        /> 
-                        <div>CVV</div>
-                        <input 
-                            name="CVV" 
-                            autoComplete="off"
-                            value={cvv}
-                            onChange={handleCvvChange}
-                        />
-                        <div>Expiration Month</div>
-                            <select value={month} onChange={handleMonthChange}>
-                                <option value="Select Month">Select Month</option>
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <div>Expiration Year</div>
-                            <select value={year} onChange={handleYearChange}>
-                                <option value="Select Year">Select Year</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
-                                <option value="2030">2030</option>
-                                <option value="2031">2030</option>
-                            </select>
+                        <Form.Input placeholder='Address' value={address} onChange={((e) => setAddress(e.target.value))} />
+                        <Form.Input placeholder="Address Line 2" />
+                        <Select placeholder="State" value={state} onChange={((e) => setState(e.target.value))} options={states} />
+                        <br></br>
+                        <br></br>
+                        <Form.Input placeholder="Country" value={country} onChange={((e) => setCountry(e.target.value))} />
+                        <Form.Input placeholder="Zip" value={zip} onChange={handleZipChange} />
+                        <Form.Input placeholder="Name On Card" value={cardName} onChange={((e) => setCardName(e.target.value))} />
+                        <Form.Input placeholder="Card Number" value={cardNumber} onChange={handleCardNumberChange} />
+                        <Form.Input placeholder="CVV" value={cvv} onChange={handleCvvChange} />
+                        <Select placeholder="Expiration Month" value={month} onChange={handleMonthChange} options={months} />
+                        <Select placeholder="Expiration Year" value={year} onChange={handleYearChange} options={years} />
                     </div>
                     <br></br>
-                    <button type="submit">
+                    <Button primary type="submit">
                         Order!
-                    </button>
-                </form>
+                    </Button>
+                </Form>
             </div>
             )}
         </div>

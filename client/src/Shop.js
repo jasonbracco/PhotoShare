@@ -26,7 +26,7 @@ function Shop(){
                 }) 
             }
         })
-    }, [])
+    }, []) 
     
     return (  
         <div>
