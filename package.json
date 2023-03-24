@@ -14,7 +14,6 @@
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
         "@mui/material": "^5.11.14",
-        "react-dom": "^18.2.0",
         "react-icons": "^4.7.1",
         "react-router-dom": "^6.9.0",
         "react-text-mask": "^5.5.0",
