@@ -127,8 +127,8 @@ function Profile(){
                     </div>
                     {editingUser ? (
                         <div className="user-info">
-                            <p>Name: {user.first_name} {user.last_name}</p>
-                            <p>From: {user.city}, {user.state_province} - {user.country}</p>
+                            <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
+                            <p><strong>From:</strong> {user.city}, {user.state_province} - {user.country}</p>
                             <p>{user.bio}</p>
                         </div>
                         ) : ( 
@@ -146,7 +146,7 @@ function Profile(){
                                 <Form.TextArea label='Bio' placeholder='Bio' value={bio} onChange={(e) => setBio(e.target.value)} autoComplete="off" />
                                 <br></br>
                                 <Button secondary type="submit">
-                                    Update
+                                    Update 
                                 </Button>
                                 <div>
                                     {errors.map((error) => (
@@ -157,7 +157,7 @@ function Profile(){
                         </div>
                     )}
                     <br></br>
-                    <br></br>
+                    <br></br> 
                     <div className="user-photos">
                         <h2>My Listings:</h2>
                         <Grid container columns={3}>

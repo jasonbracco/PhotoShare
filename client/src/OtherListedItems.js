@@ -1,22 +1,24 @@
 import React, {useContext} from "react"
 import {CartContext} from "./CartContext"
+import {Item, Button} from 'semantic-ui-react'
  
 function OtherListedItems({photograph}){
 
-    const {cart, updateCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext);
 
     return(
         <div>
-            <img className="selling-pic" alt="item" src={photograph.image} />
-            <br></br>
-            Name: {photograph.name}
-            <br></br>
-            Description: {photograph.description}
-            <br></br>
-            Price: ${photograph.formatted_price}
-            <br></br>
-            <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
-            <br></br>
+            <Item>
+                <img className="selling-pic" alt="item" src={photograph.image} />
+                <br></br>
+                <Item.Header><strong>Name:</strong> {photograph.name}</Item.Header>
+                <Item.Description><strong>Description:</strong> {photograph.description}</Item.Description>
+                <br></br>
+                <strong>Price:</strong> ${photograph.formatted_price}
+                <br></br>
+                <Button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</Button>
+                <br></br>
+            </Item>
         </div>
     )
 }

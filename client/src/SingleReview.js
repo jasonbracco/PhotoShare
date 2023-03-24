@@ -1,8 +1,10 @@
 import React, {useContext, useState, useEffect} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
+import {Button, Card, Image, Form} from 'semantic-ui-react'
 
-function SingleReview({review, reviews, handleDeleteReview}){
+
+function SingleReview({review, photograph, handleDeleteReview}){
  
     const {user} = useContext(UserContext)
 
@@ -49,47 +51,55 @@ function SingleReview({review, reviews, handleDeleteReview}){
     }
 
     return(
-        <div>
+        <div className="single-review">
             {canEdit ? (
                 <div>
                     {editingReview ? (
                     <div>
-                        <form onSubmit={handleEditReview}>
-                            <p>Name</p>
-                            <textarea 
+                        <Form onSubmit={handleEditReview}>
+                            <Form.Input
                                 name="content"
                                 autoComplete="off"
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                             />
                             <br></br>
-                            <button type="submit">Update Your Review</button>
-                        </form>
-                        <div>
+                            <Button secondary type="submit">Update Your Review</Button>
+                        </Form>
+                        <div> 
                             {errors.map((error) => (
                                 <Error key={error} error={error} />
                             ))}
                         </div>
                     </div>
                     ) : (
-                    <div>
-                        {review.user.first_name} Says:
-                        <br></br>
-                        {content}
-                        <br></br>
-                        <button onClick={(() => setEditingReview(true))}>Edit Your Review</button>
-                        <button onClick={deleteReview}>Delete</button>
-                    </div>
+                    <Card>
+                        <Card.Content>
+                            <Image
+                                floated='right'
+                                size='mini'
+                                src={photograph.image}
+                            />
+                            <Card.Header>{review.user.first_name} Says:</Card.Header>
+                            <Card.Description>{content}</Card.Description>
+                            <Button onClick={(() => setEditingReview(true))}>Edit Your Review</Button>
+                            <Button onClick={deleteReview}>Delete</Button>
+                        </Card.Content>
+                    </Card>
                     )}
                 </div>
             ) : (
-                <div>
-                    {review.user.first_name} Says:
-                    <br></br>
-                    {content}
-                    <br></br>
-                    <br></br>
-                </div>
+                <Card>
+                    <Card.Content>
+                        <Image
+                            floated='right'
+                            size='mini'
+                            src={photograph.image}
+                        />
+                        <Card.Header>{review.user.first_name} Says:</Card.Header>
+                        <Card.Description>{content}</Card.Description>
+                    </Card.Content>
+                </Card>
             )}
         </div>
 

@@ -1,12 +1,12 @@
 import React from "react"
 
+ 
 function SellerCard({user}){
 
     return(
         <div>
             <div>
-                {user.first_name}
-                <br></br>
+                <h4>{user.first_name}:</h4>
                 <img className="profile-pic" alt="seller" src={user.image} />
                 </div>
         </div>

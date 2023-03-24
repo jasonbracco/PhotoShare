@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import EditUserPhotoCard from "./EditUserPhotoCard"
-import {Item} from 'semantic-ui-react'
+import {Item, Button} from 'semantic-ui-react'
 
 
 function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
@@ -24,8 +24,8 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
                     <Item.Description className="item-description"><strong>Description:</strong> {photograph.description}</Item.Description>
                     <strong>Price:</strong> ${photograph.formatted_price}
                     <br></br>
-                    <button onClick={() => setIsEditing(false)}>Edit</button>
-                    <button onClick={handleDeleteUserPhoto}>Delete</button>
+                    <Button onClick={() => setIsEditing(false)}>Edit</Button>
+                    <Button onClick={handleDeleteUserPhoto}>Delete</Button>
                     <br></br>
                     <br></br>
                 </Item>

@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"; 
 import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
+import { Grid, Button } from 'semantic-ui-react'
   
 function Shop(){
  
@@ -22,30 +23,37 @@ function Shop(){
                 response.json().then((photographs) => {
                     setAllPhotos(photographs)
                     setFetched(true)
-                })
+                }) 
             }
         })
     }, [])
     
-    return ( 
-        <div className="shop">
-            {fetched ? (
-                <div>
-                    {allPhotos.map((photograph) => {
-                        return <div key={photograph.id}>
-                            <AllPhotoCard photograph={photograph}/>
-                            <button onClick={(() => navigateToPhoto(photograph.id))}>More Info</button>
-                            <button onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</button>
-                            <br></br>
-                            <br></br>
-                        </div>
-                    })}
-                </div>
-            ) : (
-                <div>
-                    Fetching...
-                </div>
-            )}
+    return (  
+        <div>
+            <div>
+                <h2 className="shop-header">Shop</h2>
+            </div>
+            <div className="shop">
+                {fetched ? (
+                    <div>
+                        <Grid container columns={4}>
+                            {allPhotos.map((photograph) => {
+                                return <div className="shop-card" key={photograph.id}>
+                                    <AllPhotoCard photograph={photograph}/>
+                                    <Button size="mini" onClick={(() => navigateToPhoto(photograph.id))}>More Info</Button>
+                                    <Button size="mini" onClick={(() => updateCart([...cart, photograph]))}>Add To Cart</Button>
+                                    <br></br>
+                                    <br></br> 
+                                </div>
+                            })}
+                        </Grid>
+                    </div>
+                ) : (
+                    <div>
+                        Fetching...
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
