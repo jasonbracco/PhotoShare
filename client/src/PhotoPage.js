@@ -12,7 +12,6 @@ function PhotoPage(){
     const [photograph, setPhotograph] = useState(null)
     const [photoFetched, setPhotoFetched] = useState(false)
     const [reviews, setReviews] = useState([])
-    console.log(photograph)
 
     const navigate = useNavigate()
 

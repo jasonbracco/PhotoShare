@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useEffect} from "react"
 import {UserContext} from "./UserContext"
 import Error from "./Error"
 import UserPhotoCard from "./UserPhotoCard"
@@ -15,14 +15,24 @@ function Profile(){
     const [price, setPrice] = useState("")
     const [image, setImage] = useState(null)
     const [errors, setErrors] = useState([])
-    const [userPhotos, setUserPhotos] = useState(user.selling)
+    const [userPhotos, setUserPhotos] = useState([user.selling])
     const [firstName, setFirstName] = useState(user.first_name)
     const [lastName, setLastName] = useState(user.last_name)
     const [bio, setBio] = useState(user.bio)
     const [stateProvince, setStateProvince] = useState(user.state_province)
     const [country, setCountry] = useState(user.country)
     const [city, setCity] = useState(user.city)
-    const [userID, setUserID] = useState(user.id)
+    const [userID, setUserID] = useState(user.id) 
+
+    useEffect(() => {
+        fetch ("/me").then((response) => {
+          if (response.ok) {
+            response.json().then((user) => {
+              setUserPhotos(user.selling)
+            })
+          } 
+        })
+      }, []) 
 
     function handleListPhoto(e){
         e.preventDefault()
@@ -49,7 +59,6 @@ function Profile(){
             }
             else{
                 response.json().then((error) => {
-                    console.log(error)
                     setErrors(error.errors)
                 });
             }
@@ -96,6 +105,7 @@ function Profile(){
     function handleAddUserPhoto(newPhoto){
         setUserPhotos([...userPhotos, newPhoto]);
     }
+    console.log(userPhotos)
     
     function handleDeleteUserPhoto(id){
         const updatedUserPhotos = userPhotos.filter((photo) => photo.id !== id);

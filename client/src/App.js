@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
-import {UserContext} from "./UserContext";
+import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
 import NavBar from "./NavBar";
