@@ -12,7 +12,7 @@ function Homepage(){
             <p></p>
             <p>Discover New Artists</p>
             <p>List Your Work</p>
-            <p>Build Your Collection</p>  
+            <p>Build Your Collection </p>  
             <p>Scroll Bar of photographs here?</p>
         </div>
     )
