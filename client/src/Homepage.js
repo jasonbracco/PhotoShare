@@ -3,7 +3,7 @@ import {UserContext} from "./UserContext"
 
 function Homepage(){
 
-    const {user} = useContext(UserContext)
+    const {user} = useContext(UserContext) 
 
     return(
         <div className="homepage">
