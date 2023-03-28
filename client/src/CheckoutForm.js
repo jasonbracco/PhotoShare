@@ -22,7 +22,7 @@ function CheckoutForm({cartPrice}){
     const [year, setYear] = useState("Select Year");
 
     const states = Object.keys(usStates).map((state) => {
-        return {"text": state};
+        return {"value": state, "text": state};
     })
 
     const navigate = useNavigate();
@@ -66,13 +66,14 @@ function CheckoutForm({cartPrice}){
                 .then((response) => {
                     if (response.ok){
                         response.json().then((order) => {
-                            alert("Thanks For Your Order!");
-                            updateCart([]);
-                            backToShop();
+                            console.log(order)
                         })
                     }
                 })
             })
+            alert("Thanks For Your Order!");
+            updateCart([]);
+            backToShop();
         }
     }
 
@@ -102,32 +103,36 @@ function CheckoutForm({cartPrice}){
         setYear(e.target.value);
     };
 
+    const handleStateChange = (e) => {
+        setState(e.target.value);
+    };
+
     const months = [
-        {text: "January"},
-        {text: "February"},
-        {text: "March"},
-        {text: "April"},
-        {text: "May"},
-        {text: "June"},
-        {text: "July"},
-        {text: "August"},
-        {text: "September"},
-        {text: "October"},
-        {text: "November"},
-        {text: "December"},
+        {value: "January", text: "January"},
+        {value: "February", text: "February"},
+        {value: "March", text: "March"},
+        {value: "April", text: "April"},
+        {value: "May", text: "May"},
+        {value: "June", text: "June"},
+        {value: "July", text: "July"},
+        {value: "August", text: "August"},
+        {value: "September", text: "September"},
+        {value: "October", text: "October"},
+        {value: "November", text: "November"},
+        {value: "December", text: "December"},
     ]
 
     const years = [
-        {text: "2023"},
-        {text: "2024"},
-        {text: "2025"},
-        {text: "2026"},
-        {text: "2027"},
-        {text: "2028"},
-        {text: "2029"},
-        {text: "2030"},
-        {text: "2031"},
-        {text: "2032"},
+        {value: "2023", text: "2023"},
+        {value: "2024", text: "2024"},
+        {value: "2025", text: "2025"},
+        {value: "2026", text: "2026"},
+        {value: "2027", text: "2027"},
+        {value: "2028", text: "2028"},
+        {value: "2029", text: "2029"},
+        {value: "2030", text: "2030"},
+        {value: "2031", text: "2031"},
+        {value: "2032", text: "2032"},
     ]
 
 
@@ -144,7 +149,7 @@ function CheckoutForm({cartPrice}){
                     <div>
                         <Form.Input placeholder='Address' value={address} onChange={((e) => setAddress(e.target.value))} />
                         <Form.Input placeholder="Address Line 2" />
-                        <Select placeholder="State" value={state} onChange={((e) => setState(e.target.value))} options={states} />
+                        <Select placeholder="State" value={state} onChange={((handleStateChange))} options={states} />
                         <br></br>
                         <br></br>
                         <Form.Input placeholder="Country" value={country} onChange={((e) => setCountry(e.target.value))} />
