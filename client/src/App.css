@@ -56,7 +56,7 @@
 
 .shop{
     float: right;
-    width: 90%;
+    width: 80%;
     margin-top: 150px;
 }
  
@@ -159,6 +159,6 @@
 .checkout-form{
     float: middle;
     margin-left: 200px;
-    margin-right: 800px
+    margin-right: 400px
 }
 

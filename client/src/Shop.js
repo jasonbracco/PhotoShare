@@ -29,7 +29,7 @@ function Shop(){
     }, []) 
     
     return (  
-        <div>
+        <div> 
             <div>
                 <h2 className="shop-header">Shop</h2>
             </div>
@@ -49,7 +49,7 @@ function Shop(){
                         </Grid>
                     </div>
                 ) : (
-                    <div>
+                    <div className="shop">
                         Fetching...
                     </div>
                 )}

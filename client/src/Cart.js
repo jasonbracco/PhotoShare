@@ -67,7 +67,7 @@ function Cart(){
                     )}
                 </div>  
             ) : (
-                <div>
+                <div> 
                     {nothingInCart ? (
                         <div>
                             <h2>Your Cart (${formattedCartPrice}):</h2>
