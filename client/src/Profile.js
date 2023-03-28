@@ -127,7 +127,7 @@ function Profile(){
             {listWork ? (
                 <div>
                     <div className="profile-pic-buttons">
-                        <img className="profile-pic" alt="profile-pic" src={user.image} />
+                        <img className="user-profile-pic" alt="profile-pic" src={user.image} />
                         <br></br>
                         <Button primary size="tiny" onClick={(() => setEditingUser(false))}>Edit My Information</Button>
                         <br></br>
@@ -136,9 +136,9 @@ function Profile(){
                     </div>
                     {editingUser ? (
                         <div className="user-info">
-                            <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
-                            <p><strong>From:</strong> {user.city}, {user.state_province} - {user.country}</p>
-                            <p>{user.bio}</p>
+                            <h4><i>Name:</i> {user.first_name} {user.last_name}</h4>
+                            <h4><i>From:</i> {user.city}, {user.state_province} - {user.country}</h4>
+                            <h4><i>About Me: </i>{user.bio}</h4>
                         </div>
                         ) : ( 
                         <div>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
+import HeaderPhoto from "./Image/HeaderPhoto.png"
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
@@ -33,16 +34,16 @@ function App() {
         })
       } 
     })
-  }, [])  
+  }, [])   
  
   if(!user) return <SignInSignUp setUser={setUser} />
 
   return (
-      <div className="whole-page">
-        <header className="header">PhotoShare Header</header>
+      <div>
+        <img className="header-image" alt="Header Image" src={HeaderPhoto} />
         <br></br>
         <br></br>
-        <div>
+        <div className="whole-page">
           <UserContext.Provider value={{user, setUser}}>
             <CartContext.Provider value={{cart, updateCart}}>
                 <NavBar/>
