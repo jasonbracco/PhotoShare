@@ -23,7 +23,6 @@ function Profile(){
     const [country, setCountry] = useState(user.country)
     const [city, setCity] = useState(user.city)
     const [userID, setUserID] = useState(user.id) 
-    console.log(userPhotos)
 
     useEffect(() => {
         fetch ("/me").then((response) => {
