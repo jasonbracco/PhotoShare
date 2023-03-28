@@ -1,4 +1,3 @@
-import './App.css';
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
 import {UserContext} from "./UserContext";  
@@ -13,6 +12,8 @@ import Orders from "./Orders";
 import Cart from "./Cart";
 import Sellers from "./Sellers";
 import SellerPage from "./SellerPage";
+import './App.css';
+
  
 function App() {
 
