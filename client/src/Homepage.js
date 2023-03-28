@@ -7,12 +7,18 @@ function Homepage(){
 
     return(
         <div className="homepage">
-            <p>Welcome to PhotoShare, {user.first_name}!</p>
-            <p>Where Photographers Come to Find Their Next Favorite Photographer</p>
+            <h2>Welcome to PhotoShare, {user.first_name}!</h2>
+            <h3>Step In And Find Your Next Favorite Photographer</h3>
             <p></p>
-            <p>Discover New Artists</p>
-            <p>List Your Work</p>
-            <p>Build Your Collection </p>  
+            <h4>Discover New Artists</h4>
+            <h4>Build Your Collection </h4>  
+            <h4>Get Discovered</h4>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
             <p>Scroll Bar of photographs here?</p>
         </div>
     )
