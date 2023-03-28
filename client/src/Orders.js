@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react"
 import {UserContext} from "./UserContext"
 import OrderCard from "./OrderCard"
-import {Grid} from 'semantic-ui-react'
+import {Grid, Loader} from 'semantic-ui-react'
 
 
 function Orders(){ 
@@ -38,9 +38,7 @@ function Orders(){
                     </div>
                 </div>
             ) : (
-                <div>
-                    Fetching...
-                </div>
+                <Loader active inline='centered' />
             )}
         </div>
     )

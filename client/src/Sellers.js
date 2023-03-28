@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom"; 
 import SellerCard from "./SellerCard"
-import { Grid, Button } from 'semantic-ui-react'
+import {Grid, Button, Loader} from 'semantic-ui-react'
  
 function Sellers(){
 
   const [sellers, setSellers] = useState([]);
   const [fetched, setFetched] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const navigateToSeller = (userID) => {
     navigate(`/sellerprofile/${userID}`);
@@ -50,9 +50,7 @@ function Sellers(){
               </Grid>
           </div>
       ) : (
-        <div>
-          Fetching...
-        </div>
+        <Loader active inline='centered' />
       )}
     </div>
 

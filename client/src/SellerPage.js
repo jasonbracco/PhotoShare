@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {useParams, useNavigate} from "react-router-dom";
 import OtherListedItems from "./OtherListedItems" 
-import {Button, Grid} from 'semantic-ui-react'
+import {Button, Grid, Loader} from 'semantic-ui-react'
 
 function SellerPage(){
 
@@ -61,9 +61,7 @@ function SellerPage(){
                     </div> 
                 </div> 
             ) : (
-                <div>
-                    Fetching...
-                </div>
+                <Loader active inline='centered' />
             )}
         </div>
     )

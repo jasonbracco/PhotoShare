@@ -2,27 +2,27 @@ import React, {useEffect, useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"; 
 import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
-import { Grid, Button } from 'semantic-ui-react'
+import {Grid, Button, Loader} from 'semantic-ui-react'
   
 function Shop(){
  
-    const {cart, updateCart} = useContext(CartContext)
+    const {cart, updateCart} = useContext(CartContext);
 
-    const [allPhotos, setAllPhotos] = useState([])
-    const [fetched, setFetched] = useState(false)
+    const [allPhotos, setAllPhotos] = useState([]);
+    const [fetched, setFetched] = useState(false);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const navigateToPhoto = (photoID) => {
-        navigate(`/photographs/${photoID}`)
+        navigate(`/photographs/${photoID}`);
     } 
 
     useEffect(() => {
         fetch ("/photographs").then((response) => {
             if (response.ok){
                 response.json().then((photographs) => {
-                    setAllPhotos(photographs)
-                    setFetched(true)
+                    setAllPhotos(photographs);
+                    setFetched(true);
                 }) 
             }
         })
@@ -49,9 +49,7 @@ function Shop(){
                         </Grid>
                     </div>
                 ) : (
-                    <div className="shop">
-                        Fetching...
-                    </div>
+                    <Loader active inline='centered' />
                 )}
             </div>
         </div>

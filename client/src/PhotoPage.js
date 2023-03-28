@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {useParams, useNavigate} from "react-router-dom";
 import SingleReview from "./SingleReview"
-import {Button, Grid} from 'semantic-ui-react'
+import {Button, Grid, Loader} from 'semantic-ui-react'
 
  
 function PhotoPage(){
@@ -66,9 +66,7 @@ function PhotoPage(){
                     </div>
                 </div>
             ) : (
-                <div>
-                    Fetching...
-                </div>
+                <Loader active inline='centered' />
             )}
         </div>
     )
