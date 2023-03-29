@@ -38,7 +38,9 @@ function CartCard({item, uniqueItems}){
 
     return(
         <Item>
-            <img className= "selling-pic" alt="Added To Cart" src={item.image} />
+            <div className="shop-card-picture-space">
+                <img className= "selling-pic" alt="Added To Cart" src={item.image} />
+            </div>
             <br></br>
             <Button size="tiny" onClick={removeOneFromCart}>-</Button> {item.count} <Button size="tiny" onClick={addOneToCart}>+</Button>
             <Button size="tiny" onClick={handleRemoveAllFromCart}>Remove All From Cart</Button>

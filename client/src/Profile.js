@@ -6,37 +6,37 @@ import { Grid, Button, Form,  } from 'semantic-ui-react'
 
 function Profile(){
 
-    const {user, setUser} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext);
 
-    const [listWork, setListWork] = useState(true)
-    const [editingUser, setEditingUser] = useState(true)
-    const [name, setName] =useState("")
-    const [description, setDescription] = useState("")
-    const [price, setPrice] = useState("")
-    const [image, setImage] = useState(null)
-    const [errors, setErrors] = useState([])
-    const [userPhotos, setUserPhotos] = useState([user.selling])
-    const [firstName, setFirstName] = useState(user.first_name)
-    const [lastName, setLastName] = useState(user.last_name)
-    const [bio, setBio] = useState(user.bio)
-    const [stateProvince, setStateProvince] = useState(user.state_province)
-    const [country, setCountry] = useState(user.country)
-    const [city, setCity] = useState(user.city)
-    const [userID, setUserID] = useState(user.id) 
+    const [listWork, setListWork] = useState(true);
+    const [editingUser, setEditingUser] = useState(true);
+    const [name, setName] =useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
+    const [image, setImage] = useState(null);
+    const [errors, setErrors] = useState([]);
+    const [userPhotos, setUserPhotos] = useState([user.selling]);
+    const [firstName, setFirstName] = useState(user.first_name);
+    const [lastName, setLastName] = useState(user.last_name);
+    const [bio, setBio] = useState(user.bio);
+    const [stateProvince, setStateProvince] = useState(user.state_province);
+    const [country, setCountry] = useState(user.country);
+    const [city, setCity] = useState(user.city);
+    const [userID, setUserID] = useState(user.id) ;
 
     useEffect(() => {
         fetch ("/me").then((response) => {
           if (response.ok) {
             response.json().then((user) => {
-              setUserPhotos(user.selling)
+              setUserPhotos(user.selling);
             })
           } 
         })
-      }, []) 
+    }, []) 
 
     function handleListPhoto(e){
         e.preventDefault()
-        const formData = new FormData()
+        const formData = new FormData();
         formData.append('image', image);
         formData.append('name', name);
         formData.append('description', description);
@@ -51,15 +51,15 @@ function Profile(){
                 response.json().then((photograph) => {
                     handleAddUserPhoto(photograph);
                     setListWork(true);
-                    setName("")
-                    setDescription("")
-                    setPrice("")
-                    setImage(null)
+                    setName("");
+                    setDescription("");
+                    setPrice("");
+                    setImage(null);
                 })
             }
             else{
                 response.json().then((error) => {
-                    setErrors(error.errors)
+                    setErrors(error.errors);
                 });
             }
         })
@@ -84,22 +84,22 @@ function Profile(){
         .then((response) => {
             if (response.ok){
                 response.json().then((user) => {
-                    setEditingUser(true)
-                    setUser(user)
+                    setEditingUser(true);
+                    setUser(user);
                 })
             }
             else{
-                response.json().then((error) => setErrors(error.errors))
+                response.json().then((error) => setErrors(error.errors));
             }
         })
     }
 
     function clearInputs(){
-        setName("")
-        setDescription("")
-        setPrice("")
-        setImage(null)
-        setListWork(true)
+        setName("");
+        setDescription("");
+        setPrice("");
+        setImage(null);
+        setListWork(true);
     }
 
     function handleAddUserPhoto(newPhoto){
@@ -118,12 +118,17 @@ function Profile(){
           } else {
             return photograph;
           } 
-        }); 
-        setUserPhotos(updatedUserPhotos)
+        });   
+        setUserPhotos(updatedUserPhotos);
     }
 
     return (
         <div className="profile"> 
+            <h2>My Profile:</h2>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             {listWork ? (
                 <div>
                     <div className="profile-pic-buttons">
@@ -160,11 +165,11 @@ function Profile(){
                                 <div>
                                     {errors.map((error) => (
                                         <Error key={error} error={error} />
-                                    ))}
+                                    ))} 
                                 </div> 
                             </Form>
                         </div>
-                    )}
+                    )} 
                     <br></br>
                     <br></br> 
                     <div className="user-photos">

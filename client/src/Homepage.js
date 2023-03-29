@@ -1,7 +1,6 @@
 import React, {useContext} from "react"
 import {UserContext} from "./UserContext"
 
-
 function Homepage(){
 
     const {user} = useContext(UserContext) 
@@ -14,11 +13,6 @@ function Homepage(){
             <h4>Discover New Artists</h4>
             <h4>Build Your Collection </h4>  
             <h4>Get Discovered</h4>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
         </div>
     )
 }

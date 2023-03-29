@@ -35,7 +35,7 @@ function PhotoPage(){
         const updatedReviews = reviews.filter((review) => review.id !== id);
         setReviews(updatedReviews);
     }
-
+ 
     return(
         <div className="single-shop-photo">
             {photoFetched ? (
@@ -60,7 +60,7 @@ function PhotoPage(){
                         <br></br>
                         <Grid>
                         {reviews.map((review) => {
-                            return <SingleReview key ={review.id} photograph={photograph} review={review} handleDeleteReview={handleDeleteReview}/>
+                            return <SingleReview key ={review.id} review={review} handleDeleteReview={handleDeleteReview}/>
                         })}
                         </Grid>
                     </div>

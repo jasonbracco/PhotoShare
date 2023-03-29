@@ -18,7 +18,9 @@ function UserPhotoCard({photograph, deleteUserPhoto, updateUserPhoto}){
         <div>
             {isEditing ? (
                 <Item>
-                    <img className="selling-pic" alt="item" src={photograph.image} />
+                    <div className="shop-card-picture-space">
+                        <img className="selling-pic" alt="item" src={photograph.image} />
+                    </div>
                     <br></br>
                     <Item.Header><strong>Name:</strong> {photograph.name}</Item.Header>
                     <Item.Description className="item-description"><strong>Description:</strong> {photograph.description}</Item.Description>

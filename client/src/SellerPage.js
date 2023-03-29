@@ -4,13 +4,11 @@ import OtherListedItems from "./OtherListedItems"
 import {Button, Grid, Loader} from 'semantic-ui-react'
 
 function SellerPage(){
-
+ 
     const {userID}=useParams();
     
     const [singleUser, setSingleUser] = useState(null);
     const [userFetched, setUserFetched] = useState(false);
-
-    console.log(singleUser);
 
     const navigate = useNavigate();
 

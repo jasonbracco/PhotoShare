@@ -3,8 +3,8 @@ import {UserContext} from "./UserContext"
 import Error from "./Error"
 import {Button, Card, Image, Form} from 'semantic-ui-react'
 
-
-function SingleReview({review, photograph, handleDeleteReview}){
+ 
+function SingleReview({review, handleDeleteReview}){
  
     const {user} = useContext(UserContext)
 
@@ -75,13 +75,9 @@ function SingleReview({review, photograph, handleDeleteReview}){
                     ) : (
                     <Card>
                         <Card.Content>
-                            <Image
-                                floated='right'
-                                size='mini'
-                                src={photograph.image}
-                            />
                             <Card.Header>{review.user.first_name} Says:</Card.Header>
                             <Card.Description>{content}</Card.Description>
+                            <br></br>
                             <Button onClick={(() => setEditingReview(true))}>Edit Your Review</Button>
                             <Button onClick={deleteReview}>Delete</Button>
                         </Card.Content>
@@ -91,11 +87,6 @@ function SingleReview({review, photograph, handleDeleteReview}){
             ) : (
                 <Card>
                     <Card.Content>
-                        <Image
-                            floated='right'
-                            size='mini'
-                            src={photograph.image}
-                        />
                         <Card.Header>{review.user.first_name} Says:</Card.Header>
                         <Card.Description>{content}</Card.Description>
                     </Card.Content>

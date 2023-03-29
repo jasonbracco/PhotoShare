@@ -43,7 +43,9 @@ function OrderCard({order}){
         <div>
             <strong>Order ID: {order.id}</strong>
             <br></br>
-            <img className="selling-pic" alt="Ordered Item" src={order.photograph.image} />
+            <div className="shop-card-picture-space">
+                <img className="selling-pic" alt="Ordered Item" src={order.photograph.image} />
+            </div>
             <div><strong>Name:</strong> {order.photograph.name}</div>
             {reviewing ? (
             <div>

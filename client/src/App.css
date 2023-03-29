@@ -88,7 +88,7 @@ body{
 .user-info{
     float: center;
     margin-right: 100px;
-    margin-left: 350px
+    margin-left: 450px
 }
 
 .edit-user-info-form{
@@ -108,8 +108,14 @@ body{
 
 .shop-card{
     margin-left: 10px;
-    padding: 15px
+    padding: 5px;
 }
+
+.shop-card-picture-space{
+    height: 250px;
+    width: 250px
+}
+
 
 .single-shop-photo{ 
     float: right;
@@ -124,7 +130,7 @@ body{
 .shop-photo-info{
     float:left;
     width:30%;
-    margin-left: 430px;
+    margin-left: 350px;
     margin-top: 250px
 }
 
@@ -165,24 +171,37 @@ body{
 
 /*  Pictures   */
 .profile-pic {
-    height: 300px;
-    width: 300px;
+    max-width:325px;
+    max-height:325px;
+    width: auto;
+    height: auto;
     border-radius:25px
 }
   
 .selling-pic {
-    height: 250px;
-    width: 250px;
+    /* height: 250px;
+    width: 250px; */
+    /* display: block; */
+    max-width:250px;
+    max-height:250px;
+    width: auto;
+    height: auto;
 }
   
 .single-shop-pic{
-    height: 550px;
-    width: 550px;
+    max-width:550px;
+    max-height:550px;
+    width: auto;
+    height: auto;
+    border-radius:25px
 }
 
+
 .user-profile-pic {
-    height: 300px;
-    width: 300px;
+    max-width:300px;
+    max-height:550px;
+    width: auto;
+    height: auto;
     border-radius:25px
 }
 

@@ -1,16 +1,13 @@
 import React from "react"
 
  
-function SellerCard({user}){
+function SellerCard({user}){ 
 
     return(
         <div>
-            <div>
-                <h4>{user.first_name}:</h4>
-                <img className="profile-pic" alt="seller" src={user.image} />
-                </div>
+            <h4>{user.first_name}:</h4>
+            <img className="profile-pic" alt="seller" src={user.image} />
         </div>
-
     )
 }
 
