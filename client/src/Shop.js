@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {CartContext} from "./CartContext"
 import AllPhotoCard from "./AllPhotoCard"
 import {Grid, Button, Loader} from 'semantic-ui-react'
-  
+   
 function Shop(){
  
     const {cart, updateCart} = useContext(CartContext);
