@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
-import HeaderPhoto from "./HeaderPhoto.png"
+import HeaderPhoto from "./HeaderPhoto.jpg"
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
