@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
-import HeaderPhoto from "./HeaderPhoto.jpg"
+import './App.css';
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
+import header from './Image/HeaderPhoto.jpeg'
 import SignInSignUp from "./SignInSignUp";
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
@@ -13,7 +14,6 @@ import Orders from "./Orders";
 import Cart from "./Cart";
 import Sellers from "./Sellers";
 import SellerPage from "./SellerPage";
-import './App.css';
 
  
 function App() {
@@ -40,7 +40,7 @@ function App() {
 
   return (
       <div>
-        <img className="header-image" alt="Header" src={HeaderPhoto} />
+        <img className="header-image" src={header} />
         <br></br>
         <br></br>
         <div className="whole-page">
