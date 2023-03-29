@@ -4,7 +4,7 @@ import './App.css';
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
-import header from './Image/HeaderPhoto.jpeg'
+import header from './HeaderPhoto.jpeg'
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
 import Profile from "./Profile";
@@ -40,7 +40,7 @@ function App() {
 
   return (
       <div>
-        <img className="header-image" src={header}/>
+        <img className="header-image" src={header} alt={header}/>
         <br></br>
         <br></br>
         <div className="whole-page">
