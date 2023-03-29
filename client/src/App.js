@@ -4,7 +4,6 @@ import './App.css';
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
-// import header from './HeaderPhoto.jpeg'
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
 import Profile from "./Profile";

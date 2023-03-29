@@ -129,8 +129,9 @@ body{
 
 .shop-photo-info{
     float:right;
-    margin-right: 300px;
-    margin-top: 250px
+    /* margin-right: 300px; */
+    margin-top: 250px;
+    padding: 100px
 }
 
 .shop-photo-reviews{
