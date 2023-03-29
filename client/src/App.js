@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
-import HeaderPhoto from "./Image/HeaderPhoto.png"
+import HeaderPhoto from "./HeaderPhoto.png"
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
@@ -18,7 +18,7 @@ import './App.css';
  
 function App() {
 
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
   function updateCart(updatedCart){
@@ -40,7 +40,7 @@ function App() {
 
   return (
       <div>
-        <img className="header-image" alt="Header Image" src={HeaderPhoto} />
+        <img className="header-image" alt="Header" src={HeaderPhoto} />
         <br></br>
         <br></br>
         <div className="whole-page">

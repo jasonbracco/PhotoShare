@@ -26,12 +26,13 @@ function Shop(){
                 }) 
             }
         })
-    }, []) 
+    }, [])  
     
     return (  
         <div> 
             <div>
-                <h2 className="shop-header">Shop</h2>
+                <h2 className="shop-header"><i>Shop</i></h2>
+                <h4 className="shop-header">Find Out What's New at PhotoShare</h4>
             </div>
             <div className="shop">
                 {fetched ? (

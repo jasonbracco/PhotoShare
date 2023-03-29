@@ -161,6 +161,8 @@ body{
     width: 150px
 }
 
+/*  */
+
 /*  Pictures   */
 .profile-pic {
     height: 300px;
@@ -182,6 +184,12 @@ body{
     height: 300px;
     width: 300px;
     border-radius:25px
+}
+
+.grid-pic{
+    height: 100px;
+    width: 100px;
+    padding: 20px
 }
 
 

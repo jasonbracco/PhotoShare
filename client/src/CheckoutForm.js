@@ -42,13 +42,13 @@ function CheckoutForm({cartPrice}){
 
     function submitCheckout(e){
         e.preventDefault()
-        if(address.length === 0 || state == "Select a state"  || country.length === 0 || zip.length != 5){
+        if(address.length === 0 || state === "Select a state"  || country.length === 0 || zip.length !== 5){
             alert("Invalid Entry - Please Check Your Address");
         }
         else if(cardName.length === 0){
             alert("Invalid Entry - Please Check The Name On Your Card");
         }
-        else if(cvv.length != 3 || cardNumber.length < 13 || month == "Select Month" || year == "Select Year"){
+        else if(cvv.length !== 3 || cardNumber.length < 13 || month === "Select Month" || year === "Select Year"){
             alert("Invalid Credit Card Information");
         }
         else{

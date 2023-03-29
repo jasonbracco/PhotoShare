@@ -23,12 +23,6 @@ function SignInSignUp({setUser}){
         setShowButtons(false);
     } 
 
-    function undoClick(){
-        setLoggingIn(false);
-        setSigningUp(false);
-        setShowButtons(true);
-    } 
-
     return(
         <div className="welcome-page">
                 <p>Welcome To PhotoShare</p>

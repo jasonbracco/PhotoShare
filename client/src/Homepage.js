@@ -1,6 +1,7 @@
 import React, {useContext} from "react"
 import {UserContext} from "./UserContext"
 
+
 function Homepage(){
 
     const {user} = useContext(UserContext) 
@@ -18,8 +19,6 @@ function Homepage(){
             <br></br>
             <br></br>
             <br></br>
-
-            <p>Scroll Bar of photographs here?</p>
         </div>
     )
 }
