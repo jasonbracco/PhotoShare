@@ -4,7 +4,7 @@ import './App.css';
 import {UserContext} from "./UserContext";  
 import {CartContext} from "./CartContext";
 import SignInSignUp from "./SignInSignUp";
-import header from './HeaderPhoto.jpeg'
+// import header from './HeaderPhoto.jpeg'
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
 import Profile from "./Profile";
@@ -40,7 +40,7 @@ function App() {
 
   return (
       <div>
-        <img className="header-image" src={header} alt={header}/>
+        <img className="header-image" src="https://play-lh.googleusercontent.com/z-y8TtRa_oG0JEdJuVnOEyPBTjGn3-IGUSWyQGTulFuQzERfbEHUJFJSGchEDzQNEcQ" alt="Header"/>
         <br></br>
         <br></br>
         <div className="whole-page">
