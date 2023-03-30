@@ -67,10 +67,10 @@ body{
     width: 80%;
     margin-top: 100px;
 }
-
+ 
 .cart{
     float: right;
-    width: 80%;
+    width: 80%; 
     margin-top: 100px;
 }
 
@@ -104,6 +104,10 @@ body{
  
 .item-description{
     margin-right: 70px
+}
+
+.seller-card{
+    margin-top: 15px;
 }
 
 .shop-card{
