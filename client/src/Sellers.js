@@ -30,7 +30,7 @@ function Sellers(){
       return seller ;
     }
   })
-
+ 
   return( 
     <div className="photographers">
       {fetched ? (

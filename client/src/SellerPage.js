@@ -4,9 +4,9 @@ import OtherListedItems from "./OtherListedItems"
 import {Button, Grid, Loader} from 'semantic-ui-react'
 
 function SellerPage(){
- 
+  
     const {userID}=useParams();
-    
+     
     const [singleUser, setSingleUser] = useState(null);
     const [userFetched, setUserFetched] = useState(false);
 
@@ -26,9 +26,9 @@ function SellerPage(){
          }
         }) 
      }, [userID])
-
+ 
     return(
-        <div className="single-shop-photo">
+        <div className="single-seller-photo">
             {userFetched ? (
                 <div>
                     <div> 
@@ -39,7 +39,7 @@ function SellerPage(){
                         <div className="shop-photo">
                             <img className="single-shop-pic" alt="user" src={singleUser.image} />
                         </div>
-                        <div className="shop-photo-info">
+                        <div className="seller-photo-info">
                             <h4><i>Name:</i> {singleUser.first_name} {singleUser.last_name}</h4>
                             <h4><i>From:</i> {singleUser.city}, {singleUser.state_province} - {singleUser.country}</h4>
                             <h4><i>About Me:</i> {singleUser.bio}</h4>              

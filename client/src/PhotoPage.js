@@ -36,7 +36,7 @@ function PhotoPage(){
         setReviews(updatedReviews);
     }
  
-    return(
+    return( 
         <div className="single-shop-photo">
             {photoFetched ? (
                 <div>

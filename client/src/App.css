@@ -122,6 +122,18 @@ body{
     width: 80%;
 }
 
+.single-seller-photo{
+    float: right;
+    width: 80%;
+}
+
+.seller-photo-info{
+    float:center;
+    margin-top: 200px;
+    margin-left: 570px;
+    margin-right: 75px
+}
+
 .shop-photo{
     float: left;
 }
@@ -142,7 +154,8 @@ body{
 }
 
 .photographer-card{
-    margin-left: 80px;
+    margin-left: 20px;
+    margin-right: 20px
 }
 
 
