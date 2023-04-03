@@ -27,6 +27,7 @@ function OrderCard({order}){
         })
         .then((response) => {
             if(response.ok){
+                console.log(response)
                 response.json().then((review) => {
                     console.log(review)
                     setReviewing(true)
@@ -34,6 +35,7 @@ function OrderCard({order}){
                 })
             }
             else{
+                console.log(response)
                 response.json().then((error) => setErrors(error.errors))
             }
         })
