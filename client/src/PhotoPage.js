@@ -22,7 +22,6 @@ function PhotoPage(){
     useEffect(() => {
         fetch (`/photographs/${photoID}`).then((response) => {
           if (response.ok) {
-            console.log(response)
             response.json().then((photograph) => {
               setPhotograph(photograph);
               setPhotoFetched(true);

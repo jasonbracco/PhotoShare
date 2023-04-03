@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
     def create
-        byebug
         review=Review.create!(review_params)
         render json: review
     end

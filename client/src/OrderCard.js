@@ -24,7 +24,7 @@ function OrderCard({order}){
                 user_id: user.id,
                 photograph_id: photoID
             })
-        })
+        }) 
         .then((response) => {
             if(response.ok){
                 console.log(response)
