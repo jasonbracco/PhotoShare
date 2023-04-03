@@ -28,6 +28,7 @@ function OrderCard({order}){
         .then((response) => {
             if(response.ok){
                 response.json().then((review) => {
+                    console.log(review)
                     setReviewing(true)
                     setContent("")
                 })

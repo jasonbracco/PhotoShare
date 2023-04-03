@@ -1,8 +1,6 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :content
+  attributes :id, :content, :user
 
-  belongs_to :user do
-    attribute :first_name
-  end
+  belongs_to :user
   belongs_to :photograph
 end

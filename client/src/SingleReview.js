@@ -12,8 +12,7 @@ function SingleReview({review, handleDeleteReview}){
     const [editingReview, setEditingReview] = useState(false)
     const [content, setContent] = useState(review.content)
     const [errors, setErrors] = useState([])
-    console.log(review)
-
+ 
     useEffect(() => {
         if(review.user.id === user.id){
             setCanEdit(true)
@@ -84,7 +83,7 @@ function SingleReview({review, handleDeleteReview}){
                         </Card.Content>
                     </Card>
                     )}
-                </div>
+                </div> 
             ) : (
                 <Card>
                     <Card.Content>

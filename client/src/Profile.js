@@ -23,6 +23,7 @@ function Profile(){
     const [country, setCountry] = useState(user.country);
     const [city, setCity] = useState(user.city);
     const [userID, setUserID] = useState(user.id) ;
+    console.log(userPhotos)
 
     useEffect(() => {
         fetch ("/me").then((response) => {
@@ -104,7 +105,7 @@ function Profile(){
 
     function handleAddUserPhoto(newPhoto){
         setUserPhotos([...userPhotos, newPhoto]);
-    }
+    } 
     
     function handleDeleteUserPhoto(id){
         const updatedUserPhotos = userPhotos.filter((photo) => photo.id !== id);
@@ -177,7 +178,7 @@ function Profile(){
                         <Grid container columns={3}>
                             {userPhotos.map((photograph) => {
                                 return <Grid.Column key={photograph.id}>
-                                    <UserPhotoCard photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
+                                    <UserPhotoCard key={photograph.id} photograph={photograph} deleteUserPhoto={handleDeleteUserPhoto} updateUserPhoto={handleEditUserPhoto}/>
                                 </Grid.Column>
                             })} 
                             <br></br> 
