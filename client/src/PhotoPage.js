@@ -22,11 +22,16 @@ function PhotoPage(){
     useEffect(() => {
         fetch (`/photographs/${photoID}`).then((response) => {
           if (response.ok) {
+            console.log(response)
             response.json().then((photograph) => {
               setPhotograph(photograph);
               setPhotoFetched(true);
               setReviews(photograph.reviews);
             })
+            }
+            else{
+                console.log(response)
+                response.json().then((error) => console.log(error))
             }
         }); 
       },[photoID]);
