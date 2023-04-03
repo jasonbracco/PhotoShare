@@ -9,13 +9,13 @@ class PhotographsController < ApplicationController
         photographs=Photograph.all.with_attached_image
         render json: photographs
     end
- 
+
     def destroy
         photograph=Photograph.find_by(id: params[:id])
         photograph.destroy
         head :no_content
     end
- 
+
     def update
         photograph=Photograph.find_by(id: params[:id])
         photograph.update!(photograph_params)
@@ -23,7 +23,7 @@ class PhotographsController < ApplicationController
     end
 
     def show
-        photograph=Photograph.find(id: params[:id])
+        photograph=Photograph.find_by(id: params[:id])
         render json: photograph
     end
 
