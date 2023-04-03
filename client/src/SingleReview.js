@@ -12,6 +12,7 @@ function SingleReview({review, handleDeleteReview}){
     const [editingReview, setEditingReview] = useState(false)
     const [content, setContent] = useState(review.content)
     const [errors, setErrors] = useState([])
+    console.log(review)
 
     useEffect(() => {
         if(review.user.id === user.id){

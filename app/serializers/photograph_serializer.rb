@@ -19,6 +19,7 @@ class PhotographSerializer < ActiveModel::Serializer
   def image
     rails_blob_path(object.image, only_path: true) if object.image.attached?
   end
+  
 
   #Create a blob_path for the object image (a blob is a record that contains metadata about a file and a key for where that file resides on the image hosting service)
   #Provides the exact path for the link
