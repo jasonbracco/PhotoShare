@@ -4,6 +4,11 @@ Photo Share is an ecommerce site designed to let users browse, buy, and sell dif
 PhotoShare can be accessed at https://photo-share-app-b2q6.onrender.com/
 
 If running locally: 
+
+Node Version: 16.x - use nvm to change to this version of node.
+Bundler Version 2.2.24
+Ruby Version: 2.7.4
+
 To run the backend of this application, run the following commands in a terminal: 
 bundle install
 rails s
