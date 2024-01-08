@@ -40,6 +40,7 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
             body: formData
         })
         .then((response) => {
+            console.log(response)
             if (response.ok){
                 response.json().then((user) => setUser(user))
             }

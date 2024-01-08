@@ -11,7 +11,7 @@ function LoginPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
 
     function undoClick(){
         setLoggingIn(false);
-        setSigningUp(false);
+        setSigningUp(false); 
         setShowButtons(true);
     }
 

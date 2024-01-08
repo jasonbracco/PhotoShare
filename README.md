@@ -1,17 +1,20 @@
 # Overview
 Photo Share is an ecommerce site designed to let users browse, buy, and sell different works of photography.  A user does not need to be selling artwork in order to browse the listings, however you have to be an authorized user to access the website.
 
-PhotoShare can be accessed at https://photo-share-app-b2q6.onrender.com/
-
-If running locally: 
+# Running Locally
 
 Node Version: 16.x - use nvm to change to this version of node.
 Bundler Version 2.2.24
 Ruby Version: 2.7.4
 
+Database: PostgreSQL
+ *Create a .env file at the root directory with the database username and password.  Customize the port and host in the config/database.yml file.
+
 To run the backend of this application, run the following commands in a terminal: 
 bundle install
-rails s
+rails:db create (creates database in postgreSQL)
+rails:db migrate (creates database schema)
+rails s (starts rails server)
 
 To run the frontend of this application, run the following commands in a separate terminal: 
 npm install --prefix client

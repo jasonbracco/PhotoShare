@@ -32,7 +32,7 @@ development:
   #username: react_rails_api_project_template
 
   # The password associated with the postgres role (username).
-  username: <%= ENV['DATABASE_USERNAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %> 
   password: <%= ENV['DATABASE_PASSWORD'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
