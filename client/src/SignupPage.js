@@ -24,17 +24,34 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
 
     function handleSignupSubmit(e){
         e.preventDefault()
-        const formData = new FormData()
-        formData.append('image', image)
-        formData.append('first_name', firstName);
-        formData.append('last_name', lastName);
-        formData.append('city', city)
-        formData.append('state_province', stateProvince)
-        formData.append('country', country)
-        formData.append('bio', bio)
-        formData.append('username', username)
-        formData.append('password', password)
-        formData.append('password_confirmation', passwordConfirmation)
+        const formData = {
+            'image': image,
+            'first_name': firstName,
+            'last_name': lastName,
+            'city': city,
+            'state_province': stateProvince,
+            'country': country,
+            'bio': bio,
+            'username': username,
+            'password': password,
+            'password_confirmation': passwordConfirmation
+
+
+
+
+
+        }
+        // formData.append('image', image)
+        // formData.append('first_name', firstName);
+        // formData.append('last_name', lastName);
+        // formData.append('city', city)
+        // formData.append('state_province', stateProvince)
+        // formData.append('country', country)
+        // formData.append('bio', bio)
+        // formData.append('username', username)
+        // formData.append('password', password)
+        // formData.append('password_confirmation', passwordConfirmation)
+        console.log(formData)
         fetch("/signup", {
             method: "POST",
             body: formData
