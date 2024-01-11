@@ -22,8 +22,46 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
         setShowButtons(true);
     }
 
-    function handleSignupSubmit(e){
-        e.preventDefault()
+    // function handleSignupSubmit(e){
+    //     e.preventDefault()
+    //     const formData = {
+    //         'image': image,
+    //         'first_name': firstName,
+    //         'last_name': lastName,
+    //         'city': city,
+    //         'state_province': stateProvince,
+    //         'country': country,
+    //         'bio': bio,
+    //         'username': username,
+    //         'password': password,
+    //         'password_confirmation': passwordConfirmation
+    //     }
+
+    //     console.log(formData)
+    //     fetch("/signup", {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: formData
+    //     })
+    //     .then((response) => {
+    //         console.log(response)
+    //         if (response.ok){
+    //             response.json().then((user) => setUser(user))
+    //         }
+    //         else{
+    //             response.json().then((error) => {
+    //                 console.log(error);
+    //                 setErrors(error.errors);
+    //             })
+    //         }
+    //     })
+    // }
+
+    async function handleSignupSubmit(e) {
+        e.preventDefault();
+    
         const formData = {
             'image': image,
             'first_name': firstName,
@@ -35,39 +73,32 @@ function SignupPage({setUser, setLoggingIn, setSigningUp, setShowButtons}){
             'username': username,
             'password': password,
             'password_confirmation': passwordConfirmation
-
-
-
-
-
+        };
+    
+        console.log(formData);
+    
+        try {
+            const response = await fetch("/signup", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            console.log(response);
+    
+            if (response.ok) {
+                const user = await response.json();
+                setUser(user);
+            } else {
+                const error = await response.json();
+                console.log(error);
+                setErrors(error.errors);
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
         }
-        // formData.append('image', image)
-        // formData.append('first_name', firstName);
-        // formData.append('last_name', lastName);
-        // formData.append('city', city)
-        // formData.append('state_province', stateProvince)
-        // formData.append('country', country)
-        // formData.append('bio', bio)
-        // formData.append('username', username)
-        // formData.append('password', password)
-        // formData.append('password_confirmation', passwordConfirmation)
-        console.log(formData)
-        fetch("/signup", {
-            method: "POST",
-            body: formData
-        })
-        .then((response) => {
-            console.log(response)
-            if (response.ok){
-                response.json().then((user) => setUser(user))
-            }
-            else{
-                response.json().then((error) => {
-                    console.log(error);
-                    setErrors(error.errors);
-                })
-            }
-        })
     }
 
     return (

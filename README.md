@@ -16,6 +16,12 @@ rails:db create (creates database in postgreSQL)
 rails:db migrate (creates database schema)
 rails s (starts rails server)
 
+* There has been a known issue MAC OS and some Ruby Gems.  If you receive an error: 
+
+"objc[23741]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called"
+
+You can run OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES rails s *
+
 To run the frontend of this application, run the following commands in a separate terminal: 
 npm install --prefix client
 npm start --prefix client 
